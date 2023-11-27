@@ -1,0 +1,6 @@
+package com.AlaCartApp.repository;
+import com.AlaCartApp.models.entity.Category;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CategoryRepository extends JpaRepository<Category, Long> {
+}
