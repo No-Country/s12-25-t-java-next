@@ -44,7 +44,8 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       boxShadow:{
-        button: "0px 4px 4px rgba(0, 0, 0, 0.25)"
+        button: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+        footer: "0px 0px 16px 1px rgba(0, 0, 0, 0.25)"
       }
     },
   },
