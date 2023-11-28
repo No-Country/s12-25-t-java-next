@@ -5,6 +5,8 @@ const Footer = () => {
     <footer className="sticky bottom-0 z-[99] w-screen px-4 py-6">
       <div className="flex justify-between ">
         <button className="bg-secondary-100 p-3 rounded-full shadow-button flex items-center justify-center">
+        
+        
           <Image
            src={"/Call.svg"}
             height={30}
