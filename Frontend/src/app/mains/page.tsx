@@ -1,13 +1,32 @@
-import MainCourseCard from '@/components/MainCourseCard'
+import MainsList from '@/components/Mains/MainsList'
+import { getMainCourses } from '@/lib/mainCourses'
+import { MainCourse } from '@/types/mainCourse'
 
-function MainsPage() {
+export const metadata = {
+	title: 'Platos',
+}
+
+async function MainsPage() {
+	const mains = await getMainCourses()
+	const categories = [...new Set(mains.map((mainCourse) => mainCourse.category))]
+
 	return (
-		<MainCourseCard
-			title="Título"
-			price={3500}
-			image="https://fakeimg.pl/160x88?text=PlateImage"
-			rating={4.3}
-		/>
+		<>
+			{categories.map((category) => {
+				const mainsByCategory: MainCourse[] = mains.filter(
+					(mainCourse) => mainCourse.category === category
+				)
+
+				return (
+					<div
+						key={category}
+						className="pl-4"
+					>
+						<MainsList mains={mainsByCategory} />
+					</div>
+				)
+			})}
+		</>
 	)
 }
 export default MainsPage

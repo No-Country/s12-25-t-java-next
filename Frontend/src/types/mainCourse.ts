@@ -1,4 +1,4 @@
-export interface Plate {
+export interface MainCourse {
 	id: string
 	title: string
 	description: string
@@ -9,7 +9,7 @@ export interface Plate {
 	optionals: string[]
 }
 
-export type NonEssentialPlate = Omit<
-	Plate,
+export type NonEssentialMainCourse = Omit<
+	MainCourse,
 	'id' | 'description' | 'category' | 'optionals'
 >
