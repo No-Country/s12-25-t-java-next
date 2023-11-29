@@ -17,7 +17,7 @@ const Notification = () => {
           : "fixed top-[-100%] "
       }
     >
-      {message.text && (
+        {message && 'text' in message && (
         <>
           <Image
             src={message.svg}
