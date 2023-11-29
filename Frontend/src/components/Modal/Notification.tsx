@@ -23,6 +23,7 @@ const Notification = () => {
             width={30}
             height={30}
             alt="notification waiter"
+            style={{ objectFit: "cover", width: "100%", height: "100%" }}
           />
           <h3 className="font-montserrat"> {message.text}</h3>{" "}
         </>
