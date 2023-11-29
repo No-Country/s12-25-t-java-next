@@ -1,5 +1,6 @@
-import { MainCourse } from '@/types/mainCourse'
 import 'server-only'
+
+import { MainCourse } from '@/types/mainCourse'
 
 const baseUrl = process.env.BASE_URL
 
