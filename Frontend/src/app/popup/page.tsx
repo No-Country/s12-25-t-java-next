@@ -1,4 +1,25 @@
+"use client";
+import Notification from "@/components/Modal/Notification";
+import useShowNotification from "@/hooks/useShowNotification";
+import { useNotifyStore } from "@/store/zustand";
+
 export default function PopupComponent() {
+  const {  add, setShowMessageBoolean } = useNotifyStore();
+
+  const handleNotification = () => {
+    setTimeout(() => {
+      setShowMessageBoolean(false);
+    }, 2500);
+  };
+  const callWaiter = () => {
+    const newMessage = {
+      text: "El mesero vendrá en seguida.",
+      svg: "/waiter 1.svg",
+    };
+    add(newMessage);
+    setShowMessageBoolean(true);
+    handleNotification()
+  };
   return (
     <div className="min-h-screen bg-whitebackground flex items-center justify-center p-4 font-sans">
       <div className="bg-[#FFFFFF] h-44 w-full rounded-3xl shadow-2xl">
@@ -12,12 +33,16 @@ export default function PopupComponent() {
             <button className="w-28 rounded-3xl py-2 text-center font-medium text-secondary-100 border border-secondary-100 shadow-xl">
               Cancelar
             </button>
-            <button className="w-28 rounded-3xl py-2 text-center font-medium text-[#FFFFFF] bg-secondary-100 shadow-xl">
+            <button
+              onClick={callWaiter}
+              className="w-28 rounded-3xl py-2 text-center font-medium text-[#FFFFFF] bg-secondary-100 shadow-xl"
+            >
               Llamar
             </button>
           </div>
         </div>
       </div>
+      <Notification />
     </div>
   );
 }

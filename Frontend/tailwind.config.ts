@@ -30,13 +30,14 @@ module.exports = {
       white:'#FFF',
       darkgrey:'#5D5D5D',
       grey:'#9F9F9F',
-      whitebackground: '#F4F4F4',
+      whitebackground: '#FBFBFB',
       error: '#FF3B30'
 
     },
     extend: {
       fontFamily: {
-        sans: ['Poppins', ],
+        sans: ['Poppins' ],
+        'montserrat': ['Montserrat', 'sans-serif'],
      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
