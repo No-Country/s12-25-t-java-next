@@ -18,14 +18,14 @@ export default function DishesPage() {
   ];
   return (
     <section className="w-full ">
-        <div className="flex flex-row items-center justify-between px-4 mt-4">
-      {fakeData.map((data) => (
-        <ActiveButton slug={`/${data.title}`} key={data.id}>
-          <div className="flex justify-center items-center h-full">
-            <span> {data.title} </span>
-          </div>
-        </ActiveButton>
-      ))}
+      <div className="flex flex-row items-center justify-between px-4 mt-4">
+        {fakeData.map((data) => (
+          <ActiveButton slug={`/${data.title}`} key={data.id}>
+            <div className="flex justify-center items-center h-full">
+              <span> {data.title} </span>
+            </div>
+          </ActiveButton>
+        ))}
       </div>
       <Search />
     </section>

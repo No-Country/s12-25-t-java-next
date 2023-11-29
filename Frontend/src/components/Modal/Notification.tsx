@@ -2,7 +2,7 @@
 import { useNotifyStore } from "@/store/zustand";
 import Image from "next/image";
 
-interface Props {}
+type Props = {};
 
 const Notification = () => {
   const { message, add, showMessageBoolean, setShowMessageBoolean } =
@@ -16,7 +16,7 @@ const Notification = () => {
           : "fixed top-[-100%] "
       }
     >
-        {message && 'text' in message && (
+      {message && "text" in message && (
         <>
           <Image
             src={message.svg}
