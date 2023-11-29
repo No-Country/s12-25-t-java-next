@@ -1,4 +1,4 @@
 export type MessageNotification = {
-    text: string;
-    svg: string;
-}
+  text: string;
+  svg: string;
+};
