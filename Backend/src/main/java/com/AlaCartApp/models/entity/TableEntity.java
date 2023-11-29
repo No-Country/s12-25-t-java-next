@@ -16,8 +16,8 @@ public class TableEntity {
     private Integer number;
     @Column(name = "capacity", nullable = false)
     private Integer capacity;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "state", referencedColumnName = "id")
-    private State state;
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "state", referencedColumnName = "id")
+//    private State state;
 
 }
