@@ -2,6 +2,9 @@ package com.AlaCartApp.service.implementation;
 
 import com.AlaCartApp.exception.ResourceNotFoundException;
 import com.AlaCartApp.models.entity.Product;
+import com.AlaCartApp.models.mapper.ProductMapper;
+import com.AlaCartApp.models.response.ProductDtoResponse;
+import com.AlaCartApp.models.request.ProductDtoRequest;
 import com.AlaCartApp.repository.ProductRepository;
 import com.AlaCartApp.service.abstraction.ImageService;
 import com.AlaCartApp.service.abstraction.ProductService;
@@ -18,37 +21,41 @@ public class ProductServiceImpl implements ProductService {
 
     private final ImageService imageService;
     private final ProductRepository productRepository;
+    private final ProductMapper productMapper;
 
     @Override
-    public Product save(List<MultipartFile> postImages, Product request) throws IOException {
+    public ProductDtoResponse save(List<MultipartFile> postImages, ProductDtoRequest request) throws IOException {
         request.setImages(imageService.imagesPost(postImages));
-        return productRepository.save(request);
+        Product product = productRepository.save(productMapper.toProductFromRequest(request));
+        return productMapper.toProductDTO(product);
     }
 
     @Override
-    public List<Product> findAll() {
+    public List<ProductDtoResponse> findAll() {
 
-        return productRepository.findAll();
+        return productMapper.toProductsDTO(productRepository.findAll());
     }
 
     @Override
-    public Product update(Long id, Product request) {
+    public ProductDtoResponse update(Long id, ProductDtoResponse request) {
         Optional<Product> existingProduct = productRepository.findById(id);
         if(existingProduct.isPresent()){
             Product product = existingProduct.get();
             product.setName(request.getName());
             product.setPrice(request.getPrice());
             product.setDescription(request.getDescription());
-            return productRepository.save(product);
+            product.setCategory(request.getCategory());
+            product.setState(request.getState());
+            return productMapper.toProductDTO(productRepository.save(product));
         }else{
             throw new ResourceNotFoundException("Product not found with id: " + id);
         }
     }
 
     @Override
-    public Optional<Product> findById(Long id) {
+    public Optional<ProductDtoResponse> findById(Long id) {
 
-        return Optional.ofNullable(productRepository.findById(id)
+        return Optional.ofNullable(productRepository.findById(id).map(productMapper::toProductDTO)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + id)));
 
     }
