@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { montserrat } from './fonts'
 import './globals.css'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
 	title: {
@@ -19,7 +21,11 @@ export default function RootLayout({
 			lang="es"
 			className={`${montserrat.variable}`}
 		>
-			<body>{children}</body>
+			<body suppressHydrationWarning={true}>
+				<Header />
+				{children}
+				<Footer />
+			</body>
 		</html>
 	)
 }

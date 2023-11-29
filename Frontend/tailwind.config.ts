@@ -26,7 +26,8 @@ module.exports = {
 				200: '#E7A000',
 				300: '#FFCA51',
 			},
-			black: '#1A1A1A',
+			black: '#1A1818',
+			white: '#FFF',
 			darkgrey: '#5D5D5D',
 			grey: '#9F9F9F',
 			lightgrey: '#D9D9D9',
@@ -41,6 +42,10 @@ module.exports = {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'gradient-conic':
 					'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+			},
+			boxShadow: {
+				button: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+				footer: '0px 0px 16px 1px rgba(0, 0, 0, 0.25)',
 			},
 		},
 	},
