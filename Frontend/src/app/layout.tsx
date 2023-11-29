@@ -3,6 +3,9 @@ import { montserrat } from './fonts'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import DishesPage from './[slug]/page'
+import ActiveButton from './[slug]/activeButton'
+import Home from './page'
 
 export const metadata: Metadata = {
 	title: {

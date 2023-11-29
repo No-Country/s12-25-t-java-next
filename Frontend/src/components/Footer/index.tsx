@@ -2,8 +2,8 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="sticky bottom-0 z-[99] w-screen px-4 py-6">
-      <div className="flex justify-between ">
+    <footer className="sticky bottom-[0] z-[99] w-screen px-4 py-6 bg-white shadow-footer overflow-hidden">
+      <div className="flex justify-between xl:px-4">
         <button className="bg-secondary-100 p-3 rounded-full shadow-button flex items-center justify-center">
         
         
