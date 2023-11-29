@@ -2,14 +2,14 @@ import { MessageNotification } from "@/types/notification";
 import { create } from "zustand";
 
 type NotifyStore = {
-  message: MessageNotification;
+  message: MessageNotification | {};
   showMessageBoolean: boolean;
   add: (message: MessageNotification) => void;
   setShowMessageBoolean: (value: boolean) => void;
 };
 
 export const useNotifyStore = create<NotifyStore>((set) => ({
-  message: "",
+  message: {},
   showMessageBoolean: false,
   add: (message) => set({ message }),
   setShowMessageBoolean: (value) => set({ showMessageBoolean: value }),

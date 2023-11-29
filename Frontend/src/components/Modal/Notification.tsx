@@ -8,8 +8,6 @@ interface Props {}
 const Notification = () => {
   const { message, add, showMessageBoolean, setShowMessageBoolean } =
     useNotifyStore();
-  console.log("mensaje de notificacion", message);
-  console.log("mensaje de notificacion", message.svg);
 
   return (
     <div

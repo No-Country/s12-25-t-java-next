@@ -1,6 +1,5 @@
 "use client";
 import Notification from "@/components/Modal/Notification";
-import useShowNotification from "@/hooks/useShowNotification";
 import { useNotifyStore } from "@/store/zustand";
 
 export default function PopupComponent() {
