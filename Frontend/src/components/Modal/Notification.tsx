@@ -2,8 +2,6 @@
 import { useNotifyStore } from "@/store/zustand";
 import Image from "next/image";
 
-type Props = {};
-
 const Notification = () => {
   const { message, add, showMessageBoolean, setShowMessageBoolean } =
     useNotifyStore();
@@ -23,9 +21,9 @@ const Notification = () => {
             width={30}
             height={30}
             alt="notification waiter"
-            style={{ objectFit: "cover", width: "100%", height: "100%" }}
+            className="object-cover w-full h-full"
           />
-          <h3 className="font-montserrat"> {message.text}</h3>{" "}
+          <h3 className="font-sans"> {message.text}</h3>{" "}
         </>
       )}
     </div>
