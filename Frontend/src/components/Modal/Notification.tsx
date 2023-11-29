@@ -1,5 +1,4 @@
 "use client";
-import useShowNotification from "@/hooks/useShowNotification";
 import { useNotifyStore } from "@/store/zustand";
 import Image from "next/image";
 
