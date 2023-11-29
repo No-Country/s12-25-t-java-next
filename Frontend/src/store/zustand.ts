@@ -2,7 +2,7 @@ import { MessageNotification } from "@/types/notification";
 import { create } from "zustand";
 
 type NotifyStore = {
-	message: MessageNotification | {};
+	message: MessageNotification;
 	showMessageBoolean: boolean;
 	add: (message: MessageNotification) => void;
 	setShowMessageBoolean: (value: boolean) => void;
@@ -24,5 +24,5 @@ type CounterStore = {
 export const useCounterStore = create<CounterStore>((set) => ({
 	count: 0,
 	increment: () => set((state) => ({ count: state.count + 1 })),
-	decrement: () => set((state) => ({ count: state.count - 1 })),
+	decrement: () => set((state) => ({ count: Math.max(0, state.count - 1) })),
 }));
