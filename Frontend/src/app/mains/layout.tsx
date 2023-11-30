@@ -1,6 +1,12 @@
-import React from 'react'
+import FilterProducts from "@/components/FilterProducts/FilterProducts";
+import React from "react";
 
 function MainsLayout({ children }: { children: React.ReactNode }) {
-	return <div>{children}</div>
+  return (
+    <div>
+      <FilterProducts />
+      {children}
+    </div>
+  );
 }
-export default MainsLayout
+export default MainsLayout;
