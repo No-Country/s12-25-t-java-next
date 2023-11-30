@@ -19,9 +19,9 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${montserrat.variable}`}>
       <body suppressHydrationWarning={true}>
-        <Header />
+    
         {children}
-        <Footer />
+       
       </body>
     </html>
   );
