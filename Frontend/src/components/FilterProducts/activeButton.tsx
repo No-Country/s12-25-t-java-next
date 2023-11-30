@@ -12,7 +12,7 @@ export default function ActiveButton({
 }) {
   const pathname = usePathname();
   const isActive =
-    pathname === slug || (pathname === "/" && slug === "/Platos");
+    pathname === slug || (pathname === "/" && slug === "/mains");
 
   return (
     <Link
