@@ -1,6 +1,6 @@
 package com.AlaCartApp.controller;
 
-import com.AlaCartApp.models.response.ProductDtoResponse;
+import com.AlaCartApp.models.response.ProductDto;
 import com.AlaCartApp.models.request.ProductDtoRequest;
 import com.AlaCartApp.service.abstraction.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -20,27 +20,27 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping
-    public ResponseEntity<List<ProductDtoResponse>> findAll(){
+    public ResponseEntity<List<ProductDto>> findAll(){
         return ResponseEntity.ok(productService.findAll());
     }
 
     @PostMapping
     public ResponseEntity<Void> save(
             @RequestPart(value="files",required = false) List<MultipartFile> postImage,
-            @RequestPart(value="request") ProductDtoRequest request)
+            @RequestPart(value="request") ProductDto request)
             throws IOException{
         productService.save(postImage, request);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .build();
     }
     @GetMapping("/{id}")
-    public ResponseEntity<ProductDtoResponse> findById(@PathVariable Long id){
+    public ResponseEntity<ProductDto> findById(@PathVariable Long id){
         return ResponseEntity.of(productService.findById(id));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ProductDtoResponse> update(@PathVariable Long id , @RequestBody ProductDtoResponse product){
-        ProductDtoResponse response = productService.update(id,product);
+    public ResponseEntity<ProductDto> update(@PathVariable Long id , @RequestBody ProductDto product){
+        ProductDto response = productService.update(id,product);
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
 

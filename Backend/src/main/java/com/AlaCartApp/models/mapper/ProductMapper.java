@@ -2,7 +2,7 @@ package com.AlaCartApp.models.mapper;
 
 import com.AlaCartApp.models.entity.Product;
 
-import com.AlaCartApp.models.request.ProductDto;
+import com.AlaCartApp.models.response.ProductDto;
 
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
