@@ -1,22 +1,20 @@
 package com.AlaCartApp.service.abstraction;
 
-import com.AlaCartApp.models.entity.Product;
-import com.AlaCartApp.models.request.ProductDto;
-import com.AlaCartApp.repository.ProductRepository;
+import com.AlaCartApp.models.response.ProductDtoResponse;
+import com.AlaCartApp.models.request.ProductDtoRequest;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.sound.sampled.Port;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
 public interface ProductService {
 
-    Product save(List<MultipartFile> postImages,Product request) throws IOException;
-    List<Product> findAll();
+    ProductDtoResponse save(List<MultipartFile> postImages, ProductDtoRequest request) throws IOException;
+    List<ProductDtoResponse> findAll();
 
-    Product update(Long id, Product request);
-    Optional<Product> findById(Long id);
+    ProductDtoResponse update(Long id, ProductDtoResponse request);
+    Optional<ProductDtoResponse> findById(Long id);
 
     boolean delete(Long id);
 }
