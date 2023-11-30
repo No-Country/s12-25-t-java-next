@@ -3,7 +3,7 @@ package com.AlaCartApp.service.implementation;
 import com.AlaCartApp.exception.ResourceNotFoundException;
 import com.AlaCartApp.models.entity.Product;
 import com.AlaCartApp.models.mapper.ProductMapper;
-import com.AlaCartApp.models.response.ProductDtoResponse;
+import com.AlaCartApp.models.response.ProductDto;
 import com.AlaCartApp.models.request.ProductDtoRequest;
 import com.AlaCartApp.repository.ProductRepository;
 import com.AlaCartApp.service.abstraction.ImageService;
@@ -24,20 +24,20 @@ public class ProductServiceImpl implements ProductService {
     private final ProductMapper productMapper;
 
     @Override
-    public ProductDtoResponse save(List<MultipartFile> postImages, ProductDtoRequest request) throws IOException {
+    public ProductDto save(List<MultipartFile> postImages, ProductDto request) throws IOException {
         request.setImages(imageService.imagesPost(postImages));
-        Product product = productRepository.save(productMapper.toProductFromRequest(request));
+        Product product = productRepository.save(productMapper.toProduct(request));
         return productMapper.toProductDTO(product);
     }
 
     @Override
-    public List<ProductDtoResponse> findAll() {
+    public List<ProductDto> findAll() {
 
         return productMapper.toProductsDTO(productRepository.findAll());
     }
 
     @Override
-    public ProductDtoResponse update(Long id, ProductDtoResponse request) {
+    public ProductDto update(Long id, ProductDto request) {
         Optional<Product> existingProduct = productRepository.findById(id);
         if(existingProduct.isPresent()){
             Product product = existingProduct.get();
@@ -45,7 +45,6 @@ public class ProductServiceImpl implements ProductService {
             product.setPrice(request.getPrice());
             product.setDescription(request.getDescription());
             product.setCategory(request.getCategory());
-            product.setState(request.getState());
             return productMapper.toProductDTO(productRepository.save(product));
         }else{
             throw new ResourceNotFoundException("Product not found with id: " + id);
@@ -53,7 +52,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Optional<ProductDtoResponse> findById(Long id) {
+    public Optional<ProductDto> findById(Long id) {
 
         return Optional.ofNullable(productRepository.findById(id).map(productMapper::toProductDTO)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + id)));
