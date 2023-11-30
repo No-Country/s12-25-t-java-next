@@ -6,30 +6,29 @@ export const metadata = {
 	title: 'Platos',
 }
 
-async function MainsPage() {
+async function DishesPage() {
 	const products = await getProducts()
-	const mains = products.filter((product) => product.category === 'Platos')
+	const dishes = products.filter((product) => product.category === 'Platos')
 	const subcategories = [
-		...new Set(mains.map((mainCourse) => mainCourse.subcategory)),
+		...new Set(dishes.map((mainCourse) => mainCourse.subcategory)),
 	]
 
 	return (
 		<>
 			{subcategories.map((subcategory) => {
-				const mainsByCategory: Product[] = mains.filter(
+				const dishesByCategory: Product[] = dishes.filter(
 					(mainCourse) => mainCourse.subcategory === subcategory
 				)
-
 				return (
 					<div
 						key={subcategory}
 						className="pl-4"
 					>
-						<ProductsList products={mainsByCategory} />
+						<ProductsList products={dishesByCategory} />
 					</div>
 				)
 			})}
 		</>
 	)
 }
-export default MainsPage
+export default DishesPage
