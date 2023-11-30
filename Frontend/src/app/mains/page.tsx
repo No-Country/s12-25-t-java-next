@@ -1,31 +1,35 @@
-import MainsList from "@/components/Mains/MainsList";
-import { getMainCourses } from "@/lib/mainCourses";
-import { MainCourse } from "@/types/mainCourse";
+import ProductsList from '@/components/Products/ProductsList'
+import { getProducts } from '@/lib/Products'
+import { Product } from '@/types/Product'
 
 export const metadata = {
-  title: "Platos",
-};
+	title: 'Platos',
+}
 
 async function MainsPage() {
-  const mains = await getMainCourses();
-  const categories = [
-    ...new Set(mains.map((mainCourse) => mainCourse.category)),
-  ];
+	const products = await getProducts()
+	const mains = products.filter((product) => product.category === 'Platos')
+	const subcategories = [
+		...new Set(mains.map((mainCourse) => mainCourse.subcategory)),
+	]
 
-  return (
-    <>
-      {categories.map((category) => {
-        const mainsByCategory: MainCourse[] = mains.filter(
-          (mainCourse) => mainCourse.category === category,
-        );
+	return (
+		<>
+			{subcategories.map((subcategory) => {
+				const mainsByCategory: Product[] = mains.filter(
+					(mainCourse) => mainCourse.subcategory === subcategory
+				)
 
-        return (
-          <div key={category} className="pl-4">
-            <MainsList mains={mainsByCategory} />
-          </div>
-        );
-      })}
-    </>
-  );
+				return (
+					<div
+						key={subcategory}
+						className="pl-4"
+					>
+						<ProductsList products={mainsByCategory} />
+					</div>
+				)
+			})}
+		</>
+	)
 }
-export default MainsPage;
+export default MainsPage
