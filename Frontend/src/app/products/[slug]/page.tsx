@@ -1,12 +1,14 @@
 import { ProductDescription } from "@/components";
-import { useCartStore } from "@/store/cart";
+import { getProductById } from "@/lib/Products";
 import { products } from "@/utils/data";
 import React from "react";
 
-const ProductPage = () => {
+const ProductPage = async ({ params }: { params: { slug: string } }) => {
+  const product = await getProductById(params.slug);
+console.log(product)
   return (
     <div>
-      <ProductDescription product={products[0]} {...products[0]} />
+      <ProductDescription product={product}  />
     </div>
   );
 };
