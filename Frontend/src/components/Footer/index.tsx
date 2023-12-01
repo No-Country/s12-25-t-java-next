@@ -10,14 +10,14 @@ const Footer = () => {
         <CallWaiterPopup />
         <button
           type="button"
-          className="bg-primary-100 px-3 w-[10.5rem] py-4 font-medium text-sm text-white rounded-[1.3rem]  shadow-button flex items-center justify-between"
+          className="bg-primary-100 px-3 w-[10.5rem] py-4 font-medium text-sm text-white rounded-[1.3rem]  shadow-button flex items-center justify-center "
         >
           <Image
             src={"/Carrito.svg"}
             height={30}
             width={30}
             alt="add to cart"
-            className="pr-1"
+            className="pr-2"
           />
           Carrito
         </button>
