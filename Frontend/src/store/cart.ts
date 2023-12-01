@@ -9,8 +9,10 @@ interface CartItem extends Product {
 type CartStore = {
   cart: CartItem[];
   quantity: () => number;
+  subtotal: () => number;
   add: (product: Product) => void;
   remove: (idProduct: string) => void;
+  removeProduct: (idProduct: string) => void; 
   removeAll: () => void;
 };
 
@@ -26,6 +28,14 @@ export const useCartStore = create(
             .reduce((prev, curr) => prev + curr);
         return 0;
       },
+      subtotal: () => {
+        const { cart } = get();
+        if (cart.length)
+          return cart
+          .map((item) => item.price * item.quantity)
+            .reduce((prev, curr) => prev + curr);
+        return 0;
+      },
       add: (product: Product) => {
         const { cart } = get();
         const updatedCart = updateCart(product, cart);
@@ -34,6 +44,11 @@ export const useCartStore = create(
       remove: (idProduct: string) => {
         const { cart } = get();
         const updatedCart = removeCart(idProduct, cart);
+        set({ cart: updatedCart });
+      },
+      removeProduct: (idProduct: string) => {
+        const { cart } = get();
+        const updatedCart = removeProduct(idProduct, cart);
         set({ cart: updatedCart });
       },
       removeAll: () => set({ cart: [] }),
@@ -61,6 +76,7 @@ function updateCart(product: Product, cart: CartItem[]): CartItem[] {
   return cart;
 }
 
+
 function removeCart(idProduct: string, cart: CartItem[]): CartItem[] {
   return cart
     .map((item) => {
@@ -71,4 +87,8 @@ function removeCart(idProduct: string, cart: CartItem[]): CartItem[] {
     .filter((item) => {
       return item.quantity;
     });
+}
+
+function removeProduct(idProduct: string, cart: CartItem[]): CartItem[] {
+  return cart.filter((item) => item.id !== idProduct);
 }

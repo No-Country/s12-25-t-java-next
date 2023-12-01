@@ -19,6 +19,10 @@ export const products = [
       "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
     image: "",
     price: 3500,
+    rating: 2,
+    category: "postres",
+    subcategory: "",
+    optionals: ["prueba"],
   },
   {
     id: "3",
@@ -27,5 +31,9 @@ export const products = [
       "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
     image: "",
     price: 3500,
+    rating: 2,
+    category: "postres",
+    subcategory: "",
+    optionals: ["prueba"],
   },
 ];

@@ -12,14 +12,11 @@ interface Props {
 }
 
 export const CartList = ({ editable = false, products }: Props) => {
-  const { cart , add} = useCartStore();
-
-
+  const { cart, add, remove, removeProduct } = useCartStore();
 
   const onNewCartQuantityValue = (product: Product) => {
-   
-    add(product)
-  }
+    add(product);
+  };
   return (
     <div>
       {cart.map((product) => (
@@ -30,6 +27,7 @@ export const CartList = ({ editable = false, products }: Props) => {
           <div className="flex justify-between text-lg font-medium text-gray-900">
             <h2>{product.title}</h2>
             <Image
+              onClick={() => removeProduct(product.id)}
               src={"/icon/Trash.svg"}
               height={20}
               width={20}
@@ -43,6 +41,7 @@ export const CartList = ({ editable = false, products }: Props) => {
               <button
                 type="button"
                 className="bg-secondary-100 rounded-full w-[1.5rem] h-[1.5rem]"
+                onClick={() => remove(product.id)}
               >
                 <Image
                   priority
@@ -56,6 +55,7 @@ export const CartList = ({ editable = false, products }: Props) => {
 
               <button
                 type="button"
+                onClick={() => add(product)}
                 className="bg-secondary-100 rounded-full w-[1.5rem] h-[1.5rem]"
               >
                 <Image

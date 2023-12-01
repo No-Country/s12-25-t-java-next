@@ -14,22 +14,12 @@ export default function RootLayout({
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
-  
   return (
     <html lang="es" className={`${montserrat.variable}`}>
-
       <body suppressHydrationWarning={true}>
-      <div className=" bg-whitebackground">
-      {loading ? (
-            <Loader />
-          ) : (
-            <div>
-              {children}
-
-            </div>
-          )
-          }
-      </div>
+        <div className=" bg-whitebackground">
+          {loading ? <Loader /> : <div>{children}</div>}
+        </div>
       </body>
     </html>
   );
