@@ -4,10 +4,12 @@ import { montserrat } from "./fonts";
 import "./globals.css";
 import Loader from "@/components/Common/Loader";
 
+
+
 export default function RootLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode;
+	children: React.ReactNode;
 }) {
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
