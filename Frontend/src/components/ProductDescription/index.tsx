@@ -8,10 +8,6 @@ import { useRouter } from "next/navigation";
 import { useCounterStore } from "@/store/zustand";
 
 type Props = {
-  title: string;
-  description: string;
-  image: string;
-  price: number;
   product: Product;
 };
 

@@ -5,10 +5,10 @@ import React from "react";
 
 const ProductPage = async ({ params }: { params: { slug: string } }) => {
   const product = await getProductById(params.slug);
-console.log(product)
+  console.log(product);
   return (
     <div>
-      <ProductDescription product={product}  />
+      <ProductDescription product={product} />
     </div>
   );
 };
