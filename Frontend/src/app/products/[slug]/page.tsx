@@ -1,13 +1,14 @@
-import { ProductDescription } from '@/components'
-import { products } from '@/utils/data'
-import React from 'react'
+import { ProductDescription } from "@/components";
+import { useCartStore } from "@/store/cart";
+import { products } from "@/utils/data";
+import React from "react";
 
 const ProductPage = () => {
   return (
     <div>
-        <ProductDescription {...products[0]} />
+      <ProductDescription product={products[0]} {...products[0]} />
     </div>
-  )
-}
+  );
+};
 
-export default ProductPage   
+export default ProductPage;

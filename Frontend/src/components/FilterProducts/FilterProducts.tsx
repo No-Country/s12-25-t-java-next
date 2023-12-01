@@ -1,22 +1,22 @@
 import ActiveButton from "./activeButton";
 import Search from "./search";
 
-export default function FilterProducts () {
+export default function FilterProducts() {
   const fakeData = [
     {
       id: "1",
       title: "Platos",
-      routes:"mains"
+      routes: "mains",
     },
     {
       id: "2",
       title: "Postres",
-      routes:"#"
+      routes: "#",
     },
     {
       id: "3",
       title: "Bebidas",
-      routes:"#"
+      routes: "#",
     },
   ];
   return (

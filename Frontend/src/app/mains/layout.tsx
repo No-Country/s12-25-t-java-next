@@ -5,7 +5,7 @@ import React from "react";
 function MainsLayout({ children }: { children: React.ReactNode }) {
   return (
     <div>
-          <Header />
+      <Header />
       <FilterProducts />
       {children}
       <Footer />
