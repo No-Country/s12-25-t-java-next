@@ -11,8 +11,7 @@ export default function ActiveButton({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const isActive =
-    pathname === slug || (pathname === "/" && slug === "/mains");
+  const isActive = pathname === slug || (pathname === "/" && slug === "/mains");
 
   return (
     <Link

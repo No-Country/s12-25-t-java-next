@@ -1,27 +1,32 @@
 "use client";
-
 import Image from "next/image";
 import { Button, Counter } from "..";
+import { useCartStore } from "@/store/cart";
+import { Product } from "@/types/Product";
 import { ArrowLeftIcon } from "@heroicons/react/20/solid";
 import { useRouter } from "next/navigation";
 import { useCounterStore } from "@/store/zustand";
 
 type Props = {
-	title: string;
-	description: string;
-	image: string;
-	price: number;
+  product: Product;
 };
 
+
+
+
+
+
+
 export default function ProductDescription({
-	title,
-	description,
-	image,
-	price,
+
+	product,
 }: Props) {
 	const router = useRouter();
 	const { count } = useCounterStore();
 
+	const { add: handleAddToCart, cart } = useCartStore();
+
+	const {title, image, description, price} = product;
 	return (
 		<div className="w-full h-screen overflow-hidden">
 			<button
@@ -49,7 +54,10 @@ export default function ProductDescription({
 				</div>
 				<div className="w-full flex gap-10 justify-between items-center fixed bottom-0 inset-x-0 p-3">
 					<Counter />
-					<Button text={`Agregar $${count * price}`} />
+					<Button 
+					 product={product}
+					 handleAddToCart={handleAddToCart}
+					text={`Agregar $${count * price}`} />
 				</div>
 			</div>
 		</div>

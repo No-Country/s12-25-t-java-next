@@ -1,4 +1,5 @@
-import FilterIcon from './icons'
+import FilterIcon from "./icons";
+
 
 export default function FilterButton() {
 	return (
