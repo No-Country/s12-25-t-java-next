@@ -15,8 +15,7 @@ export const CartList = ({ editable = false, products }: Props) => {
   const { cart , add} = useCartStore();
 
 
-  console.log("cart", cart);
- 
+
   const onNewCartQuantityValue = (product: Product) => {
    
     add(product)

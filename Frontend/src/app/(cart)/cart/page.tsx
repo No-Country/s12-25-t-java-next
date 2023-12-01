@@ -6,9 +6,9 @@ import React from "react";
 const CartPage = () => {
   return (
     <div>
-      <Header />
+
       <CartList />
-      <SummaryCart />
+    
     </div>
   );
 };

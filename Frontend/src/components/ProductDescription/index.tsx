@@ -20,7 +20,7 @@ export default function ProductDescription({
   product,
 }: Props) {
   const { add: handleAddToCart, cart } = useCartStore();
-  console.log("cart", cart);
+
   return (
     <div className="w-full h-screen">
       <div className="relative h-2/3">

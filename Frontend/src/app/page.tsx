@@ -1,5 +1,12 @@
+import { Metadata } from "next";
 import { products } from "@/utils/data";
 import { Notification, ProductDescription } from "@/components";
+export const metadata: Metadata = {
+  title: {
+    default: "AlaCartApp",
+    template: "%s | AlaCartApp",
+  },
+};
 
 export default function Home() {
   return (
