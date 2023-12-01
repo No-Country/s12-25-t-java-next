@@ -1,30 +1,28 @@
 import ActiveButton from './activeButton'
 import Search from './search'
 
-export default function FilterProducts() {
-	const fakeData = [
-		{
-			id: '1',
-			title: 'Platos',
-			routes: 'dishes',
-		},
-		{
-			id: '2',
-			title: 'Postres',
-			routes: 'desserts',
-		},
-		{
-			id: '3',
-			title: 'Bebidas',
-			routes: 'drinks',
-		},
-	]
+export default function FilterProducts({
+	categories,
+}: {
+	categories: string[]
+}) {
+	const getCategoriesData = () => {
+		return categories.map((category) => {
+			return {
+				id: category,
+				title: category.charAt(0).toUpperCase() + category.slice(1),
+			}
+		})
+	}
+
+	const categoriesData = getCategoriesData()
+
 	return (
 		<section className="w-full ">
 			<div className="flex flex-row items-center justify-between px-4 mt-4">
-				{fakeData.map((data) => (
+				{categoriesData.map((data) => (
 					<ActiveButton
-						slug={`/${data.routes}`}
+						slug={`/${data.id}`}
 						key={data.id}
 					>
 						<div className="flex justify-center items-center h-full">
