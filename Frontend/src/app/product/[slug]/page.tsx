@@ -7,7 +7,7 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
 
 	return (
 		<div>
-			<ProductDescription {...product} />
+			<ProductDescription product={product} />
 		</div>
 	);
 };

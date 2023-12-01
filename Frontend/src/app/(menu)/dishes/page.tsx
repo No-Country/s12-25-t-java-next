@@ -12,7 +12,7 @@ async function DishesPage() {
 	const subcategories = [
 		...new Set(dishes.map((mainCourse) => mainCourse.subcategory)),
 	]
-
+console.log(products)
 	return (
 		<>
 			{subcategories.map((subcategory) => {

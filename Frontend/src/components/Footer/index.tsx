@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { CallWaiterPopup } from "../Popup/Popup";
+import Divider from "./Divider";
 
 const Footer = () => {
   return (
@@ -19,9 +20,7 @@ const Footer = () => {
           />
         </button>
       </div>
-      <div className="flex items-center justify-center pt-2">
-        <div className="bg-black w-[72px] h-[2px] rounded-lg" />
-      </div>
+      <Divider />
     </footer>
   );
 };
