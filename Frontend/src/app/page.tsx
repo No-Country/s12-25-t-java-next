@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 
 export default function Home() {
-	redirect("/dishes");
+	redirect("/platos");
 	// return (
 	//   <main className="flex min-h-[100vh] w-screen flex-col bg-whitebackground items-center justify-between">
 	//     <Notification />
