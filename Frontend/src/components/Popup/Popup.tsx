@@ -34,7 +34,14 @@ export const CallWaiterPopup = () => {
         onClick={() => setIsShowing(true)}
         className="bg-secondary-100 p-3 rounded-full shadow-button flex items-center justify-center"
       >
-        <Image src={"/Call.svg"} height={30} width={30} alt="call waiter" />
+        <Image
+          src={"/Call.svg"}
+          height={30}
+          width={30}
+          alt="call waiter"
+          className="pr-2"
+        />
+        Llamar mesero
       </button>
 
       <Transition
