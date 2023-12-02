@@ -9,12 +9,15 @@ function ProductCard({
 	rating,
 	category,
 }: NonEssentialsProduct) {
-	const cardSize = category === 'Platos' ? 'w-44 h-36' : 'w-40 h-44'
-	const imageSize = category === 'Platos' ? 'w-40 h-24' : 'w-36 h-28'
+	const categoryToLowerCase = category.toLowerCase()
+	const sizing =
+		categoryToLowerCase === 'platos'
+			? { cardSize: 'w-44 h-36', imageSize: 'w-40 h-24' }
+			: { cardSize: 'w-40 h-44', imageSize: 'w-36 h-28' }
 
 	return (
-		<div className={`${cardSize} rounded-lg shadow-card px-2 pt-2 mb-5`}>
-			<div className={`relative ${imageSize}`}>
+		<div className={`${sizing.cardSize} rounded-lg shadow-card px-2 pt-2 mb-5`}>
+			<div className={`relative ${sizing.imageSize}`}>
 				<Image
 					alt="product"
 					src={image}
