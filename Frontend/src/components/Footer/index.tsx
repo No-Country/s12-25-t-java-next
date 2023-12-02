@@ -18,6 +18,7 @@ const Footer = () => {
         <button
           type="button"
           className="bg-primary-100 px-3 w-[10.5rem] py-4 font-medium text-sm text-white rounded-[1.3rem]  shadow-button flex items-center justify-center "
+
         >
           <Image
             src={"/Carrito.svg"}
