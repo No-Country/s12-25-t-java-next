@@ -11,11 +11,12 @@
 	<groupId>com.s12-25-t-java-next</groupId>
 	<artifactId>AlaCartApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+        <packaging>jar</packaging>
 	<name>AlaCartApp</name>
 	<description>Aplicación de Compra de Comidas en Restaurant</description>
 	<properties>
 		<java.version>17</java.version>
-		<org.mapstruct.version>1.5.5.final</org.mapstruct.version>
+		<org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
 	</properties>
 	<dependencies>
 		<dependency>
