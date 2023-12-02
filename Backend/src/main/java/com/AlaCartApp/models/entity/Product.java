@@ -34,4 +34,7 @@ public class Product {
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "combo_id", referencedColumnName = "id")
 //    private Qualification qualification;
+    
+    @OneToMany(mappedBy = "product")
+    List<Qualification> qualifications;
 }
