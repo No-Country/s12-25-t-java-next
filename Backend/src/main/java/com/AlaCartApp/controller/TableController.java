@@ -1,6 +1,6 @@
 package com.AlaCartApp.controller;
 
-import com.AlaCartApp.models.entity.TableEntity;
+import com.AlaCartApp.models.request.TableEntityDto;
 import com.AlaCartApp.service.abstraction.TableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,51 +18,46 @@ public class TableController {
     private TableService tableService;
 
     @PostMapping
-    public ResponseEntity<?> create (@RequestBody TableEntity tableEntity){
-
-        TableEntity table = tableService.create(tableEntity).orElse(null);
-        if(table != null){
-            return new ResponseEntity<>(tableService.create(table), HttpStatus.CREATED);
+    public ResponseEntity<TableEntityDto> create (@RequestBody TableEntityDto tableDto){
+        if(tableService.isTableIdDuplicate(tableDto.getId())){
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
-
-        return new ResponseEntity<>("No se pudo crear la entidad", HttpStatus.NO_CONTENT);
+            return tableService.create(tableDto).map(t -> new ResponseEntity<>(t, HttpStatus.CREATED))
+                    .orElse(new ResponseEntity<>(HttpStatus.CONFLICT));
     }
 
     @GetMapping("/all")
-    public ResponseEntity<?> getTables (){
-        List<TableEntity> tables = tableService.tableList().get();
+    public ResponseEntity<List<TableEntityDto>> getTables (){
+       Optional<List<TableEntityDto>> tableListOptional = tableService.tableList();
 
-        if (tables.isEmpty()){
-            return new ResponseEntity<>("La lista esta vaciá", HttpStatus.NO_CONTENT);
-        }
-            return new ResponseEntity<>(tables, HttpStatus.OK);
+       if(tableListOptional.isPresent()){
+           List<TableEntityDto> tableList = tableListOptional.get();
+           return new ResponseEntity<>(tableList, HttpStatus.OK);
+       }
+           return ResponseEntity.notFound().build();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getTable (@PathVariable Long id){
-        
-        TableEntity table = tableService.tableId(id).orElse(null);
-        
-        if (table != null){
-            return new ResponseEntity<>(tableService.tableId(id), HttpStatus.OK);
-        }
-
-        return new ResponseEntity<>("no se encuentra la mesa.", HttpStatus.NOT_FOUND);
+    public ResponseEntity<TableEntityDto> getTable (@PathVariable Long id){
+        return tableService.tableId(id).map(tableEntityDto -> new ResponseEntity<>(tableEntityDto, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PutMapping
-    public ResponseEntity<?> update (@RequestBody TableEntity tableEntity){
-
-        TableEntity table = tableService.update(tableEntity).orElse(null);
-        assert table != null;
-        if (table.equals(tableEntity)) return new ResponseEntity<>(table, HttpStatus.OK);
-        return new ResponseEntity<>("No se actualizo la mesa porque es la misma", HttpStatus.BAD_REQUEST);
+    @PatchMapping("/update")
+    public ResponseEntity<TableEntityDto> update (@RequestBody TableEntityDto tableDto){
+        return tableService.update(tableDto).map(tableDTO -> new ResponseEntity<>(tableDTO, HttpStatus.ACCEPTED))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete (@PathVariable Long id){
-        tableService.delete(id);
-        return new ResponseEntity<>("Se elimino la mesa!", HttpStatus.OK);
+    public ResponseEntity<String> delete (@PathVariable Long id){
+        Optional<TableEntityDto> currentTableDto = tableService.tableId(id);
+
+        if(currentTableDto.isPresent()){
+            tableService.delete(id);
+            return new ResponseEntity<>("Se elimino la mesa!", HttpStatus.OK);
+        }
+            return new ResponseEntity<>("La mesa ingresada no existe", HttpStatus.NOT_FOUND);
     }
 
 }

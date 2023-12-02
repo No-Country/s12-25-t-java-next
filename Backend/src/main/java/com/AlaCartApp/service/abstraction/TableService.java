@@ -1,6 +1,6 @@
 package com.AlaCartApp.service.abstraction;
 
-import com.AlaCartApp.models.entity.TableEntity;
+import com.AlaCartApp.models.request.TableEntityDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,13 +9,15 @@ import java.util.Optional;
 @Service
 public interface TableService {
 
-    Optional<TableEntity> create (TableEntity tableEntity);
+    Optional<TableEntityDto> create (TableEntityDto tableEntityDto);
 
-    Optional<TableEntity> update (TableEntity tableEntity);
+    Optional<TableEntityDto> update (TableEntityDto tableEntityDto);
 
-    Optional<List<TableEntity>> tableList();
+    Optional<List<TableEntityDto>> tableList();
 
-    Optional<TableEntity> tableId (Long id);
+    Optional<TableEntityDto> tableId (Long id);
 
     void delete (Long id);
+
+    boolean isTableIdDuplicate(Long id);
 }
