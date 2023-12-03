@@ -39,13 +39,13 @@ public class TableController {
 
     @GetMapping("/{id}")
     public ResponseEntity<TableEntityDto> getTable (@PathVariable Long id){
-        return tableService.tableId(id).map(tableEntityDto -> new ResponseEntity<>(tableEntityDto, HttpStatus.OK))
+        return tableService.tableId(id).map(t -> new ResponseEntity<>(t, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PatchMapping("/update")
     public ResponseEntity<TableEntityDto> update (@RequestBody TableEntityDto tableDto){
-        return tableService.update(tableDto).map(tableDTO -> new ResponseEntity<>(tableDTO, HttpStatus.ACCEPTED))
+        return tableService.update(tableDto).map(t -> new ResponseEntity<>(t, HttpStatus.ACCEPTED))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
@@ -57,7 +57,7 @@ public class TableController {
             tableService.delete(id);
             return new ResponseEntity<>("Se elimino la mesa!", HttpStatus.OK);
         }
-            return new ResponseEntity<>("La mesa ingresada no existe", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("La mesa ingresada no existe.", HttpStatus.NOT_FOUND);
     }
 
 }
