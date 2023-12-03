@@ -16,7 +16,7 @@ public class Qualification {
     
     private int score;
     
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private Product product;
 }
