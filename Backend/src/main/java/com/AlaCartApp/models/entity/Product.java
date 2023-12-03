@@ -35,6 +35,6 @@ public class Product {
 //    @JoinColumn(name = "combo_id", referencedColumnName = "id")
 //    private Qualification qualification;
     
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Qualification> qualifications;
 }
