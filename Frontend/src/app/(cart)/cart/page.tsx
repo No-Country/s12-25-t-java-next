@@ -11,7 +11,7 @@ import { useCartStore } from "@/store/cart";
 import Divider from "@/components/Footer/Divider";
 
 const CartPage = () => {
-  const { cart } = useCartStore();
+  const { cart, removeAll } = useCartStore();
   const router = useRouter();
 
   useEffect(() => {
@@ -25,6 +25,9 @@ const CartPage = () => {
   }
   return (
     <div>
+      <button 
+      onClick={() => removeAll()}
+      className="fixed top-[2.6rem] right-12 z-[100] font-semibold text-black">Vaciar</button>
       <CartList />
       <SummaryCart />
       <footer className=" fixed bottom-0  px-4 py-3 w-screen">
