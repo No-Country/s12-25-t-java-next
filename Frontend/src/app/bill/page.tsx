@@ -1,15 +1,15 @@
 "use client"
+import Button from "@/components/Button";
 import HeaderBack from "@/components/Header/HeaderBack";
 import { useCartStore } from "@/store/cart";
 
 export default function BillPages() {
   const {cart,subtotal} = useCartStore() 
   const total = subtotal()
-  console.log(cart)
   
   return (
-    <section className="bg-white">
-      <HeaderBack text="Factura" />
+    <section className="bg-white ">
+      <HeaderBack text="Factura " />
       <div className="px-5 mt-5">
         {cart.map((product) => (
           <div key={product.id}>
@@ -27,6 +27,9 @@ export default function BillPages() {
           </h2>
           <span className="text-[22px] font-medium font-sans">${total}</span>
         </div>
+      </div>
+      <div className="px-4 mt-2">
+      <Button variant="primary" text="Continuar"/>
       </div>
     </section>
   );
