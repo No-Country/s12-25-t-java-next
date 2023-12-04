@@ -9,6 +9,7 @@ import { useCounterStore } from "@/store/zustand";
 import Button from "../Button";
 import Counter from "../Counter";
 import { format } from "@/utils/currency";
+import Link from "next/link";
 
 type Props = {
   product: Product;
