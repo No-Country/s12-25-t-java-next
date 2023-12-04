@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { useCounterStore } from "@/store/zustand";
 import Button from "../Button";
 import Counter from "../Counter";
+import { format } from "@/utils/currency";
 
 type Props = {
   product: Product;
@@ -17,7 +18,11 @@ export default function ProductDescription({ product }: Props) {
   const router = useRouter();
   const { count } = useCounterStore();
 
-  const { add: handleAddToCart, cart } = useCartStore();
+  const { add: addToCart, cart } = useCartStore();
+
+  const handleAddToCart = (product: Product) => {
+    addToCart(product);
+  };
 
   const { title, image, description, price } = product;
   return (
@@ -48,10 +53,9 @@ export default function ProductDescription({ product }: Props) {
         <div className="w-full flex gap-10 justify-between items-center fixed bottom-0 inset-x-0 p-3">
           <Counter />
           <Button
-            text={`Agregar $${count * price}`}
+            text={`Agregar ${format(price * count)}`}
             variant="primary"
-            // FIX:
-            // onClick={() => handleAddToCart}
+            onClick={() => handleAddToCart(product)}
           />
         </div>
       </div>

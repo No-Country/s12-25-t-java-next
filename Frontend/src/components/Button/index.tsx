@@ -11,7 +11,7 @@ const BUTTON_VARIANTS = {
   secondary: "bg-secondary-100 text-white",
 };
 
-export default function Button({ text, variant, props }: Props) {
+export default function Button({ text, variant, ...props }: Props) {
   return (
     <button
       type="button"
