@@ -10,7 +10,7 @@ const SummaryCart = () => {
 
     subtotal()
  
-  }, [cart])
+  }, [cart, subtotal])
    // Call subtotal once and store the result in a variable
    const cartSubtotal = subtotal();
 
