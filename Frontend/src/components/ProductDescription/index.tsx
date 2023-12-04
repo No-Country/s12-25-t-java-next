@@ -46,13 +46,13 @@ export default function ProductDescription({ product }: Props) {
         </div>
         <div className="w-full flex gap-10 justify-between items-center fixed bottom-0 inset-x-0 p-3">
           <Counter />
-          <Link href="cart">
+        
             <Button
               product={product}
               handleAddToCart={handleAddToCart}
               text={`Agregar $${count * price}`}
             />
-          </Link>
+    
         </div>
       </div>
     </div>
