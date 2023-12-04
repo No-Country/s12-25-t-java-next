@@ -45,7 +45,7 @@ export default function ProductDescription({ product }: Props) {
           <span className="font-bold text-lg">${price}</span>
         </div>
         <div className="w-full flex gap-10 justify-between items-center fixed bottom-0 inset-x-0 p-3">
-          <Counter />
+          <Counter    product={product} />
         
             <Button
               product={product}

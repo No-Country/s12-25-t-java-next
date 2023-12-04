@@ -12,7 +12,7 @@ export default function Button({
   const router = useRouter();
   const handleAddToCartAndNavigate = (product: Product) => {
     // Call the original handleAddToCart function
-    handleAddToCart(product);
+    // handleAddToCart(product);
 
     // Navigate to the cart page
     router.push('/cart');
