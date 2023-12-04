@@ -1,20 +1,24 @@
 package com.AlaCartApp.service.abstraction;
 
-import com.AlaCartApp.models.entity.Category;
+import com.AlaCartApp.models.request.CategoryDto;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface CategoryService {
 
-    List<Category> findAllAvailable();
+    List<CategoryDto> findAll();
+    List<CategoryDto> findAllUnAvailable();
+    List<CategoryDto> findAllAvailable();
 
-    Optional<Category> findAvailableAndId(Long id);
+    CategoryDto findAvailableAndId(Long id);
 
-    Optional<Category> findByName(String name);
+    CategoryDto findByName(String name);
 
-    Optional<Category> makeAvailable(Long id);
+    CategoryDto makeAvailable(Long id);
 
-    Optional<Category> makeUnAvailable(Long id);
+    CategoryDto makeUnAvailable(Long id);
 
+    CategoryDto changeName(String name, Long id);
+
+    CategoryDto createCategory(CategoryDto categoryDto);
 }

@@ -1,13 +1,14 @@
 package com.AlaCartApp.service.implementation;
 
-import com.AlaCartApp.models.entity.Category;
+import com.AlaCartApp.models.mapper.CategoryMapper;
+import com.AlaCartApp.models.request.CategoryDto;
 import com.AlaCartApp.repository.CategoryRepository;
 import com.AlaCartApp.service.abstraction.CategoryService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -15,28 +16,57 @@ public class CategoryServiceImp implements CategoryService {
 
     private CategoryRepository categoryRepository;
 
+    private CategoryMapper categoryMapper;
+
     @Override
-    public List<Category> findAllAvailable() {
-        return categoryRepository.findAllAvailable();
+    public List<CategoryDto> findAll() {
+        return categoryMapper.toCategoriesDTO(categoryRepository.findAll());
     }
 
     @Override
-    public Optional<Category> findAvailableAndId(Long id) {
-        return categoryRepository.findAvailableAndId(id);
+    public List<CategoryDto> findAllUnAvailable() {
+        return categoryMapper.toCategoriesDTO(categoryRepository.findAllUnAvailable());
     }
 
     @Override
-    public Optional<Category> findByName(String name) {
-        return categoryRepository.findByName(name);
+    public List<CategoryDto> findAllAvailable() {
+        return categoryMapper.toCategoriesDTO(categoryRepository.findAllAvailable());
     }
 
     @Override
-    public Optional<Category> makeAvailable(Long id) {
-        return categoryRepository.makeAvailable(id);
+    public CategoryDto findAvailableAndId(Long id) {
+        return categoryMapper.toCategoryDTO(categoryRepository.findAvailableAndId(id).orElse(null));
     }
 
     @Override
-    public Optional<Category> makeUnAvailable(Long id) {
-        return categoryRepository.makeUnAvailable(id);
+    public CategoryDto findByName(String name) {
+        return categoryMapper.toCategoryDTO(categoryRepository.findByName(name).orElse(null));
     }
+
+    @Transactional
+    @Override
+    public CategoryDto makeAvailable(Long id) {
+        return categoryMapper.toCategoryDTO(categoryRepository.makeAvailable(id).orElse(null));
+    }
+
+    @Transactional
+    @Override
+    public CategoryDto makeUnAvailable(Long id) {
+        return categoryMapper.toCategoryDTO(categoryRepository.makeUnAvailable(id).orElse(null));
+    }
+
+    @Transactional
+    @Override
+    public CategoryDto changeName(String name, Long id) {
+        return categoryMapper.toCategoryDTO(categoryRepository.changeName(name,id).orElse(null));
+    }
+
+    @Transactional
+    @Override
+    public CategoryDto createCategory(CategoryDto categoryDto) {
+        if (categoryDto != null) return categoryMapper.toCategoryDTO(categoryRepository.save(categoryMapper.toCategory(categoryDto)));
+        return null;
+    }
+
+
 }

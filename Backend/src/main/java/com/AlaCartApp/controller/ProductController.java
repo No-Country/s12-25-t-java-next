@@ -1,14 +1,12 @@
 package com.AlaCartApp.controller;
 
 import com.AlaCartApp.models.response.ProductDto;
-import com.AlaCartApp.models.request.ProductDtoRequest;
 import com.AlaCartApp.service.abstraction.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -33,6 +31,7 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .build();
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<ProductDto> findById(@PathVariable Long id){
         return ResponseEntity.of(productService.findById(id));
@@ -43,7 +42,6 @@ public class ProductController {
         ProductDto response = productService.update(id,product);
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
-
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable Long id){

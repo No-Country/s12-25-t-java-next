@@ -16,4 +16,5 @@ public class ProductDto {
     String description;
     List<Image> images;
     Boolean state;
+
 }
