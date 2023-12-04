@@ -4,12 +4,10 @@ import { montserrat } from "./fonts";
 import "./globals.css";
 import Loader from "@/components/Common/Loader";
 
-
-
 export default function RootLayout({
-	children,
+  children,
 }: {
-	children: React.ReactNode;
+  children: React.ReactNode;
 }) {
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
@@ -19,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${montserrat.variable}`}>
       <body suppressHydrationWarning={true}>
-        <div className=" bg-whitebackground">
+        <div className="bg-whitebackground">
           {loading ? <Loader /> : <div>{children}</div>}
         </div>
       </body>
