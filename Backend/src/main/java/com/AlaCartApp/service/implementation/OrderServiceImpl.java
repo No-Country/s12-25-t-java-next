@@ -45,11 +45,21 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void delete(Long id) {
-
+        Optional<Order> orderSaved = orderRepository.findById(id);
+        if(orderSaved.isPresent()){
+            orderRepository.deleteById(id);
+        }else{
+            throw new ResourceNotFoundException("Order not found with id: " + id);
+        }
     }
 
     @Override
     public Order find(Long id) {
-        return null;
+        Optional<Order> orderSaved = orderRepository.findById(id);
+        if(orderSaved.isPresent()){
+            return orderSaved.get();
+        }else{
+            throw new ResourceNotFoundException("Order not found with id: " + id);
+        }
     }
 }
