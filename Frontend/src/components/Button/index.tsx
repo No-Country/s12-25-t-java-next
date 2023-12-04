@@ -1,9 +1,10 @@
-import clsx from "clsx";
 
-interface Props {
+import clsx from "clsx";
+import React, { ButtonHTMLAttributes } from "react";
+
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
   variant: "primary" | "secondary";
-  props?: React.ButtonHTMLAttributes<HTMLButtonElement>;
 }
 
 const BUTTON_VARIANTS = {
