@@ -25,6 +25,7 @@ const CartPage = () => {
   }
   return (
     <div>
+      <button className="fixed top-[2.6rem] right-12 z-[100] font-semibold text-black">Vaciar</button>
       <CartList />
       <SummaryCart />
       <footer className=" fixed bottom-0  px-4 py-3 w-screen">
