@@ -32,7 +32,6 @@ export default function FilterProducts({
 					</ActiveButton>
 				))}
 			</div>
-			<Search />
 		</section>
 	)
 }
