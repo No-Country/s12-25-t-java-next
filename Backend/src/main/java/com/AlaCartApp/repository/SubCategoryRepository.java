@@ -15,6 +15,8 @@ import java.util.Optional;
 @Repository
 public interface SubCategoryRepository extends JpaRepository<SubCategory, Long> {
 
+    @Query("SELECT s FROM SubCategory s WHERE s.available = false")
+    List<SubCategory> findAllUnAvailable();
     @Query("SELECT s FROM SubCategory s WHERE s.available = true")
     List<SubCategory> findAllAvailable();
 
@@ -36,6 +38,4 @@ public interface SubCategoryRepository extends JpaRepository<SubCategory, Long> 
     @Query("UPDATE SubCategory s SET s.name = :name WHERE s.id = :id")
     Optional<SubCategory> changeName(@Param("name")String name, @Param("id")Long id);
 
-    @Query("SELECT new map(s.id as id, s.name as name) FROM SubCategory s WHERE s.id = :id ")
-    Map<String, ? > mapearEntidad(@Param("id")Long id);
 }

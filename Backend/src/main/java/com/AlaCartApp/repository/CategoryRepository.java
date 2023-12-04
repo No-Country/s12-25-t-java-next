@@ -12,6 +12,9 @@ import java.util.Optional;
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 
+    @Query("SELECT c FROM Category c WHERE c.available = false")
+    List<Category> findAllUnAvailable();
+
     @Query("SELECT c FROM Category c WHERE c.available = true")
     List<Category> findAllAvailable();
 

@@ -2,7 +2,6 @@ package com.AlaCartApp.models.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.util.List;
 
 @Entity

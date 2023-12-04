@@ -1,5 +1,6 @@
 package com.AlaCartApp.models.mapper;
 
+import com.AlaCartApp.models.entity.SubCategory;
 import com.AlaCartApp.models.request.SubCategoryDto;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
