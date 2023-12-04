@@ -1,6 +1,7 @@
 import ProductsList from '@/components/Products/ProductsList'
 import { getProducts } from '@/lib/Products'
 import { Product } from '@/types/Product'
+import { Suspense } from 'react'
 
 export const metadata = {
 	title: 'Platos',
@@ -27,7 +28,9 @@ async function MenuPage({ params }: { params: { slug: string } }) {
 						key={subcategory}
 						className="pl-4"
 					>
-						<ProductsList products={productsBySubCategory} />
+						<Suspense fallback={<p>Carajo...</p>}>
+							<ProductsList products={productsBySubCategory} />
+						</Suspense>
 					</div>
 				)
 			})}

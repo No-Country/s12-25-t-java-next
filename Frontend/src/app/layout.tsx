@@ -11,7 +11,7 @@ export default function RootLayout({
 			lang="es"
 			className={`${montserrat.variable}`}
 		>
-			<body suppressHydrationWarning={true}>
+			<body>
 				<div className=" bg-whitebackground">{children}</div>
 			</body>
 		</html>
