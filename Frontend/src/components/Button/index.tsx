@@ -1,23 +1,10 @@
-import { Product } from "../../types/Product";
-import { useRouter } from "next/navigation";
-export default function Button({
-  text,
-  handleAddToCart,
-  product,
-}: {
-  text: string;
-  handleAddToCart: (product: Product) => void;
-  product: Product;
-}) {
-  const router = useRouter();
-  const handleAddToCartAndNavigate = (product: Product) => {
-    // Call the original handleAddToCart function
-    // handleAddToCart(product);
 
-interface Props {
+import clsx from "clsx";
+import React, { ButtonHTMLAttributes } from "react";
+
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
   variant: "primary" | "secondary";
-  props?: React.ButtonHTMLAttributes<HTMLButtonElement>;
 }
 
 const BUTTON_VARIANTS = {

@@ -18,12 +18,20 @@ type Props = {
 
 export default function ProductDescription({ product }: Props) {
   const { count } = useCounterStore();
+  const {  remove, cart } = useCartStore();
   const router = useRouter();
   const handleAddToCart = (product: Product) => {
     // addToCart(product);
     router.push('/cart');
   };
+  const totalPrice = cart.reduce((accumulatedPrice, item) => {
+    if (item.id === product.id) {
+      return accumulatedPrice + item.quantity * item.price;
+    }
+    return accumulatedPrice;
+  }, 0);
 
+  console.log("totañ",totalPrice)
 
   const { title, image, description, price } = product;
   return (
@@ -54,7 +62,7 @@ export default function ProductDescription({ product }: Props) {
         <div className="w-full flex gap-10 justify-between items-center fixed bottom-0 inset-x-0 p-3">
           <Counter product={product} />
           <Button
-            text={`Agregar ${format(price * count)}`}
+            text={`Agregar ${format(totalPrice)}`}
             variant="primary"
             onClick={() => handleAddToCart(product)}
           />
