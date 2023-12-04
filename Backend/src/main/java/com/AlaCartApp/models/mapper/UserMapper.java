@@ -1,5 +1,6 @@
 package com.AlaCartApp.models.mapper;
 
+import com.AlaCartApp.models.entity.User;
 import com.AlaCartApp.models.request.UserDto;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -15,7 +16,7 @@ public interface UserMapper {
             @Mapping(source = "name", target = "name"),
             @Mapping(source = "email", target = "email"),
             @Mapping(source = "password", target = "password"),
-            @Mapping(source = "lastname", target = "lastname"),
+            @Mapping(source = "lastName", target = "lastName"),
             @Mapping(source = "state", target = "state"),
             @Mapping(source = "startDate", target = "startDate")
     })

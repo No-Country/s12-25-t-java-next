@@ -1,23 +1,34 @@
 package com.AlaCartApp.models.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-
+import lombok.Getter;
+import lombok.Setter;
+import jakarta.validation.constraints.NotNull;
+@Getter
+@Setter
 @Entity
-@Data
 @Table(name = "table_entity")
 public class TableEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
-    @Column(name = "number", nullable = false)
+
+    @NotNull
     private Integer number;
-    @Column(name = "capacity", nullable = false)
+
+    @NotNull
     private Integer capacity;
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "state", referencedColumnName = "id")
-//    private State state;
+
+    private Boolean state;
+
+    // Necesito que esta entidad esté creada.
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+
+//  @OneToOne(fetch = FetchType.LAZY)
+//  @JoinColumn(name = "state", referencedColumnName = "id")
 
 }
