@@ -6,10 +6,7 @@ const baseUrl = process.env.BASE_URL
 
 export async function getProducts(): Promise<Product[]> {
 	const url = `${baseUrl}/api/products`
-	const res = await fetch(url)
-	setTimeout(() => {
-		console.log('fetching...')
-	}, 5000)
+	const res = await fetch(url, { cache: 'no-cache' })
 	return await res.json()
 }
 

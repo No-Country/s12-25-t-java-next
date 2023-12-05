@@ -16,7 +16,7 @@ export default function FilterProducts({
 	}
 
 	const categoriesData = getCategoriesData()
-	console.log(categoriesData)
+	// console.log(categoriesData)
 
 	return (
 		<section className="w-full ">
@@ -32,7 +32,6 @@ export default function FilterProducts({
 					</ActiveButton>
 				))}
 			</div>
-			<Search />
 		</section>
 	)
 }
