@@ -10,13 +10,13 @@ import org.mapstruct.Mappings;
 import java.util.List;
 @Mapper(componentModel = "spring")
 public interface TableEntityMapper {
-    @Mappings({
-            @Mapping(source = "id", target = "id"),
-            @Mapping(source = "number", target = "number"),
-            @Mapping(source = "capacity", target = "capacity")
-            //@Mapping(source = "state", target = "state")
 
-    })
+    @Mapping(source = "id", target = "id")
+    @Mapping(source = "number", target = "number")
+    @Mapping(source = "capacity", target = "capacity")
+    @Mapping(source = "state", target = "state")
+    @Mapping(source = "user", target = "user")
+
     TableEntityDto toTableEntityDTO(TableEntity tableEntity);
     List<TableEntityDto> toTableEntitiesDTO(List<TableEntity> entities);
     @InheritInverseConfiguration
