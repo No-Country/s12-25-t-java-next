@@ -1,4 +1,5 @@
 import FilterProducts from "@/components/FilterProducts/FilterProducts";
+import Search from "@/components/FilterProducts/search";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { getProducts } from "@/lib/Products";
@@ -14,6 +15,7 @@ async function MenuLayout({ children }: { children: React.ReactNode }) {
     <div>
       <Header />
       <FilterProducts categories={categories} />
+      <Search />
       {children}
       <Footer />
     </div>
