@@ -22,7 +22,7 @@ export const CallWaiterPopup = () => {
 
     add(newMessage);
     setShowMessageBoolean(true);
-    // handleNotification();
+    handleNotification();
   };
 
   return (
