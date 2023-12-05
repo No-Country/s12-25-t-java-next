@@ -1,4 +1,4 @@
-import { ProductDescription } from "@/components";
+import ProductDescription from "@/components/ProductDescription";
 import { getProductById } from "@/lib/Products";
 import { products } from "@/utils/data";
 import React from "react";
