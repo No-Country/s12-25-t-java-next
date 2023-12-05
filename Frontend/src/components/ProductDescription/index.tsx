@@ -3,27 +3,35 @@
 import Image from "next/image";
 import { useCartStore } from "@/store/cart";
 import { Product } from "@/types/Product";
-import { ArrowLeftIcon } from "@heroicons/react/20/solid";
 import { useRouter } from "next/navigation";
 import { useCounterStore } from "@/store/zustand";
 import Button from "../Button";
 import Counter from "../Counter";
 import { format } from "@/utils/currency";
 import Link from "next/link";
+import { ArrowLeftIcon } from "@heroicons/react/20/solid";
+
 
 type Props = {
   product: Product;
 };
 
 export default function ProductDescription({ product }: Props) {
-  const router = useRouter();
   const { count } = useCounterStore();
-
-  const { add: addToCart, cart } = useCartStore();
-
+  const {  remove, cart } = useCartStore();
+  const router = useRouter();
   const handleAddToCart = (product: Product) => {
-    addToCart(product);
+    // addToCart(product);
+    router.push('/cart');
   };
+  const totalPrice = cart.reduce((accumulatedPrice, item) => {
+    if (item.id === product.id) {
+      return accumulatedPrice + item.quantity * item.price;
+    }
+    return accumulatedPrice;
+  }, 0);
+
+  console.log("totañ",totalPrice)
 
   const { title, image, description, price } = product;
   return (
@@ -52,9 +60,9 @@ export default function ProductDescription({ product }: Props) {
           <span className="font-bold text-lg">${price}</span>
         </div>
         <div className="w-full flex gap-10 justify-between items-center fixed bottom-0 inset-x-0 p-3">
-          <Counter />
+          <Counter product={product} />
           <Button
-            text={`Agregar ${format(price * count)}`}
+            text={`Agregar ${format(totalPrice)}`}
             variant="primary"
             onClick={() => handleAddToCart(product)}
           />
