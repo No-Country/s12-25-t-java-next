@@ -22,9 +22,9 @@ const Notification = () => {
             width={8} 
             height={8}
             alt="notification waiter"
-            className=" w-[27%] h-[112px] pt-4"
+            className=" w-[26.2%] h-[112px] pt-[1.2rem]"
           />
-          <h3 className="font-sans text-[1rem] ml-2"> {message.text}</h3>{" "}
+          <h3 className="font-sans text-[1rem] ml-[0.3rem]"> {message.text}</h3>{" "}
         </>
       )}
     </div>
