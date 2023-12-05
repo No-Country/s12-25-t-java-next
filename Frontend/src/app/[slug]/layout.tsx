@@ -10,7 +10,7 @@ async function MenuLayout({ children }: { children: React.ReactNode }) {
   const categories = [
     ...new Set(products.map((product) => product.category.toLowerCase())),
   ];
-
+ 
   return (
     <div>
       <Header />
