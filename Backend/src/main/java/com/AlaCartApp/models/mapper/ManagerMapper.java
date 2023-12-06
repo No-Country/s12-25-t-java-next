@@ -13,7 +13,7 @@ public interface ManagerMapper {
     @Mapping(source = "id" , target = "id")
     @Mapping(source = "name" , target = "name")
     @Mapping(source = "password" , target = "password")
-    @Mapping(source = "roleAdmin" , target = "roleadmin")
+    @Mapping(source = "roleAdmin" , target = "roleAdmin")
 
     ManagerDto toManagerDTO (Manager manager);
     List<ManagerDto> toManagersDTO (List <Manager> manager);
