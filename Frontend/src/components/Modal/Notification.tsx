@@ -24,7 +24,8 @@ const Notification = () => {
             alt="notification waiter"
             className=" w-[26.2%] h-[112px] pt-[1.2rem]"
           />
-          <h3 className="font-sans text-[1rem] ml-[0.3rem]"> {message.text}</h3>{" "}
+          {/* <div dangerouslySetInnerHTML={formattedText} className="font-sans text-[1rem] ml-[0.3rem]"> {message.text}</div>{" "} */}
+          <div>{message.text}</div>
         </>
       )}
     </div>
