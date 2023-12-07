@@ -36,9 +36,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Optional<ProductDto> update(ProductDto request) {
+    public Optional<ProductDto> update(List<MultipartFile> postImages,ProductDto request) throws IOException {
         if(productRepository.existsById(request.getId())){
-            return Optional.of(productMapper.toProductDTO(productRepository
+            if(postImages != null){
+                request.setImages(imageService.imagesPost(postImages));
+            }
+            return  Optional.of(productMapper.toProductDTO(productRepository
                     .save(productMapper.toProduct(request))));
         }else{
             throw new ResourceNotFoundException("Product not found with id: " + request.getId());

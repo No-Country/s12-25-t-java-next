@@ -13,7 +13,7 @@ public interface ProductService {
     ProductDto save(List<MultipartFile> postImages, ProductDto request) throws IOException;
     List<ProductDto> findAll();
 
-    Optional<ProductDto> update(ProductDto request);
+    Optional<ProductDto> update(List<MultipartFile> postImages, ProductDto request) throws IOException;
     Optional<ProductDto> findById(Long id);
 
     boolean delete(Long id);
