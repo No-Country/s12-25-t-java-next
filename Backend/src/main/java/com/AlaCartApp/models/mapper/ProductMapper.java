@@ -18,7 +18,7 @@ public interface ProductMapper {
     @Mapping(source = "category", target = "category")
     @Mapping(source = "description", target = "description")
     @Mapping(source = "images", target = "images")
-
+    @Mapping(source = "subCategory", target = "subCategory")
     ProductDto toProductDTO(Product product);
     List<ProductDto> toProductsDTO(List<Product> products);
     @InheritInverseConfiguration
