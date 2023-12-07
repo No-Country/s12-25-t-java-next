@@ -5,7 +5,6 @@ import FooterCart from "@/components/cart/FooterCart";
 
 const CartList = dynamic(() => import("@/components/cart/CartList"), {ssr:false});
 const SummaryCart = dynamic(() => import("@/components/cart/SummaryCart"), {ssr:false});
-const Divider = dynamic(() => import("@/components/Footer/Divider"), {ssr:false});
 const HeaderBack = dynamic(() => import("@/components/Header/HeaderBack"), {ssr:false});
 
 
