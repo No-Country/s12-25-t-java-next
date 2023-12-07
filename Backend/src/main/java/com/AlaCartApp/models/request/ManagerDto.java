@@ -1,5 +1,6 @@
 package com.AlaCartApp.models.request;
 
+import com.AlaCartApp.enums.RoleAdmin;
 import lombok.Data;
 
 @Data

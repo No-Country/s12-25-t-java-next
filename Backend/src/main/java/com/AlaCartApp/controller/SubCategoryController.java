@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/sub-category")
+@RequestMapping("/v1/sub-category")
 @RequiredArgsConstructor
 public class SubCategoryController {
 
