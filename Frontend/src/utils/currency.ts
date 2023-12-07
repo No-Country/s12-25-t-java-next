@@ -9,3 +9,7 @@ export const format = (value: number) => {
 
   return formatter.format(value); //$2,500.00
 };
+
+export const addDecimals = (num: number) => {
+  return (Math.round(num * 100) / 100).toFixed(2);
+};

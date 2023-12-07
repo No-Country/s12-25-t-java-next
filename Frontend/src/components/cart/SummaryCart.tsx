@@ -14,7 +14,7 @@ const SummaryCart = () => {
    // Call subtotal once and store the result in a variable
    const cartSubtotal = subtotal();
 
-   console.log(cartSubtotal)
+   console.log("subtotal",cartSubtotal)
 
   return <div className="flex flex-col  items-end mx-4 py-4">
     <h3>Subtotal</h3>
