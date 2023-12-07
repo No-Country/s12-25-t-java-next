@@ -11,7 +11,7 @@ interface Props {
   products?: IOrderItem[];
 }
 
-export const CartList = ({ editable = false, products }: Props) => {
+ const CartList = ({ editable = false, products }: Props) => {
   const { cart, add, remove, removeProduct } = useCartStore();
 
   const onNewCartQuantityValue = (product: Product) => {
@@ -73,3 +73,5 @@ export const CartList = ({ editable = false, products }: Props) => {
     </div>
   );
 };
+
+export default CartList

@@ -1,21 +1,30 @@
 "use client";
-import { useEffect } from "react";
-
-import { CartList } from "@/components/cart/CartList";
-import SummaryCart from "@/components/cart/SummaryCart";
-
-import React from "react";
+import React, { useEffect, useState, lazy, Suspense } from "react";
 import { useRouter } from "next/navigation";
-import { useCartStore } from "@/store/cart";
-import Divider from "@/components/Footer/Divider";
+import dynamic, { LoaderComponent } from "next/dynamic";
 
-import HeaderBack from "@/components/Header/HeaderBack";
+
+const CartList = dynamic(() =>import("@/components/cart/CartList"), {ssr:false});
+const SummaryCart = dynamic(() => import("@/components/cart/SummaryCart"), {ssr:false});
+const Divider = dynamic(() => import("@/components/Footer/Divider"), {ssr:false});
+const HeaderBack = dynamic(() => import("@/components/Header/HeaderBack"), {ssr:false});
+
+
+
+import { useCartStore } from "@/store/cart";
 import { useNotifyStore } from "@/store/zustand";
 
+
 const CartPage = () => {
+  const [isClient, setIsClient] = useState(false);
   const { cart, removeAll, subtotal } = useCartStore();
   const router = useRouter();
   const { add, setShowMessageBoolean } = useNotifyStore();
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   useEffect(() => {
     subtotal();
   }, [cart, subtotal]);
@@ -27,13 +36,14 @@ const CartPage = () => {
       setShowMessageBoolean(false);
     }, 2500);
   };
+
   const handleOrder = () => {
     const orderData = {
       table: 1,
       date: new Date(),
       state: "pending",
       subTotal: cartSubtotal,
-      payment:'inProcess',
+      payment: "inProcess",
       products: cart,
     };
     console.log("order", orderData);
@@ -65,9 +75,11 @@ const CartPage = () => {
   if (cart.length === 0) {
     return <></>;
   }
+
   return (
-    <div className="w-full">
-      <HeaderBack editable text="Carrito" />
+    <div  className="w-full">
+  
+       <HeaderBack editable text="Carrito" />
       <CartList />
       <SummaryCart />
       <footer className=" fixed bottom-0  px-4 py-3 w-screen">
@@ -86,8 +98,10 @@ const CartPage = () => {
             Realizar pedido
           </button>
         </div>
+
         <Divider />
       </footer>
+     
     </div>
   );
 };
