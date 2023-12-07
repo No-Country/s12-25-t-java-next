@@ -5,6 +5,7 @@ import { Product } from "@/types/Product";
 import { IOrderItem } from "@/types/order";
 import { format } from "@/utils/currency";
 import Image from "next/image";
+import Counter from "../Counter";
 
 interface Props {
   editable?: boolean;
@@ -17,6 +18,7 @@ interface Props {
   const onNewCartQuantityValue = (product: Product) => {
     add(product);
   };
+
   return (
     <div>
       {cart.map((product) => (
@@ -37,36 +39,7 @@ interface Props {
 
           <div className="flex mt-2 items-end justify-between text-lg font-semibold">
             <p className="">{format(product.price)}</p>
-            <div className="w-[5.2rem] flex justify-between items-center h-8 shadow-buttoncart rounded-[2rem]">
-              <button
-                type="button"
-                className="bg-secondary-100 rounded-full w-[1.5rem] h-[1.5rem]"
-                onClick={() => remove(product.id)}
-              >
-                <Image
-                  priority
-                  src="/icon/Minus.svg"
-                  height={20}
-                  width={30}
-                  alt="remove item to cart"
-                />
-              </button>
-              <p className=" text-sm text-gray-500">{product.quantity}</p>
-
-              <button
-                type="button"
-                onClick={() => add(product)}
-                className="bg-secondary-100 rounded-full w-[1.5rem] h-[1.5rem]"
-              >
-                <Image
-                  priority
-                  src="/icon/Plus.svg"
-                  height={30}
-                  width={30}
-                  alt="Add to cart"
-                />
-              </button>
-            </div>
+            <Counter product={product} sm />
           </div>
         </div>
       ))}

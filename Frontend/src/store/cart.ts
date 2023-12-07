@@ -9,10 +9,11 @@ interface CartItem extends Product {
 type CartStore = {
   cart: CartItem[];
   quantity: () => number;
+  quantityPerProduct: (idProduct: string) => number;
   subtotal: () => number;
   add: (product: Product) => void;
   remove: (idProduct: string) => void;
-  removeProduct: (idProduct: string) => void; 
+  removeProduct: (idProduct: string) => void;
   removeAll: () => void;
 };
 const addDecimal = (a: number, b: number) => {
@@ -30,17 +31,26 @@ export const useCartStore = create(
             .reduce((prev, curr) => prev + curr);
         return 0;
       },
+      quantityPerProduct: (idProduct: string) => {
+        const { cart } = get();
+        if (cart.length)
+          return cart
+            .filter((item) => item.id === idProduct)
+            .map((item) => item.quantity)
+            .reduce((prev, curr) => prev + curr, 1);
+        return 1;
+      },
       subtotal: () => {
         const { cart } = get();
         if (cart.length) {
           return addDecimal(
             cart
               .map((item) => item.price * item.quantity)
-              .reduce((prev, curr) => prev + curr),
-            0
+              .reduce((prev, curr) => prev + curr, 1),
+            1,
           );
         }
-        return 0;
+        return 1;
       },
       add: (product: Product) => {
         const { cart } = get();
@@ -81,7 +91,6 @@ function updateCart(product: Product, cart: CartItem[]): CartItem[] {
 
   return cart;
 }
-
 
 function removeCart(idProduct: string, cart: CartItem[]): CartItem[] {
   return cart

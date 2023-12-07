@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 
 function CartLayout({ children }: { children: React.ReactNode }) {
   return (
- 
-      <div className="min-h-[90vh]">
-      {children}
+    <div>
+      <HeaderBack editable text="Carrito" />
+      <main className="min-h-[90vh]">{children}</main>
       <Notification />
       </div>
 

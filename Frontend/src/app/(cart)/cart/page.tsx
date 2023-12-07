@@ -38,6 +38,7 @@ const CartPage = () => {
   };
 
   const handleOrder = () => {
+
     const orderData = {
       table: 1,
       date: new Date(),
@@ -47,6 +48,7 @@ const CartPage = () => {
       products: cart,
     };
     console.log("order", orderData);
+
     const newMessage = {
       text: (
         <>
@@ -77,9 +79,7 @@ const CartPage = () => {
   }
 
   return (
-    <div  className="w-full">
-  
-       <HeaderBack editable text="Carrito" />
+    <div className="w-full">
       <CartList />
       <SummaryCart />
       <footer className=" fixed bottom-0  px-4 py-3 w-screen">
