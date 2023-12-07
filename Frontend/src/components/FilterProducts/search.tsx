@@ -17,7 +17,9 @@ export default function Search() {
           <SearchIcon />
         </span>
       </div>
+      <div className="w-10">
       <FilterButton />
+      </div>
     </section>
   );
 }

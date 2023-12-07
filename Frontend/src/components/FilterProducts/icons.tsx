@@ -35,3 +35,19 @@ export default function FilterIcon() {
     </svg>
   );
 }
+export function CloseIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="7"
+      height="8"
+      viewBox="0 0 7 8"
+      fill="none"
+    >
+      <path
+        d="M7 1.205L6.295 0.5L3.5 3.295L0.705 0.5L0 1.205L2.795 4L0 6.795L0.705 7.5L3.5 4.705L6.295 7.5L7 6.795L4.205 4L7 1.205Z"
+        fill="#5D5D5D"
+      />
+    </svg>
+  );
+}
