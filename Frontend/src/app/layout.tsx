@@ -11,6 +11,7 @@ export default function RootLayout({
 			lang="es"
 			className={`${montserrat.variable}`}
 		>
+			<head />
 			<body>
 				<div className=" bg-whitebackground">{children}</div>
 			</body>

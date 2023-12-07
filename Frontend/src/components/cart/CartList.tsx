@@ -1,11 +1,12 @@
 "use client";
-
+import { useRouter } from "next/navigation";
 import { useCartStore } from "@/store/cart";
 import { Product } from "@/types/Product";
 import { IOrderItem } from "@/types/order";
 import { format } from "@/utils/currency";
 import Image from "next/image";
 import Counter from "../Counter";
+import { useEffect } from 'react';
 
 interface Props {
   editable?: boolean;
@@ -14,7 +15,16 @@ interface Props {
 
  const CartList = ({ editable = false, products }: Props) => {
   const { cart, add, remove, removeProduct } = useCartStore();
+    const router = useRouter();
+  useEffect(() => {
+    if (cart.length === 0) {
+      router.replace("cart/empty");
+    }
+  }, [cart, router]);
 
+  if (cart.length === 0) {
+    return <></>;
+  }
   const onNewCartQuantityValue = (product: Product) => {
     add(product);
   };
