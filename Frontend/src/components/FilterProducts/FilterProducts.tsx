@@ -1,5 +1,4 @@
 import ActiveButton from './activeButton'
-import Search from './search'
 
 export default function FilterProducts({
 	categories,
@@ -16,7 +15,7 @@ export default function FilterProducts({
 	}
 
 	const categoriesData = getCategoriesData()
-	// console.log(categoriesData)
+	
 
 	return (
 		<section className="w-full ">
