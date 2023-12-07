@@ -13,7 +13,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface OrderMapper {
 
-
+/*
     @Mappings({
             @Mapping(source = "id", target = "id"),
             @Mapping(source = "table", target = "table"),
@@ -26,6 +26,6 @@ public interface OrderMapper {
     List<OrderDto> toOrdersDTO(List<Order> order);
     @InheritInverseConfiguration
     Order toOrder(OrderDto orderDto);
-
+*/
 
 }

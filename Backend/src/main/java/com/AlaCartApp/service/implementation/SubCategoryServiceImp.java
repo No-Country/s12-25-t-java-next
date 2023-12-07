@@ -13,9 +13,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SubCategoryServiceImp implements SubCategoryService {
 
-    private SubCategoryRepository subCategoryRepository;
+    private final SubCategoryRepository subCategoryRepository;
 
-    private SubCategoryMapper subCategoryMapper;
+    private final SubCategoryMapper subCategoryMapper;
 
     public List<SubCategoryDto> findAll(){
         return subCategoryMapper.toSubCategoriesDTO(subCategoryRepository.findAll());

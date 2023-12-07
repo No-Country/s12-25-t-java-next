@@ -14,9 +14,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CategoryServiceImp implements CategoryService {
 
-    private CategoryRepository categoryRepository;
+    private final CategoryRepository categoryRepository;
 
-    private CategoryMapper categoryMapper;
+    private final CategoryMapper categoryMapper;
 
     @Override
     public List<CategoryDto> findAll() {
