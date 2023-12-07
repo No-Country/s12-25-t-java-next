@@ -1,5 +1,6 @@
 package com.AlaCartApp.models.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -21,20 +22,18 @@ public class Product {
     @ManyToOne()
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
+    @ManyToOne()
+    @JoinColumn(name = "sub_category_id", referencedColumnName = "id")
+    private SubCategory subCategory;
     @Column(name = "description", nullable = false)
     private String description;
     @Column(name = "estado" , nullable = false)
     private Boolean state;
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "combo_id", referencedColumnName = "id")
-//    private Combo combo;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name="product_id")
     private List<Image> images;
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "combo_id", referencedColumnName = "id")
-//    private Qualification qualification;
-    
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     List<Qualification> qualifications;
 }

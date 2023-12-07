@@ -26,6 +26,7 @@ public class Order {
     @JoinColumn(name = "table_entity_id", nullable = false)
     private TableEntity tableEntity;
     private LocalDateTime date;
+    private LocalDateTime updated;
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderDetail> detail;
     private String paymentMethod;
