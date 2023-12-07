@@ -33,7 +33,7 @@ const CartPage = () => {
       date: new Date(),
       state: "pending",
       subTotal: cartSubtotal,
-      payment:'inProcees',
+      payment:'inProcess',
       products: cart,
     };
     console.log("order", orderData);
