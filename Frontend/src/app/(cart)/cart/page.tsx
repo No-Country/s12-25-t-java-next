@@ -13,9 +13,14 @@ import HeaderBack from "@/components/Header/HeaderBack";
 import { useNotifyStore } from "@/store/zustand";
 
 const CartPage = () => {
-  const { cart, removeAll } = useCartStore();
+  const { cart, removeAll, subtotal } = useCartStore();
   const router = useRouter();
   const { add, setShowMessageBoolean } = useNotifyStore();
+  useEffect(() => {
+    subtotal();
+  }, [cart, subtotal]);
+  // Call subtotal once and store the result in a variable
+  const cartSubtotal = subtotal();
 
   const handleNotification = () => {
     setTimeout(() => {
@@ -23,7 +28,17 @@ const CartPage = () => {
     }, 2500);
   };
   const handleOrder = () => {
-    console.log("order");
+
+    const orderData = {
+      table: 1,
+      date: new Date(),
+      state: "pending",
+      subTotal: cartSubtotal,
+      payment:'inProcess',
+      products: cart,
+    };
+    console.log("order", orderData);
+
     const newMessage = {
       text: (
         <>
