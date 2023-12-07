@@ -2,6 +2,7 @@ package com.AlaCartApp.models.response;
 
 import com.AlaCartApp.models.entity.Category;
 import com.AlaCartApp.models.entity.Image;
+import com.AlaCartApp.models.entity.SubCategory;
 import lombok.Data;
 import java.util.List;
 
@@ -16,5 +17,6 @@ public class ProductDto {
     String description;
     List<Image> images;
     Boolean state;
+    SubCategory subCategory;
 
 }

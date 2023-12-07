@@ -37,10 +37,9 @@ public class ProductController {
         return ResponseEntity.of(productService.findById(id));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<ProductDto> update(@PathVariable Long id , @RequestBody ProductDto product){
-        ProductDto response = productService.update(id,product);
-        return new ResponseEntity<>(response,HttpStatus.OK);
+    @PutMapping()
+    public ResponseEntity<ProductDto> update(@RequestBody ProductDto product){
+       return ResponseEntity.of(productService.update(product));
     }
 
     @DeleteMapping("/{id}")
