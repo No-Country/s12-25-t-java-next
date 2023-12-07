@@ -31,7 +31,7 @@ export default function ProductDescription({ product }: Props) {
     return accumulatedPrice;
   }, 0);
 
-  console.log("totañ",totalPrice)
+  console.log("total price",totalPrice)
 
   const { title, image, description, price } = product;
   return (

@@ -15,7 +15,9 @@ type CartStore = {
   removeProduct: (idProduct: string) => void; 
   removeAll: () => void;
 };
-
+const addDecimal = (a: number, b: number) => {
+  return parseFloat((a + b).toFixed(2));
+};
 export const useCartStore = create(
   persist<CartStore>(
     (set, get) => ({
@@ -30,10 +32,14 @@ export const useCartStore = create(
       },
       subtotal: () => {
         const { cart } = get();
-        if (cart.length)
-          return cart
-          .map((item) => item.price * item.quantity)
-            .reduce((prev, curr) => prev + curr);
+        if (cart.length) {
+          return addDecimal(
+            cart
+              .map((item) => item.price * item.quantity)
+              .reduce((prev, curr) => prev + curr),
+            0
+          );
+        }
         return 0;
       },
       add: (product: Product) => {
