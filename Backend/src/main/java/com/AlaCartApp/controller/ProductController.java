@@ -1,13 +1,12 @@
 package com.AlaCartApp.controller;
 
-import com.AlaCartApp.models.entity.Product;
+import com.AlaCartApp.models.response.ProductDto;
 import com.AlaCartApp.service.abstraction.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -19,29 +18,29 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping
-    public ResponseEntity<List<Product>> findAll(){
+    public ResponseEntity<List<ProductDto>> findAll(){
         return ResponseEntity.ok(productService.findAll());
     }
 
     @PostMapping
-    public ResponseEntity<Product> save(
+    public ResponseEntity<Void> save(
             @RequestPart(value="files",required = false) List<MultipartFile> postImage,
-            @RequestPart(value="request") Product request)
+            @RequestPart(value="request") ProductDto request)
             throws IOException{
+        productService.save(postImage, request);
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(productService.save(postImage, request));
+                .build();
     }
+
     @GetMapping("/{id}")
-    public ResponseEntity<Product> findById(@PathVariable Long id){
+    public ResponseEntity<ProductDto> findById(@PathVariable Long id){
         return ResponseEntity.of(productService.findById(id));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Product> update(@PathVariable Long id , @RequestBody Product product){
-        Product response = productService.update(id,product);
-        return new ResponseEntity<>(response,HttpStatus.OK);
+    @PutMapping()
+    public ResponseEntity<ProductDto> update(@RequestBody ProductDto product){
+       return ResponseEntity.of(productService.update(product));
     }
-
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable Long id){
