@@ -17,4 +17,6 @@ public interface ProductService {
     Optional<ProductDto> findById(Long id);
 
     boolean delete(Long id);
+
+    List<ProductDto> findByCategory(Long categoryId);
 }
