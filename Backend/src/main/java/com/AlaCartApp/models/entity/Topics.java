@@ -4,6 +4,6 @@ import jakarta.persistence.ManyToOne;
 
 public class Topics {
 
-    @ManyToOne
-    Product product;
+    //@ManyToOne
+    //Product product;
 }
