@@ -6,6 +6,6 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 FROM openjdk:17.0.1-jdk-slim
-COPY --from=build /target/back-0.0.1-SNAPSHOT.jar java-app.jar
+COPY --from=build /target/AlaCartApp 0.0.1-SNAPSHOT java-app.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","java-app.jar"]
