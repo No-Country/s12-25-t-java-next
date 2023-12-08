@@ -19,7 +19,8 @@ public class SecurityWeb {
         http.csrf().disable()
                 .authorizeRequests()
 //                .requestMatchers("/api/v1/**").hasRole("")
-                .requestMatchers("api").permitAll()
+                .requestMatchers("/api/v1/**").hasAnyRole()
+                .requestMatchers("/api/v1/**").permitAll()
                 .and().formLogin(
                         form-> form
                                 .loginPage("/login")
