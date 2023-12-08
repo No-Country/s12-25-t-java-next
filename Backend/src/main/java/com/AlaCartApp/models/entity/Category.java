@@ -18,7 +18,7 @@ public class Category {
     private String name;
     @Column(name = "available")
     private Boolean available;
-    @OneToMany(mappedBy = "category")
+    @OneToMany
     @JoinColumn(name = "sub_category_id", referencedColumnName = "id")
     List<SubCategory> subCategoryList;
 }
