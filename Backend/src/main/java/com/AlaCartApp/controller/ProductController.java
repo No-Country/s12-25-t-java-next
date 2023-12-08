@@ -37,10 +37,10 @@ public class ProductController {
         return ResponseEntity.of(productService.findById(id));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<ProductDto> update(@PathVariable Long id , @RequestBody ProductDto product){
-        ProductDto response = productService.update(id,product);
-        return new ResponseEntity<>(response,HttpStatus.OK);
+    @PutMapping()
+    public ResponseEntity<ProductDto> update(@RequestPart(value="files",required = false) List<MultipartFile> postImage,
+                                             @RequestPart(value="request") ProductDto product) throws IOException{
+       return ResponseEntity.of(productService.update(postImage,product));
     }
 
     @DeleteMapping("/{id}")

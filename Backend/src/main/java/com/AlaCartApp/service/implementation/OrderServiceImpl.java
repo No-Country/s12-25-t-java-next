@@ -5,9 +5,12 @@ import com.AlaCartApp.models.entity.Order;
 import com.AlaCartApp.models.entity.Product;
 import com.AlaCartApp.repository.OrderRepository;
 import com.AlaCartApp.service.abstraction.OrderService;
+import jakarta.persistence.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,6 +27,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order create(Order order) {
+        order.setDate(LocalDateTime.now());
+        order.setUpdated(LocalDateTime.now());
         return orderRepository.save(order);
     }
 
@@ -37,6 +42,7 @@ public class OrderServiceImpl implements OrderService {
             updateOrder.setPaymentMethod(order.getPaymentMethod());
             updateOrder.setTableEntity(order.getTableEntity());
             updateOrder.setDetail(order.getDetail());
+            updateOrder.setUpdated(LocalDateTime.now());
             return orderRepository.save(updateOrder);
         }else{
             throw new ResourceNotFoundException("Order not found with id: " + id);
@@ -62,4 +68,8 @@ public class OrderServiceImpl implements OrderService {
             throw new ResourceNotFoundException("Order not found with id: " + id);
         }
     }
+
+
+
+
 }

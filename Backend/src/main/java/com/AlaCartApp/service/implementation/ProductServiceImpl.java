@@ -4,7 +4,6 @@ import com.AlaCartApp.exception.ResourceNotFoundException;
 import com.AlaCartApp.models.entity.Product;
 import com.AlaCartApp.models.mapper.ProductMapper;
 import com.AlaCartApp.models.response.ProductDto;
-import com.AlaCartApp.models.request.ProductDtoRequest;
 import com.AlaCartApp.repository.ProductRepository;
 import com.AlaCartApp.service.abstraction.ImageService;
 import com.AlaCartApp.service.abstraction.ProductService;
@@ -37,17 +36,15 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductDto update(Long id, ProductDto request) {
-        Optional<Product> existingProduct = productRepository.findById(id);
-        if(existingProduct.isPresent()){
-            Product product = existingProduct.get();
-            product.setName(request.getName());
-            product.setPrice(request.getPrice());
-            product.setDescription(request.getDescription());
-            product.setCategory(request.getCategory());
-            return productMapper.toProductDTO(productRepository.save(product));
+    public Optional<ProductDto> update(List<MultipartFile> postImages,ProductDto request) throws IOException {
+        if(productRepository.existsById(request.getId())){
+            if(postImages != null){
+                request.setImages(imageService.imagesPost(postImages));
+            }
+            return  Optional.of(productMapper.toProductDTO(productRepository
+                    .save(productMapper.toProduct(request))));
         }else{
-            throw new ResourceNotFoundException("Product not found with id: " + id);
+            throw new ResourceNotFoundException("Product not found with id: " + request.getId());
         }
     }
 

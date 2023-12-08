@@ -1,6 +1,7 @@
 package com.AlaCartApp.service.abstraction;
 
 import com.AlaCartApp.models.entity.Order;
+import jakarta.persistence.Table;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -15,4 +16,6 @@ public interface OrderService {
     void delete(Long id);
 
     Order find(Long id);
+
+
 }
