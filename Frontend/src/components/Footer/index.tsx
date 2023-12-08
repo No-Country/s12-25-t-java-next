@@ -2,7 +2,6 @@
 import Image from "next/image";
 import { CallWaiterPopup } from "../Popup/CallWaiterPopup";
 import Link from "next/link";
-import Divider from "./Divider";
 
 const Footer = () => {
   return (
@@ -25,7 +24,6 @@ const Footer = () => {
           </button>
         </Link>
       </div>
-      <Divider />
     </footer>
   );
 };

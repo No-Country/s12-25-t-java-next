@@ -7,10 +7,10 @@ import SummaryCart from "@/components/cart/SummaryCart";
 import React from "react";
 import { useRouter } from "next/navigation";
 import { useCartStore } from "@/store/cart";
-import Divider from "@/components/Footer/Divider";
 
 import HeaderBack from "@/components/Header/HeaderBack";
 import { useNotifyStore } from "@/store/zustand";
+import CartEmpty from "@/components/cart/CartEmpty";
 
 const CartPage = () => {
   const { cart, removeAll, subtotal } = useCartStore();
@@ -18,7 +18,7 @@ const CartPage = () => {
   const { add, setShowMessageBoolean } = useNotifyStore();
   useEffect(() => {
     subtotal();
-  }, [cart, subtotal]);
+  }, [subtotal]);
   // Call subtotal once and store the result in a variable
   const cartSubtotal = subtotal();
 
@@ -28,13 +28,12 @@ const CartPage = () => {
     }, 2500);
   };
   const handleOrder = () => {
-
     const orderData = {
       table: 1,
       date: new Date(),
       state: "pending",
       subTotal: cartSubtotal,
-      payment:'inProcess',
+      payment: "inProcess",
       products: cart,
     };
     console.log("order", orderData);
@@ -58,19 +57,16 @@ const CartPage = () => {
     handleNotification();
   };
 
-  useEffect(() => {
-    if (cart.length === 0) {
-      router.replace("cart/empty");
-    }
-  }, [cart, router]);
-
-  if (cart.length === 0) {
-    return <></>;
-  }
   return (
     <div className="w-full">
-      <CartList />
-      <SummaryCart />
+      {cart.length === 0 ? (
+        <CartEmpty />
+      ) : (
+        <>
+          <CartList />
+          <SummaryCart />
+        </>
+      )}
       <footer className=" fixed bottom-0  px-4 py-3 w-screen">
         <div className="flex justify-between items-center">
           <button
@@ -87,7 +83,6 @@ const CartPage = () => {
             Realizar pedido
           </button>
         </div>
-        <Divider />
       </footer>
     </div>
   );
