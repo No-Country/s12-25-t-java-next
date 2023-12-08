@@ -11,9 +11,8 @@ export const metadata: Metadata = {
 function CartLayout({ children }: { children: React.ReactNode }) {
   return (
     <div>
-      <main className="min-h-[90vh]">
-      {children}
-      </main>
+      <HeaderBack editable text="Carrito" />
+      <main className="min-h-[90vh]">{children}</main>
       <Notification />
     </div>
   );
