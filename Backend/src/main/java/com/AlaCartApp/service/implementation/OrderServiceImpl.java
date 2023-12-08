@@ -37,7 +37,7 @@ public class OrderServiceImpl implements OrderService {
         Optional<Order> orderSaved = orderRepository.findById(id);
         if(orderSaved.isPresent()){
             Order updateOrder = orderSaved.get();
-            updateOrder.setState(order.getState());
+//            updateOrder.setState(order.getState());
             updateOrder.setTotal(order.getTotal());
             updateOrder.setPaymentMethod(order.getPaymentMethod());
             updateOrder.setTableEntity(order.getTableEntity());
