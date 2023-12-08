@@ -60,4 +60,9 @@ public class ProductServiceImpl implements ProductService {
         productRepository.deleteById(id);
         return true;
     }
+
+    @Override
+    public List<ProductDto> findByCategory(Long categoryId) {
+        return productMapper.toProductsDTO(productRepository.findByCategory(categoryId));
+    }
 }
