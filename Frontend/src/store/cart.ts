@@ -13,7 +13,6 @@ type CartStore = {
   subtotal: () => number;
   add: (product: Product) => void;
   remove: (idProduct: string) => void;
-  removeProduct: (idProduct: string) => void;
   removeAll: () => void;
 };
 const addDecimal = (a: number, b: number) => {
@@ -60,11 +59,6 @@ export const useCartStore = create(
       remove: (idProduct: string) => {
         const { cart } = get();
         const updatedCart = removeCart(idProduct, cart);
-        set({ cart: updatedCart });
-      },
-      removeProduct: (idProduct: string) => {
-        const { cart } = get();
-        const updatedCart = removeProduct(idProduct, cart);
         set({ cart: updatedCart });
       },
       removeAll: () => set({ cart: [] }),

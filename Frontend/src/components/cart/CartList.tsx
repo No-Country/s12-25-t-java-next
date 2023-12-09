@@ -1,23 +1,17 @@
 "use client";
 
 import { useCartStore } from "@/store/cart";
-import { Product } from "@/types/Product";
-import { IOrderItem } from "@/types/order";
 import { format } from "@/utils/currency";
 import Image from "next/image";
 import Counter from "../Counter";
 
-interface Props {
-  editable?: boolean;
-  products?: IOrderItem[];
-}
-
-export const CartList = ({ editable = false, products }: Props) => {
-  const { cart, add, remove, removeProduct } = useCartStore();
-
-  const onNewCartQuantityValue = (product: Product) => {
-    add(product);
-  };
+// interface Props {
+//   editable?: boolean;
+//   products?: IOrderItem[];
+// }
+//
+export const CartList = () => {
+  const { cart, remove } = useCartStore();
 
   return (
     <div>
@@ -29,7 +23,7 @@ export const CartList = ({ editable = false, products }: Props) => {
           <div className="flex justify-between text-lg font-medium text-gray-900">
             <h2>{product.title}</h2>
             <Image
-              onClick={() => removeProduct(product.id)}
+              onClick={() => remove(product.id)}
               src={"/icon/Trash.svg"}
               height={20}
               width={20}
