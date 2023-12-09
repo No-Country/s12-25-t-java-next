@@ -15,7 +15,6 @@ async function MenuLayout({ children }: { children: React.ReactNode }) {
     <div>
       <Header />
       <FilterProducts categories={categories} />
-      <Search />
       {children}
       <Footer />
     </div>
