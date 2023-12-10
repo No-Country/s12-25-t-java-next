@@ -3,13 +3,13 @@ import { NonEssentialsProduct } from '../../types/Product'
 import Image from 'next/image'
 
 function ProductCard({
-	title,
+	name,
 	price,
-	image,
+	images,
 	rating,
 	category,
 }: NonEssentialsProduct) {
-	const categoryToLowerCase = category.toLowerCase()
+	const categoryToLowerCase = category.name.toLowerCase()
 	const sizing =
 		categoryToLowerCase === 'platos'
 			? { cardSize: 'w-44 h-36', imageSize: 'w-40 h-24' }
@@ -20,7 +20,7 @@ function ProductCard({
 			<div className={`relative ${sizing.imageSize}`}>
 				<Image
 					alt="product"
-					src={image}
+					src={images[0].imageUrl}
 					className="rounded-lg"
 					priority={true}
 					fill={true}
@@ -28,7 +28,7 @@ function ProductCard({
 				/>
 			</div>
 			<div className="mt-1 flex justify-between items-baseline">
-				<h2 className="text-black text-xs truncate">{title}</h2>
+				<h2 className="text-black text-xs truncate">{name}</h2>
 				<div className="flex items-baseline justify-around w-6 h-3 px-[0.125rem] py-[0.0625rem] bg-lightgrey rounded">
 					<StarIcon className="w-2 h-2 text-tertiary-100" />
 					<p className="text-[0.5rem] text-black">{rating}</p>
