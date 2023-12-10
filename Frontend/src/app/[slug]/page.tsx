@@ -1,9 +1,10 @@
-import FilterSelected from "@/components/FilterProducts/filterSelected";
-import Search from "@/components/FilterProducts/search";
-import ProductsList from "@/components/Products/ProductsList";
-import { Product } from "@/types/Product";
-import { productsAndSubcats } from "@/utils/productBreakdown";
-import { Suspense } from "react";
+
+import FilterSelected from '@/components/FilterProducts/filterSelected'
+import ProductsList from '@/components/Products/ProductsList'
+import { Product } from '@/types/Product'
+import { productsAndSubcats } from '@/utils/productBreakdown'
+import { Suspense } from 'react'
+
 
 export const metadata = {
   title: "Platos",
@@ -24,14 +25,13 @@ async function MenuPage({
     (subcategory) => {
       return !searchParams?.query
         ? productsByCategory.filter(
-            (product) => product.subcategory === subcategory
+            (product) => product.subCategory.name === subcategory
           )
         : productsByCategory.filter(
             (product) =>
-              product.subcategory === subcategory &&
-              product.title
-                ?.toLowerCase()
-                .includes(searchParams?.query.toLowerCase())
+              product.subCategory.name === subcategory &&
+              product.subCategory.name && product.name && product.description
+                ?.toLowerCase().includes(searchParams?.query.toLowerCase())
           );
     }
   );
@@ -42,13 +42,14 @@ async function MenuPage({
 
   return (
     <>
-      <Search />
       <FilterSelected />
       <Suspense fallback={<p>Carajo...</p>}>
         {hasProducts ? (
           productsBySubcategories.map((products, index) => (
-            <div key={subcategories[index]} className="pl-4">
-              <ProductsList products={products} />
+            <div key={subcategories[index]} className="pl-5">
+              <ProductsList products={products} 
+			  	listCarousel={subcategories.length > 1 ? true : false}/>
+			  
             </div>
           ))
         ) : (
