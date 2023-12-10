@@ -4,6 +4,8 @@ import ProductsList from '@/components/Products/ProductsList'
 import { Product } from '@/types/Product'
 import { productsAndSubcats } from '@/utils/productBreakdown'
 import { Suspense } from 'react'
+import unorm from 'unorm';
+
 
 
 export const metadata = {
@@ -27,19 +29,31 @@ async function MenuPage({
         ? productsByCategory.filter(
             (product) => product.subCategory.name === subcategory
           )
-        : productsByCategory.filter(
-            (product) =>
-              product.subCategory.name === subcategory &&
-              product.subCategory.name && product.name && product.description
-                ?.toLowerCase().includes(searchParams?.query.toLowerCase())
-          );
+        : productsByCategory.filter((product) => {
+          const subcategoryNormalized = unorm.nfd(product.subCategory.name.toLowerCase()).replace(/[\u0300-\u036f]/g, '');
+  const searchSubcategoryNormalized = unorm.nfd(subcategory.toLowerCase()).replace(/[\u0300-\u036f]/g, '');
+
+  const subcategoryMatch = subcategoryNormalized === searchSubcategoryNormalized;
+  const sensitiveSearchParams = unorm.nfd(searchParams?.query.toLowerCase()).replace(/[\u0300-\u036f]/g, '');
+  const sensitiveProduct = unorm.nfd(product.name.toLowerCase()).replace(/[\u0300-\u036f]/g, '');
+  console.log(`Product Name: ${sensitiveProduct}, Query: ${sensitiveSearchParams}`);
+
+  const nameMatch = sensitiveProduct.includes(sensitiveSearchParams);
+  const descriptionMatch = product.description?.toLowerCase().includes(sensitiveSearchParams);
+
+  console.log(`${product.name}: Subcategory Match - ${subcategoryMatch}, Name Match - ${nameMatch}, Description Match - ${descriptionMatch}`);
+
+  return subcategoryMatch && (nameMatch || descriptionMatch);
+        });
+         
     }
   );
+  console.log(productsByCategory)
 
   const hasProducts = productsBySubcategories.some(
     (products) => products.length > 0
   );
-
+ 
   return (
     <>
       <FilterSelected />
