@@ -18,7 +18,10 @@ async function MenuLayout({ children }: { children: React.ReactNode }) {
       <Header />
       <FilterProducts categories={categories} />
       <Search />
+      <main className="min-h-[90vh]">
+
       {children}
+      </main>
       <Footer />
     </div>
   );
