@@ -31,7 +31,7 @@ export const CartList = () => {
           </div>
 
           <div className="flex mt-2 items-end justify-between text-lg font-semibold">
-            <p className="">{format(product.price)}</p>
+            <p className="">{format(product.price * product.quantity)}</p>
             <Counter
               counter={product.quantity}
               handleAdd={() => add(product)}
@@ -45,4 +45,4 @@ export const CartList = () => {
   );
 };
 
-export default CartList;
+export default CartList
