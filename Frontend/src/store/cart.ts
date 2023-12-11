@@ -27,10 +27,7 @@ export const useCartStore = create(
       cart: [],
       quantity: () => {
         const { cart } = get();
-        if (cart.length)
-          return cart
-            .map((item) => item.quantity)
-            .reduce((prev, curr) => prev + curr);
+        if (cart.length) return cart.length;
         return 0;
       },
       quantityPerProduct: (idProduct: string) => {
