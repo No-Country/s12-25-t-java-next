@@ -1,10 +1,10 @@
 "use client";
+
 import React, { useEffect, useState, lazy, Suspense } from "react";
 import { useCartStore } from "@/store/cart";
 import { useNotifyStore } from "@/store/zustand";
 
 import { Order, OrderDetail } from "../../types/order";
-import Divider from "../Footer/Divider";
 
 const FooterCart = () => {
   const { cart, removeAll, subtotal } = useCartStore();
@@ -15,7 +15,7 @@ const FooterCart = () => {
 
   useEffect(() => {
     subtotal();
-  }, [ subtotal]);
+  }, [subtotal]);
 
   const cartSubtotal = subtotal();
   const handleNotification = () => {
@@ -41,14 +41,12 @@ const FooterCart = () => {
   };
   const orderDetail: OrderDetail[] = Array.isArray(cart)
     ? cart.map((item, key) => {
-        const quantityDetail = item.quantity;
-        const { quantity, ...newObject } = item;
         return {
           id: key + 1,
-          order: `order" + ${(key + 1)}`,
-          product: newObject, // Excluir la propiedad 'quantity'
+          order: `order${key + 1}`,
+          product: { ...item, quantity: undefined }, // Excluir la propiedad 'quantity'
           price: item.quantity * item.price,
-          quantity: quantityDetail,
+          quantity: item.quantity,
         };
       })
     : [];
@@ -99,8 +97,6 @@ const FooterCart = () => {
           Realizar pedido
         </button>
       </div>
-
-      <Divider />
     </footer>
   );
 };

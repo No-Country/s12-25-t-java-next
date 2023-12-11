@@ -47,6 +47,7 @@ export const useCartStore = create(
               .map((item) => item.price * item.quantity)
               .reduce((prev, curr) => prev + curr, 0),
             0,
+          
           );
         }
         return 0;
