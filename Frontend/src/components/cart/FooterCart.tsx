@@ -38,17 +38,18 @@ const FooterCart = () => {
     state: true,
     user: userDetail,
   };
-  const orderDetail: OrderDetail = cart.map((item, key) => {
+  const orderDetail: OrderDetail[] = Array.isArray(cart) ? cart.map((item, key) => {
     return {
-      id: key+1,
-      order: "order" + (key+1),
-      product: item,
-      quantity: item.quantity,
+      id: key + 1,
+      order: "order" + (key + 1),
+      product: { ...item , quantity:undefined}, // Excluir la propiedad 'quantity'
       price: item.quantity * item.price,
-    }
-  });
+      quantity: item.quantity
+    };
+  }) : [];
 
   const handleOrder = () => {
+    console.log("orden detail",orderDetail)
     const orderData: Order = {
       id: 1,
       tableEntity,

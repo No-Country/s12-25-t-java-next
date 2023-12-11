@@ -1,3 +1,5 @@
+import { Product } from "./Product";
+
 export interface Category {
   id: number;
   name: string;
@@ -14,17 +16,7 @@ export interface Qualifications {
   product:  string;
 }
 
-export interface Product {
-  id: number;
-  name: string;
-  price: number;
-  images: string[];
-  category: Category;
-  subcategory: SubCategory;
-  description: string;
-  state: boolean;
-  qualifications?: Qualifications
-}
+
 
 export interface OrderDetail {
   id: number;
@@ -54,6 +46,6 @@ export interface Order {
   tableEntity: TableEntity;
   date:  string;
   updated?:  string;
-  detail:OrderDetail;
+  detail:OrderDetail[];
 
 }
