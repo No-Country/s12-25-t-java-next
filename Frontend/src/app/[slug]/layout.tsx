@@ -3,10 +3,13 @@ import Search from '@/components/FilterProducts/search'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import { getProducts } from '@/lib/Products'
+import { Product } from '@/types/order'
 import React from 'react'
 
 async function MenuLayout({ children }: { children: React.ReactNode }) {
-	const products = await getProducts()
+	const products  = await getProducts()
+	console.log("prueba")
+	console.log("productos",products)
 	const categories = [
 		...new Set(products.map((product) => product.category.name.toLowerCase())),
 	]

@@ -34,12 +34,12 @@ export interface OrderDetail {
   price: number;
 }
 export interface User {
-  id: 0,
+  id: number;
   name:  string;
   email:  string;
   password: string;
   lastName:  string;
-  state: true,
+  state: boolean,
   startDate:  string;
 }
 export interface TableEntity {
@@ -53,7 +53,7 @@ export interface Order {
   id: number;
   tableEntity: TableEntity;
   date:  string;
-  updated:  string;
+  updated?:  string;
   detail:OrderDetail;
 
 }

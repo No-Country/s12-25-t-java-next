@@ -2,7 +2,6 @@
 import { useRouter } from "next/navigation";
 import { useCartStore } from "@/store/cart";
 import { Product } from "@/types/Product";
-import { IOrderItem } from "@/types/order";
 import { format } from "@/utils/currency";
 import Image from "next/image";
 import Counter from "../Counter";
@@ -10,7 +9,7 @@ import { useEffect } from 'react';
 
 interface Props {
   editable?: boolean;
-  products?: IOrderItem[];
+  products?: Product[];
 }
 
  const CartList = ({ editable = false, products }: Props) => {
@@ -37,13 +36,14 @@ interface Props {
           key={product.id}
         >
           <div className="flex justify-between text-lg font-medium text-gray-900">
-            <h2>{product.title}</h2>
+            <h2>{product.name}</h2>
             <Image
               onClick={() => removeProduct(product.id)}
               src={"/icon/Trash.svg"}
               height={20}
               width={20}
               alt="delete"
+              className="h-[2rem]"
             />
           </div>
 
