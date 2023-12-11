@@ -45,11 +45,11 @@ export const useCartStore = create(
           return addDecimal(
             cart
               .map((item) => item.price * item.quantity)
-              .reduce((prev, curr) => prev + curr, 1),
+              .reduce((prev, curr) => prev + curr, 0),
             1,
           );
         }
-        return 1;
+        return 0;
       },
       add: (product: Product, quantity?: number) => {
         const { cart } = get();
