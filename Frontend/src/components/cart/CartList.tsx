@@ -1,32 +1,16 @@
 "use client";
+
 import { useRouter } from "next/navigation";
 import { useCartStore } from "@/store/cart";
-import { Product } from "@/types/Product";
+// import { Product } from "@/types/Product";
+// import { IOrderItem } from "@/types/order";
 import { format } from "@/utils/currency";
 import Image from "next/image";
 import Counter from "../Counter";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
-interface Props {
-  editable?: boolean;
-  products?: Product[];
-}
-
-const CartList = ({ editable = false, products }: Props) => {
+export const CartList = () => {
   const { cart, add, remove, removeProduct } = useCartStore();
-  const router = useRouter();
-  useEffect(() => {
-    if (cart.length === 0) {
-      router.replace("cart/empty");
-    }
-  }, [cart, router]);
-
-  if (cart.length === 0) {
-    return <></>;
-  }
-  const onNewCartQuantityValue = (product: Product) => {
-    add(product);
-  };
 
   return (
     <div>
@@ -43,13 +27,17 @@ const CartList = ({ editable = false, products }: Props) => {
               height={20}
               width={20}
               alt="delete"
-              className="h-[2rem]"
             />
           </div>
 
           <div className="flex mt-2 items-end justify-between text-lg font-semibold">
-            <p className="">{format(product.price * product.quantity)}</p>
-            <Counter product={product} sm quantity={product.quantity} />
+            <p className="">{format(product.price* product.quantity)}</p>
+            <Counter
+              counter={product.quantity}
+              handleAdd={() => add(product)}
+              handleRemove={() => remove(product.id)}
+              sm
+            />
           </div>
         </div>
       ))}

@@ -15,14 +15,13 @@ type Props = {
 };
 
 export default function ProductDescription({ product }: Props) {
-  const { quantityPerProduct, add } = useCartStore();
-  const [count, setCount] = useState(1);
-
+  const { add } = useCartStore();
+  const [counter, setCounter] = useState(1);
   const router = useRouter();
 
   const handleAddToCart = (product: Product) => {
-    // add(product);
-    router.push("/cart");
+    add(product, counter);
+    router.push("/");
   };
 
   const { name, images, description, price } = product;
@@ -62,11 +61,13 @@ export default function ProductDescription({ product }: Props) {
             className="w-full h-full border border-darkgrey placeholder-darkgrey rounded-[10px] px-3 py-4 font-medium text-sm"
           />
           <div className="w-full flex gap-2 mt-4 justify-between items-center">
-            <Counter product={product} />
+            <Counter
+              counter={counter}
+              handleAdd={() => setCounter(counter + 1)}
+              handleRemove={() => setCounter(counter - 1)}
+            />
             <Button
-              text={`Agregar ${format(
-                product.price * quantityPerProduct(product.id),
-              )}`}
+              text={`Agregar ${format(product.price * counter)}`}
               variant="primary"
               onClick={() => handleAddToCart(product)}
             />

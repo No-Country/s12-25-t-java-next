@@ -1,16 +1,18 @@
-"use client";
-
-import { useCartStore } from "@/store/cart";
-import { Product } from "@/types/Product";
 import Image from "next/image";
 
+type Props = {
+  sm?: boolean;
+  counter: number;
+  handleAdd: () => void;
+  handleRemove: () => void;
+};
+
 export default function Counter({
-  product,
-  quantity = 0,
   sm = false,
-}: { product: Product; quantity?: number; sm?: boolean }) {
-  const { add, remove, quantityPerProduct } = useCartStore();
-  console.log(product);
+  counter,
+  handleAdd,
+  handleRemove,
+}: Props) {
   return (
     <div
       className={`${
@@ -22,19 +24,17 @@ export default function Counter({
         className={`${
           sm ? "w-6 h-6" : "w-8 h-6"
         } text-center flex items-center justify-center text-white font-bold rounded-full`}
-        onClick={() => remove(product.id)}
+        onClick={handleRemove}
       >
         <Image width={32} height={32} src={"/minusIcon.svg"} alt="minus icon" />
       </button>
-      {/* <span>{quantityPerProduct(product.id)}</span> */}
-      <span>{sm ? quantity : quantityPerProduct(product.id)}</span>
-
+      <span>{counter}</span>
       <button
         type="button"
         className={`${
           sm ? "w-6 h-6" : "w-8 h-8"
         } text-center flex items-center justify-center text-white font-bold rounded-full`}
-        onClick={() => add(product)}
+        onClick={handleAdd}
       >
         <Image width={32} height={32} src={"/plusIcon.svg"} alt="minus icon" />
       </button>

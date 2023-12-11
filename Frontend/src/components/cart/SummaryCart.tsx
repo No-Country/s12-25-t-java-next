@@ -8,7 +8,7 @@ const SummaryCart = () => {
   const { cart, subtotal } = useCartStore();
   useEffect(() => {
     subtotal();
-  }, [cart, subtotal]);
+  }, [ subtotal]);
   // Call subtotal once and store the result in a variable
   const cartSubtotal = subtotal();
 
