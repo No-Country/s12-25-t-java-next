@@ -31,6 +31,8 @@ public class Order {
     private List<OrderDetail> detail;
     private String paymentMethod;
     private Double total;
+
     @Enumerated(EnumType.STRING)
     private State state;
+
 }

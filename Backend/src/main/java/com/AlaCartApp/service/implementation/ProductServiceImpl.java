@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+
 @RequiredArgsConstructor
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -36,9 +37,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Optional<ProductDto> update(ProductDto request) {
+    public Optional<ProductDto> update(List<MultipartFile> postImages,ProductDto request) throws IOException {
         if(productRepository.existsById(request.getId())){
-            return Optional.of(productMapper.toProductDTO(productRepository
+            if(postImages != null){
+                request.setImages(imageService.imagesPost(postImages));
+            }
+            return  Optional.of(productMapper.toProductDTO(productRepository
                     .save(productMapper.toProduct(request))));
         }else{
             throw new ResourceNotFoundException("Product not found with id: " + request.getId());

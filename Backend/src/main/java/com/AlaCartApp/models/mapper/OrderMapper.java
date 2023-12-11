@@ -5,14 +5,10 @@ import com.AlaCartApp.models.request.OrderDto;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-
-import org.mapstruct.Mappings;
-
 import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface OrderMapper {
-
 /*
     @Mappings({
             @Mapping(source = "id", target = "id"),
@@ -27,5 +23,4 @@ public interface OrderMapper {
     @InheritInverseConfiguration
     Order toOrder(OrderDto orderDto);
 */
-
 }

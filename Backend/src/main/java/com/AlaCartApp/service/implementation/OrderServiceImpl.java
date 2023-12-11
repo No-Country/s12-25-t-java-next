@@ -2,14 +2,11 @@ package com.AlaCartApp.service.implementation;
 
 import com.AlaCartApp.exception.ResourceNotFoundException;
 import com.AlaCartApp.models.entity.Order;
-import com.AlaCartApp.models.entity.Product;
 import com.AlaCartApp.repository.OrderRepository;
 import com.AlaCartApp.service.abstraction.OrderService;
-import jakarta.persistence.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -37,7 +34,7 @@ public class OrderServiceImpl implements OrderService {
         Optional<Order> orderSaved = orderRepository.findById(id);
         if(orderSaved.isPresent()){
             Order updateOrder = orderSaved.get();
-            updateOrder.setState(order.getState());
+//            updateOrder.setState(order.getState());
             updateOrder.setTotal(order.getTotal());
             updateOrder.setPaymentMethod(order.getPaymentMethod());
             updateOrder.setTableEntity(order.getTableEntity());
