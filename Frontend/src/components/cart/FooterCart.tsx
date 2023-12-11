@@ -7,15 +7,11 @@ import { useNotifyStore } from "@/store/zustand";
 import { Order, OrderDetail } from "../../types/order";
 
 const FooterCart = () => {
-  const { cart, removeAll, subtotal } = useCartStore();
+  const { cart,  subtotal } = useCartStore();
   const { add, setShowMessageBoolean } = useNotifyStore();
 
 
-  useEffect(() => {
-    subtotal();
-  }, [subtotal]);
 
-  const cartSubtotal = subtotal();
   const handleNotification = () => {
     setTimeout(() => {
       setShowMessageBoolean(false);
