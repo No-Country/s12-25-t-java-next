@@ -2,8 +2,9 @@
 import React, { useEffect, useState, lazy, Suspense } from "react";
 import { useCartStore } from "@/store/cart";
 import { useNotifyStore } from "@/store/zustand";
-import { Divider } from "@mui/material";
+
 import { Order, OrderDetail } from "../../types/order";
+import Divider from "../Footer/Divider";
 
 const FooterCart = () => {
   const { cart, removeAll, subtotal } = useCartStore();
