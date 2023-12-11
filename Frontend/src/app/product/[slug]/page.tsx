@@ -4,8 +4,8 @@ import { Metadata } from "next";
 import React from "react";
 
 export const metadata: Metadata = {
-	title: 'Producto',
-}
+  title: "Producto",
+};
 const ProductPage = async ({ params }: { params: { slug: string } }) => {
   const product = await getProductById(params.slug);
 

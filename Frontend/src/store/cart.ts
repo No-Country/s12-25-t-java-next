@@ -46,7 +46,7 @@ export const useCartStore = create(
           return addDecimal(
             cart
               .map((item) => item.price * item.quantity)
-              .reduce((prev, curr) => prev + curr, 1),
+              .reduce((prev, curr) => prev + curr, 0),
             1,
           );
         }

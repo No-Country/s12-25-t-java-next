@@ -5,16 +5,16 @@ import { Product } from "@/types/Product";
 import { format } from "@/utils/currency";
 import Image from "next/image";
 import Counter from "../Counter";
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 interface Props {
   editable?: boolean;
   products?: Product[];
 }
 
- const CartList = ({ editable = false, products }: Props) => {
+const CartList = ({ editable = false, products }: Props) => {
   const { cart, add, remove, removeProduct } = useCartStore();
-    const router = useRouter();
+  const router = useRouter();
   useEffect(() => {
     if (cart.length === 0) {
       router.replace("cart/empty");
@@ -48,8 +48,8 @@ interface Props {
           </div>
 
           <div className="flex mt-2 items-end justify-between text-lg font-semibold">
-            <p className="">{format(product.price)}</p>
-            <Counter product={product} sm />
+            <p className="">{format(product.price * product.quantity)}</p>
+            <Counter product={product} sm quantity={product.quantity} />
           </div>
         </div>
       ))}
@@ -57,4 +57,4 @@ interface Props {
   );
 };
 
-export default CartList
+export default CartList;

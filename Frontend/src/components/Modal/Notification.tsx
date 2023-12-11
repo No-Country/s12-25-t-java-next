@@ -19,7 +19,7 @@ const Notification = () => {
         <>
           <Image
             src={message.svg}
-            width={8} 
+            width={8}
             height={8}
             alt="notification waiter"
             className=" w-[26.2%] h-[112px] pt-[1.2rem]"

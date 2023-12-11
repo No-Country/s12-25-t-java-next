@@ -15,7 +15,8 @@ const FooterCart = () => {
 
   useEffect(() => {
     subtotal();
-  }, [cart, subtotal]);
+  }, [ subtotal]);
+
   const cartSubtotal = subtotal();
   const handleNotification = () => {
     setTimeout(() => {
@@ -38,22 +39,26 @@ const FooterCart = () => {
     state: true,
     user: userDetail,
   };
-  const orderDetail: OrderDetail[] = Array.isArray(cart) ? cart.map((item, key) => {
-    return {
-      id: key + 1,
-      order: "order" + (key + 1),
-      product: { ...item , quantity:undefined}, // Excluir la propiedad 'quantity'
-      price: item.quantity * item.price,
-      quantity: item.quantity
-    };
-  }) : [];
+  const orderDetail: OrderDetail[] = Array.isArray(cart)
+    ? cart.map((item, key) => {
+        const quantityDetail = item.quantity;
+        const { quantity, ...newObject } = item;
+        return {
+          id: key + 1,
+          order: `order" + ${(key + 1)}`,
+          product: newObject, // Excluir la propiedad 'quantity'
+          price: item.quantity * item.price,
+          quantity: quantityDetail,
+        };
+      })
+    : [];
 
   const handleOrder = () => {
-    console.log("orden detail",orderDetail)
+    console.log("orden detail", orderDetail);
     const orderData: Order = {
       id: 1,
       tableEntity,
-      date:"05012022",
+      date: "05012022",
       detail: orderDetail,
     };
     console.log("order", orderData);

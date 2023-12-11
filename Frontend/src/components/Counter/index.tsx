@@ -6,10 +6,11 @@ import Image from "next/image";
 
 export default function Counter({
   product,
+  quantity = 0,
   sm = false,
-}: { product: Product; sm?: boolean }) {
+}: { product: Product; quantity?: number; sm?: boolean }) {
   const { add, remove, quantityPerProduct } = useCartStore();
-
+  console.log(product);
   return (
     <div
       className={`${
@@ -25,7 +26,9 @@ export default function Counter({
       >
         <Image width={32} height={32} src={"/minusIcon.svg"} alt="minus icon" />
       </button>
-      <span>{quantityPerProduct(product.id)}</span>
+      {/* <span>{quantityPerProduct(product.id)}</span> */}
+      <span>{sm ? quantity : quantityPerProduct(product.id)}</span>
+
       <button
         type="button"
         className={`${
