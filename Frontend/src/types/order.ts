@@ -17,7 +17,7 @@ export interface Qualifications {
 }
 
 export interface IProduct extends Product{
-qualifications:Qualifications
+qualifications?:Qualifications
 }
 
 export interface OrderDetail {
