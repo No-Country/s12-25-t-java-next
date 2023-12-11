@@ -16,12 +16,14 @@ export interface Qualifications {
   product:  string;
 }
 
-
+export interface IProduct extends Product{
+qualifications:Qualifications
+}
 
 export interface OrderDetail {
   id: number;
   order: string;
-  product: Product;
+  product: IProduct;
   quantity: number;
   price: number;
 }

@@ -3,7 +3,7 @@ import Search from '@/components/FilterProducts/search'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import { getProducts } from '@/lib/Products'
-import { Product } from '@/types/order'
+import { IProduct } from '@/types/order'
 import React from 'react'
 
 async function MenuLayout({ children }: { children: React.ReactNode }) {
