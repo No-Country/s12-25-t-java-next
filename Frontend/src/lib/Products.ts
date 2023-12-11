@@ -3,8 +3,8 @@ import 'server-only'
 import { Product } from '@/types/Product'
 
 const baseUrl = process.env.BASE_URL
-
-export async function getProducts(): Promise<Product[]> {
+	
+export async function getProducts(searchTerm?: string): Promise<Product[]> {
 	const url = `${baseUrl}/v1/products`
 	const res = await fetch(url, { cache: 'no-cache' })
 	return await res.json()

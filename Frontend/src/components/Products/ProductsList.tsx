@@ -18,7 +18,7 @@ function ProductsList({
 	return (
 		<div>
 			<h2 className="mb-2 font-semibold text-lg">
-				{products[0].subCategory.name}
+				{products[0]?.subCategory.name}
 			</h2>
 			<ul className={`flex gap-4 ${listStyle}`}>
 				{products.map(
