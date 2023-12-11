@@ -9,9 +9,7 @@ import { Order, OrderDetail } from "../../types/order";
 const FooterCart = () => {
   const { cart, removeAll, subtotal } = useCartStore();
   const { add, setShowMessageBoolean } = useNotifyStore();
-  // useEffect(() => {
-  //     setIsClient(true);
-  //   }, []);
+
 
   useEffect(() => {
     subtotal();
