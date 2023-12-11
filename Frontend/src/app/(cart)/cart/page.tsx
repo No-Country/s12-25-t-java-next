@@ -64,7 +64,7 @@ const CartPage = () => {
       ) : (
         <>
           <CartList />
-          <SummaryCart />
+          <SummaryCart subtotal={cartSubtotal} />
         </>
       )}
       <footer className=" fixed bottom-0  px-4 py-3 w-screen">
