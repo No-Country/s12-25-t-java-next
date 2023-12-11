@@ -20,8 +20,8 @@ export default function ProductDescription({ product }: Props) {
   const router = useRouter();
 
   const handleAddToCart = (product: Product) => {
-    // add(product, counter);
-    // router.push("/cart");
+    add(product, counter);
+    router.push("/");
   };
 
   const { title, image, description, price } = product;
