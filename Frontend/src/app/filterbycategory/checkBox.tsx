@@ -1,13 +1,16 @@
 "use client"
 import Button from "@/components/Button";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { CheckboxIcon } from "./icons";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useSelectedItem } from "@/store/FilterSelected/filterSelected";
+
 
 export default function Checkbox({ subcategory }: { subcategory: string[] }) {
   const [checkedItems, setCheckedItems] = useState<boolean[]>(Array(subcategory.length).fill(false));
   const route = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams();
   const setSelectedItems = useSelectedItem((state) => state.setSelectedItems)
 
   if (!subcategory || subcategory.length === 0) {
@@ -18,15 +21,17 @@ export default function Checkbox({ subcategory }: { subcategory: string[] }) {
     newCheckedItems[index] = !newCheckedItems[index];
     setCheckedItems(newCheckedItems);
   };
+ 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const selectedItems = subcategory.filter((_, index) => checkedItems[index]);
     if (selectedItems.length > 0 && selectedItems.every(item => item.trim() !== ""))
     {
       setSelectedItems(selectedItems)
-      route.back();
+      route.back()
     }
   };
+  
 
   return (
     <form onSubmit={handleSubmit}>

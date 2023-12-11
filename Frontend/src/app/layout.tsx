@@ -1,5 +1,13 @@
+import { Metadata } from 'next'
 import { montserrat } from './fonts'
 import './globals.css'
+
+export const metadata: Metadata = {
+	title: {
+		default: 'AlaCartApp',
+		template: '%s | AlaCartApp',
+	},
+}
 
 export default function RootLayout({
 	children,
@@ -11,6 +19,7 @@ export default function RootLayout({
 			lang="es"
 			className={`${montserrat.variable}`}
 		>
+			<head />
 			<body>
 				<div className=" bg-whitebackground">{children}</div>
 			</body>

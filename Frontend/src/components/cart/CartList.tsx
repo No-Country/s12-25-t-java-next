@@ -1,9 +1,12 @@
 "use client";
-
+import { useRouter } from "next/navigation";
 import { useCartStore } from "@/store/cart";
+import { Product } from "@/types/Product";
+import { IOrderItem } from "@/types/order";
 import { format } from "@/utils/currency";
 import Image from "next/image";
 import Counter from "../Counter";
+import { useEffect } from "react";
 
 export const CartList = () => {
 	const { cart, add, remove, removeProduct } = useCartStore();
@@ -40,3 +43,6 @@ export const CartList = () => {
 		</div>
 	);
 };
+
+export default CartList;
+
