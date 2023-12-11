@@ -7,9 +7,10 @@ function MainContent() {
 				A la CartApp
 			</h1>
 			<div className="w-[30vw]">
-				<p className="text-lg md:text-[1.625rem] font-semibold text-font text-center px-5">
-					Optimiza la atención al cliente y simplifica la gestión de pedidos en tu
-					restaurante
+				<p className="text-lg leading-tight md:text-[1.625rem] font-medium text-font text-center px-5">
+					<span className="font-semibold">Optimiza la atención</span> al cliente y{' '}
+					<span className="font-semibold">simplifica la gestión</span> de pedidos en
+					tu restaurante
 				</p>
 				<Image
 					src="/images/eating.png"
