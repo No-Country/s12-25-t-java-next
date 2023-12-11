@@ -1,4 +1,4 @@
 function RegisterPage() {
-	return <div>RegisterPage</div>
+	return <div className="absolute top-0 bg-none">RegisterPage</div>
 }
 export default RegisterPage
