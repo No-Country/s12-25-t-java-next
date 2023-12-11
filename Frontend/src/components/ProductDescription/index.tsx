@@ -15,18 +15,19 @@ type Props = {
 };
 
 export default function ProductDescription({ product }: Props) {
-	const { quantityPerProduct } = useCartStore();
+	const { quantityPerProduct, add } = useCartStore();
 	const [count, setCount] = useState(1);
 
 	const router = useRouter();
 
 	const handleAddToCart = (product: Product) => {
-		// addToCart(product);
+		// add(product);
 		router.push("/cart");
 	};
 
-	const { title, image, description, price } = product;
+	const { name, images, description, price } = product;
 
+console.log(images[0].imageUrl)
 	return (
 		<div className="w-full h-screen overflow-hidden">
 			<button
@@ -38,8 +39,8 @@ export default function ProductDescription({ product }: Props) {
 			</button>
 			<div className="relative h-1/3">
 				<Image
-					alt={title}
-					src={image}
+					alt={name}
+					src={images[0].imageUrl}
 					fill
 					sizes="(min-width: 808px) 50vw, 100vw"
 					className="object-cover bottom-4"
@@ -48,7 +49,7 @@ export default function ProductDescription({ product }: Props) {
 			</div>
 			<div className="w-full h-full flex flex-col justify-between z-10 py-2 px-5">
 				<div className="w-full h-full flex text-font flex-col justify-start gap-2">
-					<h2 className="text-2xl font-semibold">{title}</h2>
+					<h2 className="text-2xl font-semibold">{name}</h2>
 					<p className="text-darkgrey text-sm">{description}</p>
 					<span className="font-bold text-lg">${price}</span>
 				</div>

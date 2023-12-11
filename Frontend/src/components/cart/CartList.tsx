@@ -1,20 +1,29 @@
 "use client";
-
+import { useRouter } from "next/navigation";
 import { useCartStore } from "@/store/cart";
 import { Product } from "@/types/Product";
-import { IOrderItem } from "@/types/order";
 import { format } from "@/utils/currency";
 import Image from "next/image";
 import Counter from "../Counter";
+import { useEffect } from 'react';
 
 interface Props {
   editable?: boolean;
-  products?: IOrderItem[];
+  products?: Product[];
 }
 
-export const CartList = ({ editable = false, products }: Props) => {
+ const CartList = ({ editable = false, products }: Props) => {
   const { cart, add, remove, removeProduct } = useCartStore();
+    const router = useRouter();
+  useEffect(() => {
+    if (cart.length === 0) {
+      router.replace("cart/empty");
+    }
+  }, [cart, router]);
 
+  if (cart.length === 0) {
+    return <></>;
+  }
   const onNewCartQuantityValue = (product: Product) => {
     add(product);
   };
@@ -27,13 +36,14 @@ export const CartList = ({ editable = false, products }: Props) => {
           key={product.id}
         >
           <div className="flex justify-between text-lg font-medium text-gray-900">
-            <h2>{product.title}</h2>
+            <h2>{product.name}</h2>
             <Image
               onClick={() => removeProduct(product.id)}
               src={"/icon/Trash.svg"}
               height={20}
               width={20}
               alt="delete"
+              className="h-[2rem]"
             />
           </div>
 
@@ -46,3 +56,5 @@ export const CartList = ({ editable = false, products }: Props) => {
     </div>
   );
 };
+
+export default CartList
