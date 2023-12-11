@@ -13,11 +13,11 @@ export interface SubCategory {
 export interface Qualifications {
   id: number;
   score: number;
-  product:  string;
+  product: string;
 }
 
-export interface IProduct extends Product{
-qualifications?:Qualifications
+export interface IProduct extends Product {
+  qualifications?: Qualifications;
 }
 
 export interface OrderDetail {
@@ -29,12 +29,12 @@ export interface OrderDetail {
 }
 export interface User {
   id: number;
-  name:  string;
-  email:  string;
+  name: string;
+  email: string;
   password: string;
-  lastName:  string;
-  state: boolean,
-  startDate:  string;
+  lastName: string;
+  state: boolean;
+  startDate: string;
 }
 export interface TableEntity {
   id: number;
@@ -46,8 +46,7 @@ export interface TableEntity {
 export interface Order {
   id: number;
   tableEntity: TableEntity;
-  date:  string;
-  updated?:  string;
-  detail:OrderDetail[];
-
+  date: string;
+  updated?: string;
+  detail: OrderDetail[];
 }

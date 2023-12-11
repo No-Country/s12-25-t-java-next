@@ -5,7 +5,7 @@ import HeaderBack from "@/components/Header/HeaderBack";
 const CartEmptyPage = () => {
   return (
     <div className="w-screen">
-        <HeaderBack  text="Carrito" />
+      <HeaderBack text="Carrito" />
       <CartEmpty />
     </div>
   );

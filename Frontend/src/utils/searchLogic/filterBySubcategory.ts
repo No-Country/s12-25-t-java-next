@@ -1,12 +1,11 @@
-import { Product } from '@/types/Product';
-import unorm from 'unorm';
+import { Product } from "@/types/Product";
+import unorm from "unorm";
 
 export function filterProductsBySubcategory(
   subcategory: string,
   productsByCategory: Product[],
-  searchParams?: { query: string | undefined }
+  searchParams?: { query: string | undefined },
 ): Product[] {
-  
   const filteredProductsBySubcategory = productsByCategory.filter((product) => {
     const sensitiveSearchParams = unorm
       .nfd(searchParams?.query?.toLowerCase() || "")
@@ -19,7 +18,10 @@ export function filterProductsBySubcategory(
       ?.toLowerCase()
       .includes(sensitiveSearchParams);
 
-    return product.subCategory.name === subcategory && (nameMatch || descriptionMatch);
+    return (
+      product.subCategory.name === subcategory &&
+      (nameMatch || descriptionMatch)
+    );
   });
 
   return filteredProductsBySubcategory;
@@ -27,9 +29,8 @@ export function filterProductsBySubcategory(
 
 export function filterProducts(
   productsByCategory: Product[],
-  searchParams?: { query: string | undefined, sort: string | undefined  }
+  searchParams?: { query: string | undefined; sort: string | undefined },
 ): Product[] {
-    
   return productsByCategory.filter((product) => {
     const subcategoryMatch = product.subCategory.name === searchParams?.sort;
 
@@ -44,9 +45,6 @@ export function filterProducts(
       ?.toLowerCase()
       .includes(sensitiveSearchParams);
 
-    return subcategoryMatch
-      ? nameMatch || descriptionMatch
-      : false;
+    return subcategoryMatch ? nameMatch || descriptionMatch : false;
   });
 }
-
