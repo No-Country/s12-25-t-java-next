@@ -11,14 +11,16 @@ type CartStore = {
   quantity: () => number;
   quantityPerProduct: (idProduct: string) => number;
   subtotal: () => number;
-  add: (product: Product) => void;
+  add: (product: Product, quantity?: number) => void;
   remove: (idProduct: string) => void;
   removeProduct: (idProduct: string) => void;
   removeAll: () => void;
 };
+
 const addDecimal = (a: number, b: number) => {
   return parseFloat((a + b).toFixed(2));
 };
+
 export const useCartStore = create(
   persist<CartStore>(
     (set, get) => ({
@@ -37,8 +39,8 @@ export const useCartStore = create(
           return cart
             .filter((item) => item.id === idProduct)
             .map((item) => item.quantity)
-            .reduce((prev, curr) => prev + curr, 1);
-        return 1;
+            .reduce((prev, curr) => prev + curr, 0);
+        return 0;
       },
       subtotal: () => {
         const { cart } = get();
@@ -52,9 +54,9 @@ export const useCartStore = create(
         }
         return 1;
       },
-      add: (product: Product) => {
+      add: (product: Product, quantity?: number) => {
         const { cart } = get();
-        const updatedCart = updateCart(product, cart);
+        const updatedCart = updateCart(product, cart, quantity);
         set({ cart: updatedCart });
       },
       remove: (idProduct: string) => {
@@ -75,8 +77,12 @@ export const useCartStore = create(
   ),
 );
 
-function updateCart(product: Product, cart: CartItem[]): CartItem[] {
-  const cartItem = { ...product, quantity: 1 } as CartItem;
+function updateCart(
+  product: Product,
+  cart: CartItem[],
+  quantity = 1,
+): CartItem[] {
+  const cartItem = { ...product, quantity: quantity } as CartItem;
 
   const productOnCart = cart.map((item) => item.id).includes(product.id);
 
