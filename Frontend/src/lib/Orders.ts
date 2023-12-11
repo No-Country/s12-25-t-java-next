@@ -2,7 +2,7 @@ import { Order } from '@/types/order';
 import 'server-only'
 
 
-const baseUrl = process.env.API_URL;
+const baseUrl = process.env.BASE_URL;
 export async function getOrders(): Promise<Order[]> {
 	const url = `${baseUrl}/api/order`
 	const res = await fetch(url, { cache: 'no-cache' })
