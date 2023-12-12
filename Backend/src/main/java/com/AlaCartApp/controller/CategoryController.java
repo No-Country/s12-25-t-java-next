@@ -36,7 +36,7 @@ public class CategoryController {
         return new ResponseEntity<>("There are no categories unavailable", HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping
+    @GetMapping("/all")
     private ResponseEntity<?> findAll(){
         return new ResponseEntity<>(categoryServiceImp.findAll(), HttpStatus.OK);
     }
