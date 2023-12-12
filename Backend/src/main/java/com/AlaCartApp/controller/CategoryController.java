@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/category")
+@RequestMapping("/categories")
 @RequiredArgsConstructor
 public class CategoryController {
 
@@ -36,7 +36,7 @@ public class CategoryController {
         return new ResponseEntity<>("There are no categories unavailable", HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping("/all")
+    @GetMapping
     private ResponseEntity<?> findAll(){
         return new ResponseEntity<>(categoryServiceImp.findAll(), HttpStatus.OK);
     }
