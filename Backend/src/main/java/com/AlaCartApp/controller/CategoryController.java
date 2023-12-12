@@ -57,14 +57,14 @@ public class CategoryController {
     }
 
     @PostMapping("/change-name")
-    public ResponseEntity<?> changeName(@RequestBody @NotBlank String name, @RequestBody @NotBlank Long id){
+    public ResponseEntity<?> changeName(@RequestParam @NotBlank String name, @RequestParam @NotBlank Long id){
         CategoryDto category = categoryServiceImp.changeName(name,id);
         if (category != null) return new ResponseEntity<>(category, HttpStatus.OK);
         return new ResponseEntity<>("category not found", HttpStatus.NOT_FOUND);
     }
 
     @PostMapping("/change-available")
-    public ResponseEntity<?> changeAvailable(@RequestBody @NotBlank Boolean available, @RequestBody @NotBlank Long id){
+    public ResponseEntity<?> changeAvailable(@RequestParam @NotBlank Boolean available, @RequestParam @NotBlank Long id){
         CategoryDto category;
         if (available) {
             category = categoryServiceImp.makeAvailable(id);
