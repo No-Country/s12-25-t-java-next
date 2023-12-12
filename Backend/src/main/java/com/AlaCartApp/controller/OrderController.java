@@ -26,7 +26,7 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping
-    public ResponseEntity<Order> createOrderWithDetails(@RequestBody OrderDto orderDto) {
+    public ResponseEntity<OrderDto> createOrderWithDetails(@RequestBody OrderDto orderDto) {
         return ResponseEntity.ok(orderService.create(orderDto));
     }
 
@@ -37,8 +37,8 @@ public class OrderController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity<Order> updateOrder(@PathVariable Long id, @RequestBody Order order) {
-        return ResponseEntity.ok(orderService.update(id, order));
+    public ResponseEntity<OrderDto> updateOrder(@PathVariable Long id, @RequestBody OrderDto orderDto) {
+        return ResponseEntity.ok(orderService.update(id, orderDto));
     }
 
     @DeleteMapping("/{id}")
@@ -50,7 +50,7 @@ public class OrderController {
 
     @GetMapping("/{id}")
     @Transactional
-    public ResponseEntity<Order> returnOrder(@PathVariable Long id){
+    public ResponseEntity<OrderDto> returnOrder(@PathVariable Long id){
         return ResponseEntity.ok(orderService.find(id));
     }
 }

@@ -9,11 +9,11 @@ import java.util.List;
 public interface OrderService {
     List<OrderDto> findAll();
 
-    Order create(OrderDto orderDto);
+    OrderDto create(OrderDto orderDto);
 
-    Order update(Long id, Order order);
+    OrderDto update(Long id, OrderDto orderDto);
 
     void delete(Long id);
 
-    Order find(Long id);
+    OrderDto find(Long id);
 }

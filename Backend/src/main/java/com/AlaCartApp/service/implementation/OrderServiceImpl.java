@@ -45,7 +45,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order create(OrderDto orderDto) {
+    public OrderDto create(OrderDto orderDto) {
         orderDto.setDate(LocalDateTime.now());
         List<OrderDetail> listOrderDetail = new ArrayList<>();
         listOrderDetail = orderDto.getDetail();
@@ -61,20 +61,22 @@ public class OrderServiceImpl implements OrderService {
         Order order = orderRepository.save(orderMapper.toOrder(orderDto));
         listOrderDetail.forEach(orderDetail -> orderDetail.setOrder(order));
         listOrderDetail.forEach(orderDetail -> orderDetailRepository.save(orderDetail));
-        return orderRepository.findById(order.getId()).get();
+        return orderMapper.toOrderDTO(orderRepository.findById(order.getId()).get());
     }
 
     @Override
-    public Order update(Long id, Order order) {
+    public OrderDto update(Long id, OrderDto orderDto) {
         Optional<Order> orderSaved = orderRepository.findById(id);
+        Order order = orderMapper.toOrder(orderDto);
         if(orderSaved.isPresent()){
             Order updateOrder = orderSaved.get();
             updateOrder.setState(order.getState());
             updateOrder.setTotal(order.getTotal());
             updateOrder.setPaymentMethod(order.getPaymentMethod());
             updateOrder.setTableEntity(order.getTableEntity());
+            //Por revisar OJO
             updateOrder.setDetail(order.getDetail());
-            return orderRepository.save(updateOrder);
+            return orderMapper.toOrderDTO(orderRepository.save(updateOrder));
         }else{
             throw new ResourceNotFoundException("Order not found with id: " + id);
         }
@@ -84,17 +86,18 @@ public class OrderServiceImpl implements OrderService {
     public void delete(Long id) {
         Optional<Order> orderSaved = orderRepository.findById(id);
         if(orderSaved.isPresent()){
-            orderRepository.deleteById(id);
+            orderSaved.get().setState(State.REJECTED);
+            orderRepository.save(orderSaved.get());
         }else{
             throw new ResourceNotFoundException("Order not found with id: " + id);
         }
     }
 
     @Override
-    public Order find(Long id) {
+    public OrderDto find(Long id) {
         Optional<Order> orderSaved = orderRepository.findById(id);
         if(orderSaved.isPresent()){
-            return orderSaved.get();
+            return orderMapper.toOrderDTO(orderSaved.get());
         }else{
             throw new ResourceNotFoundException("Order not found with id: " + id);
         }
