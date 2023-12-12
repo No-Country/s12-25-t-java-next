@@ -1,7 +1,13 @@
+'use client'
+
 import Button from '@/components/Button'
 import CardErrorSvg from './CardErrorSvg'
+import { useNotifyStore } from '@/store/zustand'
+import Notification from '../Modal/Notification'
 
 function PaymentError() {
+  // TODO: finish waiter notification
+
   return (
     <div className='w-full h-full py-10 px-4 flex flex-col items-center justify-between gap-2'>
       <div className='text-center flex flex-col my-8 items-center justify-center gap-4'>
@@ -14,6 +20,7 @@ function PaymentError() {
         <Button variant='primary' text='Reintentar pago' cn='w-full' />
         <Button variant='outline' text='Llamar al mesero' cn='w-full' />
       </div>
+      {/* <Notification /> */}
     </div>
   )
 }
