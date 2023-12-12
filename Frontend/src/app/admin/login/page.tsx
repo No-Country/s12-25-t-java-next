@@ -11,16 +11,23 @@ function LoginPage() {
 
 	return (
 		<div className="absolute w-1/3 h-[35rem] rounded-xl shadow-form bg-white right-[6.5vw] top-1/4 bg-none">
-			<h2>Inicia Sesión</h2>
-			<p>
-				¿Eres un usuario nuevo? <a>Crear una cuenta</a>
+			<h2 className="text-3xl font-semibold text-font">Inicia Sesión</h2>
+			<p className="text-xs font-normal">
+				¿Eres un usuario nuevo?{' '}
+				<a className="text-secondary-100 underline">Crear una cuenta</a>
 			</p>
 			<form onSubmit={handleSubmit}>
-				<div>
-					<input placeholder="Usuario o Correo Electrónico"></input>
+				<div className="flex w-2/3 h-10 border border-[#666] rounded-lg py-3 pl-5 items-center">
+					<input
+						placeholder="Usuario o Correo Electrónico"
+						className="w-full text-xs font-normal placeholder-[#666]"
+					/>
 				</div>
-				<div>
-					<input placeholder="Contraseña"></input>
+				<div className="flex w-2/3 h-10 border border-[#666] rounded-lg py-3 pl-5 items-center">
+					<input
+						placeholder="Contraseña"
+						className="w-64 text-xs font-normal placeholder-[#666]"
+					/>
 					<button
 						type="button"
 						onClick={() => {
