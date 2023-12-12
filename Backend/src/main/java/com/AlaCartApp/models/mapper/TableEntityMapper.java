@@ -15,7 +15,6 @@ public interface TableEntityMapper {
     @Mapping(source = "number", target = "number")
     @Mapping(source = "capacity", target = "capacity")
     @Mapping(source = "state", target = "state")
-    @Mapping(source = "user", target = "user")
 
     TableEntityDto toTableEntityDTO(TableEntity tableEntity);
     List<TableEntityDto> toTableEntitiesDTO(List<TableEntity> entities);

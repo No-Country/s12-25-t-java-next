@@ -1,6 +1,7 @@
 package com.AlaCartApp.controller;
 
 import com.AlaCartApp.models.entity.Order;
+import com.AlaCartApp.models.request.OrderDto;
 import com.AlaCartApp.service.abstraction.OrderService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -25,12 +26,12 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping
-    public ResponseEntity<Order> createOrderWithDetails(@RequestBody Order order) {
-        return ResponseEntity.ok(orderService.create(order));
+    public ResponseEntity<Order> createOrderWithDetails(@RequestBody OrderDto orderDto) {
+        return ResponseEntity.ok(orderService.create(orderDto));
     }
 
     @GetMapping
-    public ResponseEntity<List<Order>> ListOrder() {
+    public ResponseEntity<List<OrderDto>> ListOrder() {
         return ResponseEntity.ok(orderService.findAll());
     }
 

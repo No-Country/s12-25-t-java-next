@@ -1,4 +1,9 @@
 package com.AlaCartApp.enums;
 
-public class State {
+public enum State {
+    INIT,
+    PRODUCTION,
+    SERVED,
+    PAID,
+    REJECTED
 }
