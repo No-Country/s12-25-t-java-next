@@ -10,7 +10,7 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOriginPatterns("*")
+                .allowedOriginPatterns("https://alacartapp-production.up.railway.app/**")
                 .allowedMethods("*")
                 .allowedHeaders("*")
                 .allowCredentials(false);
