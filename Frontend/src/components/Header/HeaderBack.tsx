@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import { HeaderBackIcon } from "./icons";
 import { useCartStore } from "@/store/cart";
+import { DeleteOrdersPopup } from "../Popup/DeleteOrdersPopup";
 
 export default function HeaderBack({
   text,
@@ -30,15 +31,7 @@ export default function HeaderBack({
       </div>
 
       {children}
-      {editable && (
-        <button
-          type="button"
-          onClick={() => removeAll()}
-          className="font-semibold text-black pr-4"
-        >
-          Vaciar
-        </button>
-      )}
+      <DeleteOrdersPopup />
     </header>
   );
 }
