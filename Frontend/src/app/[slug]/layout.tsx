@@ -4,7 +4,6 @@ import Search from "@/components/FilterProducts/search";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { getProducts } from "@/lib/Products";
-import { IProduct } from "@/types/order";
 import React from "react";
 import NoProducts from "@/components/Products/NoProducts";
 
@@ -22,7 +21,6 @@ async function MenuLayout({ children }: { children: React.ReactNode }) {
   return (
     <div>
       <Header />
-      <FilterProducts categories={categories} />
       {categories.length > 0 && <FilterProducts categories={categories} />}
       {products.length > 0 ? (
         <>
@@ -41,3 +39,4 @@ async function MenuLayout({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
+export default MenuLayout
