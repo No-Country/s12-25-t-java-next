@@ -73,13 +73,13 @@ const FooterCart = () => {
   }
 
   return (
-    <footer className=' fixed bottom-0  px-4 py-3 w-screen'>
-      <div className='flex justify-between items-center'>
+    <footer className=" fixed bottom-0 z-[1] px-4 py-3 w-screen">
+      <div className="flex justify-between items-center">
         <button
-          type='button'
-          className='border-2 w-[10.3rem] h-[2.5rem] text-[0.75rem] border-primary-100 px-5 py-2 font-medium rounded-[1.3rem]'
+          type="button"
+          className="border-2 w-[10.3rem] h-[2.5rem] text-[0.75rem] border-primary-100 px-[1.3125rem] py-[0.625rem] font-medium rounded-[1.3rem]"
         >
-          Ver Ticket
+          Ver Factura
         </button>
         <button
           onClick={handleOrder}

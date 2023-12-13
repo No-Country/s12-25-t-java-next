@@ -1,17 +1,22 @@
-'use client'
+"use client";
 
 import { useRouter } from 'next/navigation'
 import { useCartStore } from '@/store/cart'
 // import { Product } from "@/types/Product";
 // import { IOrderItem } from "@/types/order";
-import { format } from '@/utils/currency'
-import Image from 'next/image'
-import Counter from '../Counter'
-// import { useEffect } from "react";
+import { format } from "@/utils/currency";
+import Image from "next/image";
+import Counter from "../Counter";
+import { useEffect } from "react";
 
 export const CartList = () => {
-  const { cart, add, remove, removeProduct } = useCartStore()
-
+  const { cart, add, remove, removeProduct } = useCartStore();
+const router =useRouter();
+  useEffect(() => {
+    if ( cart.length === 0) {
+      router.replace("cart/empty");
+    }
+  }, [ cart, router]);
   return (
     <div>
       {cart.map(product => (
