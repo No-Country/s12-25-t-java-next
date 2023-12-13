@@ -13,6 +13,7 @@ module.exports = {
         100: "#FF6711",
         200: "#D9560C",
         300: "#FF8B4A",
+        400: "#FFE5D6"
       },
       // Blue
       secondary: {
@@ -33,6 +34,8 @@ module.exports = {
       grey: "#9F9F9F",
       lightgrey: "#D9D9D9",
       whitebackground: "#F4F4F4",
+       whiteAdminBackground: "#FBFBFB",
+      whiteSidebar: '#F6F5F5',
       error: "#FF3B30",
     },
     extend: {
