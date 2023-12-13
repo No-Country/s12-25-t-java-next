@@ -41,7 +41,7 @@ const BreadCrumbs = ({ title }: Props) => {
       {/* <!-- Hamburger Toggle BTN --> */}
 
       {/* Tittle page */}
-      <h2>{title}</h2>
+      <h2 className="text-[1.375rem] font-semibold">{title}</h2>
     </div>
   );
 };
