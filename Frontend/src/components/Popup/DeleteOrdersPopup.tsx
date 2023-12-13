@@ -1,30 +1,37 @@
-import { useState } from 'react'
-import { Popup } from './Popup'
+import { useState } from "react";
+import { Popup } from "./Popup";
+import { useCartStore } from "@/store/cart";
 
 export const DeleteOrdersPopup = () => {
-  const [isShowing, setIsShowing] = useState(false)
+  const [isShowing, setIsShowing] = useState(false);
+  const removeAll = useCartStore((state) => state.removeAll);
 
   const confirm = () => {
-    // Todo para Ysis: Logica para vaciar el carrito
-  }
+    removeAll();
+    setIsShowing(false);
+  };
 
   return (
     <>
-      {/* <button type="button" onClick={() => setIsShowing(true)}>
+      <button
+        type="button"
+        onClick={() => setIsShowing(true)}
+        className="font-semibold text-black pr-4"
+      >
         Vaciar
-      </button> */}
+      </button>
 
       <Popup
-        title='Ops!'
+        title="Ops!"
         onCancel={() => setIsShowing(false)}
-        cancelText='Cancelar'
+        cancelText="Cancelar"
         onConfirm={confirm}
-        confirmText='Si, eliminar'
+        confirmText="Si, eliminar"
         show={isShowing}
-        color='primary'
+        color="primary"
       >
         ¿Estás seguro que deseas eliminar todos los productos del carrito?
       </Popup>
     </>
-  )
-}
+  );
+};
