@@ -1,9 +1,6 @@
 import ProductDescription from '@/components/ProductDescription'
 import { getProductById } from '@/lib/Products'
 import React from 'react'
-import ProductDescription from '@/components/ProductDescription'
-import { getProductById } from '@/lib/Products'
-import React from 'react'
 
 const ProductPage = async ({ params }: { params: { slug: string } }) => {
 	const product = await getProductById(params.slug)
@@ -14,5 +11,4 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
 	)
 }
 
-export default ProductPage
 export default ProductPage

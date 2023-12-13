@@ -69,4 +69,3 @@ async function MenuPage({ params, searchParams }: MenuPageProps) {
 	)
 }
 export default MenuPage
-export default MenuPage
