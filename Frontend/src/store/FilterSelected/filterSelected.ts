@@ -1,4 +1,4 @@
-import {create} from 'zustand';
+import { create } from "zustand";
 
 interface MyStore {
   selectedItems: string[];
@@ -10,5 +10,7 @@ export const useSelectedItem = create<MyStore>((set) => ({
   selectedItems: [],
   setSelectedItems: (items) => set({ selectedItems: items }),
   removeSelectedItem: (item) =>
-    set((state) => ({ selectedItems: state.selectedItems.filter((i) => i !== item) })),
+    set((state) => ({
+      selectedItems: state.selectedItems.filter((i) => i !== item),
+    })),
 }));

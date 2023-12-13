@@ -1,23 +1,16 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useCartStore } from "@/store/cart";
-import { Product } from "@/types/Product";
-import { IOrderItem } from "@/types/order";
+// import { Product } from "@/types/Product";
+// import { IOrderItem } from "@/types/order";
 import { format } from "@/utils/currency";
 import Image from "next/image";
 import Counter from "../Counter";
+// import { useEffect } from "react";
 
-interface Props {
-  editable?: boolean;
-  products?: IOrderItem[];
-}
-
-export const CartList = ({ editable = false, products }: Props) => {
+export const CartList = () => {
   const { cart, add, remove, removeProduct } = useCartStore();
-
-  const onNewCartQuantityValue = (product: Product) => {
-    add(product);
-  };
 
   return (
     <div>
@@ -27,7 +20,7 @@ export const CartList = ({ editable = false, products }: Props) => {
           key={product.id}
         >
           <div className="flex justify-between text-lg font-medium text-gray-900">
-            <h2>{product.title}</h2>
+            <h2>{product.name}</h2>
             <Image
               onClick={() => removeProduct(product.id)}
               src={"/icon/Trash.svg"}
@@ -38,11 +31,18 @@ export const CartList = ({ editable = false, products }: Props) => {
           </div>
 
           <div className="flex mt-2 items-end justify-between text-lg font-semibold">
-            <p className="">{format(product.price)}</p>
-            <Counter product={product} sm />
+            <p className="">{format(product.price * product.quantity)}</p>
+            <Counter
+              counter={product.quantity}
+              handleAdd={() => add(product)}
+              handleRemove={() => remove(product.id)}
+              sm
+            />
           </div>
         </div>
       ))}
     </div>
   );
 };
+
+export default CartList
