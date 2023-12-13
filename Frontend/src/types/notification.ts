@@ -1,5 +1,5 @@
-import React from 'react';
+import React from 'react'
 export type MessageNotification = {
-  text: React.ReactNode; 
-  svg: string;
-};
+  text: React.ReactNode
+  svg: string
+}

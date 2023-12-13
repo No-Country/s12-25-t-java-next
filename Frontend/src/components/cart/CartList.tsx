@@ -1,60 +1,60 @@
-"use client";
-import { useRouter } from "next/navigation";
-import { useCartStore } from "@/store/cart";
-import { Product } from "@/types/Product";
-import { format } from "@/utils/currency";
-import Image from "next/image";
-import Counter from "../Counter";
-import { useEffect } from 'react';
+'use client'
+import { useRouter } from 'next/navigation'
+import { useCartStore } from '@/store/cart'
+import { Product } from '@/types/Product'
+import { format } from '@/utils/currency'
+import Image from 'next/image'
+import Counter from '../Counter'
+import { useEffect } from 'react'
 
 interface Props {
-  editable?: boolean;
-  products?: Product[];
+  editable?: boolean
+  products?: Product[]
 }
 
- const CartList = ({ editable = false, products }: Props) => {
-  const { cart, add, remove, removeProduct } = useCartStore();
-    const router = useRouter();
+const CartList = ({ editable = false, products }: Props) => {
+  const { cart, add, remove, removeProduct } = useCartStore()
+  const router = useRouter()
   useEffect(() => {
     if (cart.length === 0) {
-      router.replace("cart/empty");
+      router.replace('cart/empty')
     }
-  }, [cart, router]);
+  }, [cart, router])
 
   if (cart.length === 0) {
-    return <></>;
+    return <></>
   }
   const onNewCartQuantityValue = (product: Product) => {
-    add(product);
-  };
+    add(product)
+  }
 
   return (
     <div>
-      {cart.map((product) => (
+      {cart.map(product => (
         <div
-          className="mx-4 py-5 flex flex-col bottom-1 border-b-[1px] border-grey"
+          className='mx-4 py-5 flex flex-col bottom-1 border-b-[1px] border-grey'
           key={product.id}
         >
-          <div className="flex justify-between text-lg font-medium text-gray-900">
+          <div className='flex justify-between text-lg font-medium text-gray-900'>
             <h2>{product.name}</h2>
             <Image
               onClick={() => removeProduct(product.id)}
-              src={"/icon/Trash.svg"}
+              src={'/icon/Trash.svg'}
               height={20}
               width={20}
-              alt="delete"
-              className="h-[2rem]"
+              alt='delete'
+              className='h-[2rem]'
             />
           </div>
 
-          <div className="flex mt-2 items-end justify-between text-lg font-semibold">
-            <p className="">{format(product.price)}</p>
+          <div className='flex mt-2 items-end justify-between text-lg font-semibold'>
+            <p className=''>{format(product.price)}</p>
             <Counter product={product} sm />
           </div>
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
 export default CartList

@@ -7,20 +7,20 @@ import { IProduct } from '@/types/order'
 import React from 'react'
 
 async function MenuLayout({ children }: { children: React.ReactNode }) {
-	const products  = await getProducts()
-	console.log("prueba")
-	console.log("productos",products)
-	const categories = [
-		...new Set(products.map((product) => product.category.name.toLowerCase())),
-	]
-	return (
-		<div>
-			<Header />
-			<FilterProducts categories={categories} />
-			<Search />
-			{children}
-			<Footer />
-		</div>
-	)
+  const products = await getProducts()
+  console.log('prueba')
+  console.log('productos', products)
+  const categories = [
+    ...new Set(products.map(product => product.category.name.toLowerCase())),
+  ]
+  return (
+    <div>
+      <Header />
+      <FilterProducts categories={categories} />
+      <Search />
+      {children}
+      <Footer />
+    </div>
+  )
 }
 export default MenuLayout

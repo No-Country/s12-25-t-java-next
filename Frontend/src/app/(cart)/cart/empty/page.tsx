@@ -1,14 +1,14 @@
-import React from "react";
-import CartEmpty from "@/components/cart/CartEmpty";
-import HeaderBack from "@/components/Header/HeaderBack";
+import React from 'react'
+import CartEmpty from '@/components/cart/CartEmpty'
+import HeaderBack from '@/components/Header/HeaderBack'
 
 const CartEmptyPage = () => {
   return (
-    <div className="w-screen">
-        <HeaderBack  text="Carrito" />
+    <div className='w-screen'>
+      <HeaderBack text='Carrito' />
       <CartEmpty />
     </div>
-  );
-};
+  )
+}
 
-export default CartEmptyPage;
+export default CartEmptyPage
