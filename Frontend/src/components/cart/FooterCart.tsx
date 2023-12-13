@@ -1,16 +1,14 @@
-"use client";
+'use client'
 
-import React, { useEffect, useState, lazy, Suspense } from "react";
-import { useCartStore } from "@/store/cart";
-import { useNotifyStore } from "@/store/zustand";
+import React, { useEffect, useState, lazy, Suspense } from 'react'
+import { useCartStore } from '@/store/cart'
+import { useNotifyStore } from '@/store/zustand'
 
-import { Order, OrderDetail } from "../../types/order";
+import { Order, OrderDetail } from '../../types/order'
 
 const FooterCart = () => {
-  const { cart,  subtotal } = useCartStore();
-  const { add, setShowMessageBoolean } = useNotifyStore();
-
-
+  const { cart, subtotal } = useCartStore()
+  const { add, setShowMessageBoolean } = useNotifyStore()
 
   const handleNotification = () => {
     setTimeout(() => {
@@ -32,7 +30,7 @@ const FooterCart = () => {
     capacity: 10,
     state: true,
     user: userDetail,
-  };
+  }
   const orderDetail: OrderDetail[] = Array.isArray(cart)
     ? cart.map((item, key) => {
         return {
@@ -41,16 +39,16 @@ const FooterCart = () => {
           product: { ...item, quantity: undefined }, // Excluir la propiedad 'quantity'
           price: item.quantity * item.price,
           quantity: item.quantity,
-        };
+        }
       })
-    : [];
+    : []
 
   const handleOrder = () => {
-    console.log("orden detail", orderDetail);
+    console.log('orden detail', orderDetail)
     const orderData: Order = {
       id: 1,
       tableEntity,
-      date: "05012022",
+      date: '05012022',
       detail: orderDetail,
     }
     console.log('order', orderData)
@@ -95,4 +93,4 @@ const FooterCart = () => {
   )
 }
 
-export default FooterCart;
+export default FooterCart

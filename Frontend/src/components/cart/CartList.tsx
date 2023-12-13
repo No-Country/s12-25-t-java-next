@@ -1,16 +1,16 @@
-"use client";
+'use client'
 
-import { useRouter } from "next/navigation";
-import { useCartStore } from "@/store/cart";
+import { useRouter } from 'next/navigation'
+import { useCartStore } from '@/store/cart'
 // import { Product } from "@/types/Product";
 // import { IOrderItem } from "@/types/order";
-import { format } from "@/utils/currency";
-import Image from "next/image";
-import Counter from "../Counter";
+import { format } from '@/utils/currency'
+import Image from 'next/image'
+import Counter from '../Counter'
 // import { useEffect } from "react";
 
 export const CartList = () => {
-  const { cart, add, remove, removeProduct } = useCartStore();
+  const { cart, add, remove, removeProduct } = useCartStore()
 
   return (
     <div>
@@ -26,12 +26,12 @@ export const CartList = () => {
               src={'/icon/Trash.svg'}
               height={20}
               width={20}
-              alt="delete"
+              alt='delete'
             />
           </div>
 
-          <div className="flex mt-2 items-end justify-between text-lg font-semibold">
-            <p className="">{format(product.price * product.quantity)}</p>
+          <div className='flex mt-2 items-end justify-between text-lg font-semibold'>
+            <p className=''>{format(product.price * product.quantity)}</p>
             <Counter
               counter={product.quantity}
               handleAdd={() => add(product)}

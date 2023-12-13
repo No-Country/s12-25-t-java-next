@@ -1,11 +1,11 @@
-import Image from "next/image";
+import Image from 'next/image'
 
 type Props = {
-  sm?: boolean;
-  counter: number;
-  handleAdd: () => void;
-  handleRemove: () => void;
-};
+  sm?: boolean
+  counter: number
+  handleAdd: () => void
+  handleRemove: () => void
+}
 
 export default function Counter({
   sm = false,
@@ -39,5 +39,5 @@ export default function Counter({
         <Image width={32} height={32} src={'/plusIcon.svg'} alt='minus icon' />
       </button>
     </div>
-  );
+  )
 }

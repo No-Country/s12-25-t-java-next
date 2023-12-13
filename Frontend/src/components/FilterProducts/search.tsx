@@ -1,8 +1,8 @@
-"use client";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import FilterButton from "./filterButton";
-import { SearchIcon } from "./icons";
-import { useDebouncedCallback } from "use-debounce";
+'use client'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import FilterButton from './filterButton'
+import { SearchIcon } from './icons'
+import { useDebouncedCallback } from 'use-debounce'
 
 export default function Search() {
   const searchParams = useSearchParams()
@@ -10,14 +10,14 @@ export default function Search() {
   const { replace } = useRouter()
 
   const handleSearch = useDebouncedCallback((term: string) => {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(searchParams)
     if (term) {
       params.set('query', term)
     } else {
       params.delete('query')
     }
-    replace(`${pathname}?${params.toString()}`);
-  }, 300);
+    replace(`${pathname}?${params.toString()}`)
+  }, 300)
 
   return (
     <section className='flex flex-row items-center gap-x-2 mt-4 mb-2 px-4 w-full'>

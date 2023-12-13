@@ -1,7 +1,7 @@
-import FilterSelected from "@/components/FilterProducts/filterSelected";
-import ProductsList from "@/components/Products/ProductsList";
-import { Product } from "@/types/Product";
-import { productsAndSubcats } from "@/utils/productBreakdown";
+import FilterSelected from '@/components/FilterProducts/filterSelected'
+import ProductsList from '@/components/Products/ProductsList'
+import { Product } from '@/types/Product'
+import { productsAndSubcats } from '@/utils/productBreakdown'
 import {
   filterProducts,
   filterProductsBySubcategory,
@@ -66,4 +66,4 @@ async function MenuPage({ params, searchParams }: MenuPageProps) {
     </>
   )
 }
-export default MenuPage;
+export default MenuPage

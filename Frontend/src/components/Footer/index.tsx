@@ -1,21 +1,21 @@
-"use client";
-import Image from "next/image";
-import { CallWaiterPopup } from "../Popup/CallWaiterPopup";
-import Link from "next/link";
-import { useCartStore } from "@/store/cart";
-import { useEffect, useState } from "react";
+'use client'
+import Image from 'next/image'
+import { CallWaiterPopup } from '../Popup/CallWaiterPopup'
+import Link from 'next/link'
+import { useCartStore } from '@/store/cart'
+import { useEffect, useState } from 'react'
 
 const Footer = () => {
-  const { quantity } = useCartStore();
-  const [totalCart, setTotalCart] = useState(0);
+  const { quantity } = useCartStore()
+  const [totalCart, setTotalCart] = useState(0)
 
   // FIX: jump at start
 
   useEffect(() => {
     if (quantity) {
-      setTotalCart(quantity);
+      setTotalCart(quantity)
     }
-  }, [quantity]);
+  }, [quantity])
 
   return (
     <footer className='sticky bottom-[0] z-[99] w-screen px-4 py-6 bg-white shadow-footer overflow-hidden'>
@@ -33,7 +33,7 @@ const Footer = () => {
               alt='add to cart'
               className='pr-2'
             />
-            Carrito {totalCart ? `(${totalCart})` : ""}
+            Carrito {totalCart ? `(${totalCart})` : ''}
           </button>
         </Link>
       </div>

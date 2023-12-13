@@ -11,5 +11,5 @@ export const format = (value: number) => {
 }
 
 export const addDecimals = (num: number) => {
-  return (Math.round(num * 100) / 100).toFixed(2);
-};
+  return (Math.round(num * 100) / 100).toFixed(2)
+}
