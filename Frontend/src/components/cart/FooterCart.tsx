@@ -1,22 +1,17 @@
-'use client'
-import React, { useEffect, useState, lazy, Suspense } from 'react'
-import { useCartStore } from '@/store/cart'
-import { useNotifyStore } from '@/store/zustand'
+"use client";
 
-import { Order, OrderDetail } from '../../types/order'
-import Divider from '../Footer/Divider'
+import React, { useEffect, useState, lazy, Suspense } from "react";
+import { useCartStore } from "@/store/cart";
+import { useNotifyStore } from "@/store/zustand";
+
+import { Order, OrderDetail } from "../../types/order";
 
 const FooterCart = () => {
-  const { cart, removeAll, subtotal } = useCartStore()
-  const { add, setShowMessageBoolean } = useNotifyStore()
-  // useEffect(() => {
-  //     setIsClient(true);
-  //   }, []);
+  const { cart,  subtotal } = useCartStore();
+  const { add, setShowMessageBoolean } = useNotifyStore();
 
-  useEffect(() => {
-    subtotal()
-  }, [cart, subtotal])
-  const cartSubtotal = subtotal()
+
+
   const handleNotification = () => {
     setTimeout(() => {
       setShowMessageBoolean(false)
@@ -37,25 +32,25 @@ const FooterCart = () => {
     capacity: 10,
     state: true,
     user: userDetail,
-  }
+  };
   const orderDetail: OrderDetail[] = Array.isArray(cart)
     ? cart.map((item, key) => {
         return {
           id: key + 1,
-          order: 'order' + (key + 1),
+          order: `order${key + 1}`,
           product: { ...item, quantity: undefined }, // Excluir la propiedad 'quantity'
           price: item.quantity * item.price,
           quantity: item.quantity,
-        }
+        };
       })
-    : []
+    : [];
 
   const handleOrder = () => {
-    console.log('orden detail', orderDetail)
+    console.log("orden detail", orderDetail);
     const orderData: Order = {
       id: 1,
       tableEntity,
-      date: '05012022',
+      date: "05012022",
       detail: orderDetail,
     }
     console.log('order', orderData)
@@ -96,10 +91,8 @@ const FooterCart = () => {
           Realizar pedido
         </button>
       </div>
-
-      <Divider />
     </footer>
   )
 }
 
-export default FooterCart
+export default FooterCart;

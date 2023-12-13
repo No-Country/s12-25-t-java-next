@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import { Popup } from './Popup'
+import { useState } from "react";
+import { Popup } from "./Popup";
 
 export const DeleteOrdersPopup = () => {
-  const [isShowing, setIsShowing] = useState(false)
+  const [isShowing, setIsShowing] = useState(false);
 
   const confirm = () => {
     // Todo para Ysis: Logica para vaciar el carrito
-  }
+  };
 
   return (
     <>
@@ -15,16 +15,16 @@ export const DeleteOrdersPopup = () => {
       </button> */}
 
       <Popup
-        title='Ops!'
+        title="Ops!"
         onCancel={() => setIsShowing(false)}
-        cancelText='Cancelar'
+        cancelText="Cancelar"
         onConfirm={confirm}
-        confirmText='Si, eliminar'
+        confirmText="Si, eliminar"
         show={isShowing}
-        color='primary'
+        color="primary"
       >
         ¿Estás seguro que deseas eliminar todos los productos del carrito?
       </Popup>
     </>
-  )
-}
+  );
+};

@@ -1,5 +1,4 @@
 'use client'
-import Button from '@/components/Button'
 import React, { useState } from 'react'
 import { CheckboxIcon } from './icons'
 import { useRouter } from 'next/navigation'

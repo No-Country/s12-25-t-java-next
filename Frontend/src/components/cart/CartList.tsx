@@ -1,32 +1,16 @@
-'use client'
-import { useRouter } from 'next/navigation'
-import { useCartStore } from '@/store/cart'
-import { Product } from '@/types/Product'
-import { format } from '@/utils/currency'
-import Image from 'next/image'
-import Counter from '../Counter'
-import { useEffect } from 'react'
+"use client";
 
-interface Props {
-  editable?: boolean
-  products?: Product[]
-}
+import { useRouter } from "next/navigation";
+import { useCartStore } from "@/store/cart";
+// import { Product } from "@/types/Product";
+// import { IOrderItem } from "@/types/order";
+import { format } from "@/utils/currency";
+import Image from "next/image";
+import Counter from "../Counter";
+// import { useEffect } from "react";
 
-const CartList = ({ editable = false, products }: Props) => {
-  const { cart, add, remove, removeProduct } = useCartStore()
-  const router = useRouter()
-  useEffect(() => {
-    if (cart.length === 0) {
-      router.replace('cart/empty')
-    }
-  }, [cart, router])
-
-  if (cart.length === 0) {
-    return <></>
-  }
-  const onNewCartQuantityValue = (product: Product) => {
-    add(product)
-  }
+export const CartList = () => {
+  const { cart, add, remove, removeProduct } = useCartStore();
 
   return (
     <div>
@@ -42,14 +26,18 @@ const CartList = ({ editable = false, products }: Props) => {
               src={'/icon/Trash.svg'}
               height={20}
               width={20}
-              alt='delete'
-              className='h-[2rem]'
+              alt="delete"
             />
           </div>
 
-          <div className='flex mt-2 items-end justify-between text-lg font-semibold'>
-            <p className=''>{format(product.price)}</p>
-            <Counter product={product} sm />
+          <div className="flex mt-2 items-end justify-between text-lg font-semibold">
+            <p className="">{format(product.price * product.quantity)}</p>
+            <Counter
+              counter={product.quantity}
+              handleAdd={() => add(product)}
+              handleRemove={() => remove(product.id)}
+              sm
+            />
           </div>
         </div>
       ))}
