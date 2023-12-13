@@ -1,11 +1,11 @@
-import HeaderBack from "@/components/Header/HeaderBack";
-import CartEmpty from "@/components/cart/CartEmpty";
 import React from "react";
+import CartEmpty from "@/components/cart/CartEmpty";
+import HeaderBack from "@/components/Header/HeaderBack";
 
 const CartEmptyPage = () => {
   return (
     <div className="w-screen">
-      <HeaderBack editable text="Carrito" />
+      <HeaderBack text="Carrito" />
       <CartEmpty />
     </div>
   );

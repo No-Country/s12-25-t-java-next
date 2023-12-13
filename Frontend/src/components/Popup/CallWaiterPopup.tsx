@@ -16,9 +16,7 @@ export const CallWaiterPopup = () => {
   };
   const callWaiter = () => {
     const newMessage = {
-      text: (
-        <p>El mesero vendrá en seguida.</p>
-      ),
+      text: <p>El mesero vendrá en seguida.</p>,
       svg: "/icon/Group 8.svg",
     };
 

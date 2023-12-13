@@ -27,12 +27,15 @@ module.exports = {
 				300: '#FFCA51',
 			},
 			black: '#1A1818',
+			font: '#1A1A1A',
 			white: '#FFF',
 			darkgrey: '#5D5D5D',
+			inactive: '#3C3C3C',
 			grey: '#9F9F9F',
 			lightgrey: '#D9D9D9',
 			whitebackground: '#F4F4F4',
 			error: '#FF3B30',
+			desktopwhitebackground: '#FBFBFB',
 		},
 		extend: {
 			fontFamily: {
@@ -45,9 +48,10 @@ module.exports = {
 			},
 			boxShadow: {
 				button: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-				buttoncart: ' 0px 2px 5px 2px rgba(0, 0, 0, 0.09)',
+				buttoncart: '0px 2px 5px 2px rgba(0, 0, 0, 0.09)',
 				footer: '0px 0px 16px 1px rgba(0, 0, 0, 0.25)',
 				card: '0px 4px 10px 0px  rgba(0, 0, 0, 0.25)',
+				form: '0px 2px 16px 7px  rgba(0, 0, 0,0.25)',
 			},
 		},
 	},
