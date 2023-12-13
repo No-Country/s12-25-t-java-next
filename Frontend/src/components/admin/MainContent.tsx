@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 function MainContent() {
 	return (
-		<div className="relative z-10 top-[22vh] left-[8vw] w-[40vw] flex flex-col items-center">
+		<div className=" z-10 top-[22vh] left-[8vw] w-[40vw] flex flex-col items-center">
 			<h1 className="text-5xl text-center leading-[4.875rem] font-semibold text-primary-100 mb-4">
 				A la CartApp
 			</h1>

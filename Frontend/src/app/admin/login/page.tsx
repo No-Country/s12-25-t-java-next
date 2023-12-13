@@ -10,7 +10,7 @@ function LoginPage() {
 	}
 
 	return (
-		<div className="absolute w-1/3 h-[35rem] rounded-xl shadow-form bg-white right-[6.5vw] top-1/4 bg-none">
+		<div className=" w-1/3 h-[35rem] rounded-xl shadow-form bg-white right-[6.5vw] top-1/4 bg-none">
 			<div className="flex w-full h-full justify-center items-center">
 				<div className="flex flex-col w-2/3">
 					<h2 className="text-3xl font-semibold text-font">Inicia Sesión</h2>
