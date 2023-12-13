@@ -8,7 +8,6 @@ import {
 } from '@/utils/searchLogic/filterBySubcategory'
 import { Metadata } from 'next'
 import React from 'react'
-import unorm from 'unorm'
 
 export const metadata: Metadata = {
 	title: 'Menú',
@@ -69,4 +68,5 @@ async function MenuPage({ params, searchParams }: MenuPageProps) {
 		</>
 	)
 }
+export default MenuPage
 export default MenuPage
