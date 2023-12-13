@@ -1,3 +1,4 @@
+import BreadCrumbs from '@/components/Admin/BreadCrumbs';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
     return (
       <>
       <div>
+      <BreadCrumbs title='Salones y mesas'/>
       Salones y mesas
       </div>
       </>
