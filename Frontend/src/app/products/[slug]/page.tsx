@@ -1,6 +1,5 @@
 import ProductDescription from "@/components/ProductDescription";
 import { getProductById } from "@/lib/Products";
-import { products } from "@/utils/data";
 import React from "react";
 
 const ProductPage = async ({ params }: { params: { slug: string } }) => {

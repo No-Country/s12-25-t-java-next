@@ -1,17 +1,20 @@
-import { getProducts } from '@/lib/Products'
+import { getProducts } from "@/lib/Products";
 
-export async function productsAndSubcats(category: string) {
-	const products = await getProducts()
-	const productsByCategory = products.filter(
-		(product) => product.category.toLowerCase() === category
-	)
+export async function productsAndSubcats(
+  category: string,
+  searchTerm?: string,
+) {
+  const products = await getProducts(searchTerm);
+  const productsByCategory = products.filter(
+    (product) => product.category.name.toLowerCase() === category,
+  );
 
-	const subcategories = [
-		...new Set(productsByCategory.map((product) => product.subcategory)),
-	]
+  const subcategories = [
+    ...new Set(productsByCategory.map((product) => product.subCategory.name)),
+  ];
 
-	return {
-		productsByCategory,
-		subcategories,
-	}
+  return {
+    productsByCategory,
+    subcategories,
+  };
 }
