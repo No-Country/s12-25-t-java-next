@@ -1,18 +1,25 @@
 import { useState } from "react";
 import { Popup } from "./Popup";
+import { useCartStore } from "@/store/cart";
 
 export const DeleteOrdersPopup = () => {
   const [isShowing, setIsShowing] = useState(false);
+  const removeAll = useCartStore((state) => state.removeAll);
 
   const confirm = () => {
-    // Todo para Ysis: Logica para vaciar el carrito
+    removeAll();
+    setIsShowing(false);
   };
 
   return (
     <>
-      {/* <button type="button" onClick={() => setIsShowing(true)}>
+      <button
+        type="button"
+        onClick={() => setIsShowing(true)}
+        className="font-semibold text-black pr-4"
+      >
         Vaciar
-      </button> */}
+      </button>
 
       <Popup
         title="Ops!"
