@@ -7,11 +7,11 @@ import { useCartStore } from '@/store/cart'
 import { format } from "@/utils/currency";
 import Image from "next/image";
 import Counter from "../Counter";
-// import { useEffect } from "react";
+import { useEffect } from "react";
 
 export const CartList = () => {
   const { cart, add, remove, removeProduct } = useCartStore();
-
+const router =useRouter();
   useEffect(() => {
     if ( cart.length === 0) {
       router.replace("cart/empty");
