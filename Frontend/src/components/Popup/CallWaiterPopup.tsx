@@ -30,7 +30,7 @@ export const CallWaiterPopup = () => {
       <button
         type="button"
         onClick={() => setIsShowing(true)}
-        className="bg-secondary-100 px-3 w-[10.5rem] py-4 font-medium text-[0.75rem] text-white rounded-[1.3rem]  shadow-button flex items-center justify-center"
+        className="bg-secondary-100 px-3 h-[2.5rem] w-[9.5rem] py-4 font-medium text-[0.75rem] text-white rounded-[1.3rem]  shadow-button flex items-center justify-center"
       >
         <Image
           src={"/Call.svg"}

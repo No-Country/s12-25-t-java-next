@@ -24,7 +24,7 @@ const Footer = () => {
         <Link passHref href={"cart"}>
           <button
             type="button"
-            className="bg-primary-100 px-3 w-[10.5rem] ml-1 py-4 font-medium text-[0.75rem] text-white rounded-[1.3rem]  shadow-button flex items-center justify-center "
+            className="bg-primary-100 px-3 h-[2.5rem] w-[9.5rem] ml-1 py-4 font-medium text-[0.75rem] text-white rounded-[1.3rem]  shadow-button flex items-center justify-center "
           >
             <Image
               src={"/Carrito.svg"}
