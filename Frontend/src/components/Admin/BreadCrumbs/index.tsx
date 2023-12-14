@@ -9,7 +9,7 @@ interface Props {
 const BreadCrumbs = ({ title }: Props) => {
   const { setSidebarOpen, sidebarOpen } = useSideBarStore();
   return (
-    <div className="flex justify-between items-end md:hidden">
+    <div className="flex justify-between items-end lg:hidden">
       {/* <!-- Hamburger Toggle BTN --> */}
       <button
         type="button"
