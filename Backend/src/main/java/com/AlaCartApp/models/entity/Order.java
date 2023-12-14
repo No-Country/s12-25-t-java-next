@@ -1,6 +1,7 @@
 package com.AlaCartApp.models.entity;
 
 import com.AlaCartApp.enums.State;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -22,17 +23,15 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "table_entity_id", nullable = false)
     private TableEntity tableEntity;
     private LocalDateTime date;
-    private LocalDateTime updated;
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("order")
     private List<OrderDetail> detail;
     private String paymentMethod;
     private Double total;
-
     @Enumerated(EnumType.STRING)
     private State state;
-
 }

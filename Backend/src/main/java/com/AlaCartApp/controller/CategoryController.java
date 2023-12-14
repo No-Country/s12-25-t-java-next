@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/category")
+@RequestMapping("/categories")
 @RequiredArgsConstructor
 public class CategoryController {
 
-    private final CategoryServiceImp categoryServiceImp;
+    private CategoryServiceImp categoryServiceImp;
 
     @GetMapping
     public ResponseEntity<?> findAllAvailable(){

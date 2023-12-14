@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/sub-category")
+@RequestMapping("/sub-categories")
 @RequiredArgsConstructor
 public class SubCategoryController {
 
-    private final SubCategoryServiceImp subCategoryServiceImp;
+    private SubCategoryServiceImp subCategoryServiceImp;
 
     @GetMapping
     public ResponseEntity<?> findAllAvailable(){

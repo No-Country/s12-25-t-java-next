@@ -2,22 +2,24 @@ package com.AlaCartApp.models.mapper;
 
 import com.AlaCartApp.models.entity.OrderDetail;
 import com.AlaCartApp.models.request.OrderDetailDto;
+import com.AlaCartApp.repository.OrderDetailRepository;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface OrderDetailMapper {
 
-    @Mapping(source = "id" , target = "id")
-    @Mapping(source = "order" , target = "order")
-    @Mapping(source = "product" , target = "product")
-    @Mapping(source = "quantity" , target = "quantity")
-    @Mapping(source = "price" , target = "price")
+    OrderDetailDto toOrderDetailDTO(OrderDetail orderDetail);
 
-    OrderDetailDto toOrderDetailDTO (OrderDetail orderDetail);
-    List<OrderDetailDto> toOrderDetailsDTO (List <OrderDetail> orderDetail);
+    List<OrderDetailDto> toOrderDetailsDTO(List <OrderDetail> orderDetails);
+
     @InheritInverseConfiguration
-    OrderDetail toOrderDetail (OrderDetailDto orderDetailDto);
+    OrderDetail toOrderDetail(OrderDetailDto orderDetailDto);
+
+    List<OrderDetail> toOrderDetails(List<OrderDetailDto> orderDetailsDto);
 }

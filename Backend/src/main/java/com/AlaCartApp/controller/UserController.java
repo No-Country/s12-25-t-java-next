@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class UserController {
                     .orElse(new ResponseEntity<>(HttpStatus.CONFLICT));
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<UserDto>> getUsers(){
         Optional<List<UserDto>> userDtoListOptional = userService.userList();
 
