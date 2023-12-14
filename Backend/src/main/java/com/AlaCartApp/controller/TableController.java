@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/table")
+@RequestMapping("/tables")
 public class TableController {
 
     @Autowired

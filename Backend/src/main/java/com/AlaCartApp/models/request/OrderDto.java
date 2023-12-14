@@ -23,9 +23,4 @@ public class OrderDto {
     private String paymentMethod;
     private Double total;
     private State state;
-
-
-
-
-
 }
