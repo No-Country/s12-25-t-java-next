@@ -22,7 +22,7 @@ public class TableEntity {
 
     private Boolean state;
 
-    // Necesito que esta entidad esté creada.
+// Necesito que esta entidad esté creada.
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;

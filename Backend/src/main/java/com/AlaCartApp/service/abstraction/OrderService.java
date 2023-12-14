@@ -1,21 +1,19 @@
 package com.AlaCartApp.service.abstraction;
 
 import com.AlaCartApp.models.entity.Order;
-import jakarta.persistence.Table;
+import com.AlaCartApp.models.request.OrderDto;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 public interface OrderService {
-    List<Order> findAll();
+    List<OrderDto> findAll();
 
-    Order create(Order order);
+    OrderDto create(OrderDto orderDto);
 
-    Order update(Long id, Order order);
+    OrderDto update(Long id, OrderDto orderDto);
 
     void delete(Long id);
 
-    Order find(Long id);
-
-
+    OrderDto find(Long id);
 }

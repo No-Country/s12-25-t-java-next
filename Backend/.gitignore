@@ -32,3 +32,10 @@ nb-configuration.xml
 
 ### VS Code ###
 .vscode/
+
+### ENV ###
+.env
+
+## APPLICATION.PROPERTIES ##
+
+!**/src/main/resource/application.properties

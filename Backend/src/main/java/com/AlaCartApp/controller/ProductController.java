@@ -2,6 +2,7 @@ package com.AlaCartApp.controller;
 
 import com.AlaCartApp.models.response.ProductDto;
 import com.AlaCartApp.service.abstraction.ProductService;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,8 +48,9 @@ public class ProductController {
     }
 
     @PutMapping()
-    public ResponseEntity<ProductDto> update(@RequestBody ProductDto product){
-       return ResponseEntity.of(productService.update(product));
+    public ResponseEntity<ProductDto> update(@RequestPart(value="files",required = false) List<MultipartFile> postImage,
+                                             @RequestPart(value="request") ProductDto product) throws IOException{
+       return ResponseEntity.of(productService.update(postImage,product));
     }
 
     @DeleteMapping("/{id}")

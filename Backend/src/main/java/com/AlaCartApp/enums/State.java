@@ -1,11 +1,9 @@
 package com.AlaCartApp.enums;
 
 public enum State {
-
-    PENDIENTE,
-    APROBADO,
-    PREPARANDO,
-    LISTO,
-    ENTREGADO
-
+    INIT,
+    PRODUCTION,
+    SERVED,
+    PAID,
+    REJECTED
 }
