@@ -5,7 +5,7 @@ import Header from '@/components/Header'
 import Sidebar from '@/components/Admin/Sidebar'
 
 function AdminLayout({ children }: { children: React.ReactNode }) {
-	const [sidebarOpen, setSidebarOpen] = useState(false)
+	
 	const [loading, setLoading] = useState<boolean>(true)
 	useEffect(() => {
 		setTimeout(() => setLoading(false), 1000)
