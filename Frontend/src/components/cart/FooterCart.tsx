@@ -43,7 +43,7 @@ const FooterCart = () => {
       })
     : []
 
-  const handleOrder = () => {
+  const handleOrder = async() => {
     console.log('orden detail', orderDetail)
     const orderData: Order = {
       id: 1,
@@ -66,10 +66,14 @@ const FooterCart = () => {
 
       svg: '/icon/Group 8.svg',
     }
+try {
+  add(newMessage)
+  setShowMessageBoolean(true)
+  handleNotification()
+} catch (error) {
+  
+}
 
-    add(newMessage)
-    setShowMessageBoolean(true)
-    handleNotification()
   }
 
   return (
