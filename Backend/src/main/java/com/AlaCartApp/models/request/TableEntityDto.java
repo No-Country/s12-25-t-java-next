@@ -13,5 +13,6 @@ public class TableEntityDto {
     @NotNull
     private Integer capacity;
     private Boolean state;
+    private User user;
 
 }
