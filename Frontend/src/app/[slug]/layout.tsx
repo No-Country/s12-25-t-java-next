@@ -21,9 +21,9 @@ async function MenuLayout({ children }: { children: React.ReactNode }) {
   return (
     <div>
       <Header />
-      {categories.length > 0 && <FilterProducts categories={categories} />}
       {products.length > 0 ? (
-        <>
+       <>
+      {categories.length > 0 && <FilterProducts categories={categories} />}
           <div className="flex flex-row items-center mt-4 mb-2 px-4 w-full gap-x-2">
             <Search placeholder="¿Qué deseas comer hoy?" />
             <div className="w-10">

@@ -1,6 +1,5 @@
 'use client'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import FilterButton from './filterButton'
 import { SearchIcon } from './icons'
 import { useDebouncedCallback } from 'use-debounce'
 
