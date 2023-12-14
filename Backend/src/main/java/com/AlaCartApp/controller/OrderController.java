@@ -1,6 +1,7 @@
 package com.AlaCartApp.controller;
 
 import com.AlaCartApp.models.entity.Order;
+import com.AlaCartApp.models.request.OrderDto;
 import com.AlaCartApp.service.abstraction.OrderService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -25,19 +26,19 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping
-    public ResponseEntity<Order> createOrderWithDetails(@RequestBody Order order) {
-        return ResponseEntity.ok(orderService.create(order));
+    public ResponseEntity<OrderDto> createOrderWithDetails(@RequestBody OrderDto orderDto) {
+        return ResponseEntity.ok(orderService.create(orderDto));
     }
 
     @GetMapping
-    public ResponseEntity<List<Order>> ListOrder() {
+    public ResponseEntity<List<OrderDto>> ListOrder() {
         return ResponseEntity.ok(orderService.findAll());
     }
 
     @PutMapping
     @Transactional
-    public ResponseEntity<Order> updateOrder(@PathVariable Long id, @RequestBody Order order) {
-        return ResponseEntity.ok(orderService.update(id, order));
+    public ResponseEntity<OrderDto> updateOrder(@PathVariable Long id, @RequestBody OrderDto orderDto) {
+        return ResponseEntity.ok(orderService.update(id, orderDto));
     }
 
     @DeleteMapping("/{id}")
@@ -45,11 +46,12 @@ public class OrderController {
     public ResponseEntity<?> deleteOrder(@PathVariable Long id) {
         orderService.delete(id);
         return ResponseEntity.noContent().build();
+
     }
 
     @GetMapping("/{id}")
     @Transactional
-    public ResponseEntity<Order> returnOrder(@PathVariable Long id){
+    public ResponseEntity<OrderDto> returnOrder(@PathVariable Long id){
         return ResponseEntity.ok(orderService.find(id));
     }
 }
