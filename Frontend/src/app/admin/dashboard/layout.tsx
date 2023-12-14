@@ -1,8 +1,8 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 import Loader from '@/components/Common/Loader'
-import Sidebar from '@/components/admin/Sidebar'
 import Header from '@/components/Header'
+import Sidebar from '@/components/admin/Sidebar'
 
 function AdminLayout({ children }: { children: React.ReactNode }) {
 	const [sidebarOpen, setSidebarOpen] = useState(false)
