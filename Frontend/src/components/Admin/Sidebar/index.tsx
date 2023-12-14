@@ -10,7 +10,30 @@ import { useSideBarStore } from '@/store/sidebar'
 const Sidebar = () => {
 	const pathname = usePathname()
 	const router = useRouter()
+	const trigger = useRef<HTMLButtonElement>(null);
+	const sidebar = useRef<HTMLDivElement>(null);
 	const { setSidebarOpen, sidebarOpen } = useSideBarStore()
+
+	  // close on click outside
+	  useEffect(() => {
+		const clickHandler = ({ target }: MouseEvent) => {
+		  if (!sidebar.current || !trigger.current) return;
+	
+		  if (
+			!sidebarOpen ||
+			sidebar.current.contains(target as Node) ||
+			trigger.current.contains(target as Node)
+		  ) {
+			return;
+		  }
+	
+		  setSidebarOpen(false);
+		};
+	
+		document.addEventListener('click', clickHandler);
+	
+		return () => document.removeEventListener('click', clickHandler);
+	  }, [sidebarOpen, setSidebarOpen]);
 
 	const handleLinkClick = (route: string) => {
 		// Navigate to the "/admin/mesas" route
@@ -22,18 +45,25 @@ const Sidebar = () => {
 
 	return (
 		<aside
+		ref={sidebar}
 			className={`absolute left-0 top-0 z-[99] flex h-screen w-full md:w-[19.5rem] flex-col overflow-y-hidden bg-whiteSidebar duration-300 ease-linear  lg:static lg:translate-x-0 ${
 				sidebarOpen ? 'translate-x-0' : '-translate-x-full'
 			}`}
 		>
 			<div className="flex items-center justify-between gap-2 px-6 py-[2rem] lg:py-6.5">
-				<Link href="/admin/dashboard">
-					<h1 className="text-primary-100 text-lg font-black">CartApp</h1>
+				<Link 
+				className='flex '
+				href="/admin/dashboard">
+					<Image alt={'logo'}
+					src={'/icon/admin/logo.svg'}
+					 height={30}
+					 width={30}/>
+					<h1 className="text-primary-100 text-[1.875rem] ml-2 font-bold">CartApp</h1>
 				</Link>
 
 				<button
 					type="button"
-					// ref={trigger}
+					ref={trigger}
 					onClick={() => setSidebarOpen(false)}
 					aria-controls="sidebar"
 					aria-expanded={sidebarOpen}

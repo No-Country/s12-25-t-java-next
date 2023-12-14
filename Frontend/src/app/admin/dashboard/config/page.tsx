@@ -2,7 +2,7 @@ import BreadCrumbs from '@/components/Admin/BreadCrumbs'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-	title: 'Admin Perfil | Alacartaapp',
+	title: 'Admin Perfil ',
 	description: 'Este es el dashboard del administrador para editar su perfil',
 	// other metadata
 }
