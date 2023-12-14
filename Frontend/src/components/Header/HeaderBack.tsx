@@ -31,7 +31,11 @@ export default function HeaderBack({
       </div>
 
       {children}
-      <DeleteOrdersPopup />
+      {editable && (
+
+        <DeleteOrdersPopup />
+      )
+       }
     </header>
   );
 }
