@@ -1,4 +1,6 @@
 'use client'
+import Button1 from '@/components/Admin/Buttons/Button1'
+import Input1 from '@/components/Admin/Inputs/Input1'
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline'
 import { useState } from 'react'
 
@@ -19,18 +21,16 @@ function LoginPage() {
 						<a className="text-secondary-100 underline">Crear una cuenta</a>
 					</p>
 					<form onSubmit={handleSubmit}>
-						<input
+						<Input1
 							type="email"
-							required
+							required={true}
 							placeholder="Usuario o Correo Electrónico"
-							className="flex w-full h-10 border border-[#666] rounded-lg py-3 pl-5 items-center mt-7 text-sm font-normal placeholder-[#666] focus:outline-none focus:border-primary-100"
 						/>
 						<div className="relative">
-							<input
+							<Input1
 								type={hide ? 'password' : 'text'}
-								required
+								required={true}
 								placeholder="Contraseña"
-								className="flex w-full h-10 border border-[#666] rounded-lg py-3 pl-5 mt-4 text-sm font-normal placeholder-[#666] focus:outline-none  focus:border-primary-100"
 							/>
 							<button
 								type="button"
@@ -51,12 +51,13 @@ function LoginPage() {
 								¿Has olvidado tu contraseña?{' '}
 							</a>
 						</div>
-						<button
-							type="submit"
-							className="text-base font-medium text-primary-100 border border-primary-100 rounded-full w-full h-10 mt-9 hover:text-white hover:bg-primary-100"
-						>
-							Ingresar
-						</button>
+						<div className="mt-9">
+							<Button1
+								type="submit"
+								style="outline"
+								text="Ingresar"
+							/>
+						</div>
 					</form>
 				</div>
 			</div>
