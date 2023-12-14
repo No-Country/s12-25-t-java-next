@@ -37,6 +37,10 @@
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ricardothalhuen?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app) **Ricardo Thalhuen Moraga Cortez** - *Manual - QA* - *Argentina*
 
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/matias-sosa-a03560242/) **Matias Aaron Sosa** - *Spring Framework - Backtend* - *Argentina*
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alejandra-bain) **Alejandra Bain** - *Manual - QA* - *Argentina*
+
 ## Despliegue 📦
 
 ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=#00C7B7) https://alacarta.vercel.app/ (FRONTEND)
