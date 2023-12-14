@@ -69,17 +69,51 @@ public class OrderServiceImpl implements OrderService {
         Optional<Order> orderSaved = orderRepository.findById(id);
         Order order = orderMapper.toOrder(orderDto);
         if(orderSaved.isPresent()){
-            Order updateOrder = orderSaved.get();
-            updateOrder.setState(order.getState());
-            updateOrder.setTotal(order.getTotal());
-            updateOrder.setPaymentMethod(order.getPaymentMethod());
-            updateOrder.setTableEntity(order.getTableEntity());
-            //Por revisar OJO
-            updateOrder.setDetail(order.getDetail());
-            return orderMapper.toOrderDTO(orderRepository.save(updateOrder));
+            Order updatedOrder = orderSaved.get();
+            updatedOrder.setState(order.getState());
+            updatedOrder.setTotal(order.getTotal());
+            updatedOrder.setPaymentMethod(order.getPaymentMethod());
+            updatedOrder.setTableEntity(order.getTableEntity());
+            if(updatedOrder.getDetail() != order.getDetail()){
+                updateDetails(updatedOrder.getDetail(), order.getDetail());
+            }
+            return orderMapper.toOrderDTO(orderRepository.save(updatedOrder));
         }else{
             throw new ResourceNotFoundException("Order not found with id: " + id);
         }
+    }
+
+    private void updateDetails(List<OrderDetail> newDetails, List<OrderDetail> oldDetails) {
+        oldDetails.forEach(detail -> {
+            Long productId = detail.getProduct().getId();
+            boolean flag = false;
+            for(OrderDetail newDetail: newDetails){
+                if(newDetail.getProduct().getId() == productId){
+                    flag = true;
+                    break;
+                }
+            }
+            if(!flag){
+                orderDetailRepository.deleteById(detail.getId());
+            }
+        });
+        newDetails.forEach(newDetail -> {
+            Long productId = newDetail.getProduct().getId();
+            boolean flag = false;
+            for(OrderDetail detail: oldDetails){
+                if(detail.getProduct().getId() == productId){
+                    flag = true;
+                    if (detail.getQuantity() != newDetail.getQuantity()) {
+                        newDetail.setId(detail.getId());
+                        orderDetailRepository.save(newDetail);
+                    }
+                    break;
+                }
+            }
+            if(!flag){
+                orderDetailRepository.save(newDetail);
+            }
+        });
     }
 
     @Override
