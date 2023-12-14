@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import BreadCrumbs from '../../../../components/admin/BreadCrumbs/index'
+import BreadCrumbs from '../../../../components/Admin/BreadCrumbs/index'
 
 export const metadata: Metadata = {
 	title: 'Admin | Alacartaapp',

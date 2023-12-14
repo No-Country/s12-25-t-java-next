@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import Loader from '@/components/Common/Loader'
 import Header from '@/components/Header'
-import Sidebar from '@/components/admin/Sidebar'
+import Sidebar from '@/components/Admin/Sidebar'
 
 function AdminLayout({ children }: { children: React.ReactNode }) {
 	const [sidebarOpen, setSidebarOpen] = useState(false)

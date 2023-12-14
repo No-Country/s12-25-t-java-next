@@ -1,4 +1,4 @@
-import BreadCrumbs from '@/components/admin/BreadCrumbs'
+import BreadCrumbs from '@/components/Admin/BreadCrumbs'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
