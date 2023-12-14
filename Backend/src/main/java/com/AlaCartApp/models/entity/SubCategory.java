@@ -16,4 +16,6 @@ public class SubCategory {
     private String name;
     @Column(name = "available")
     private Boolean available;
+    //@ManyToOne(fetch = FetchType.LAZY)
+    //private Category category;
 }
