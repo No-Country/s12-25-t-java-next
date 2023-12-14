@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/table")
+@RequestMapping("/tables")
 public class TableController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class TableController {
                     .orElse(new ResponseEntity<>(HttpStatus.CONFLICT));
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<TableEntityDto>> getTables (){
        Optional<List<TableEntityDto>> tableListOptional = tableService.tableList();
 

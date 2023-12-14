@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
  * @author WilderVlz
  */
 @RestController
-@RequestMapping("/rating")
+@RequestMapping("/ratings")
 public class QualificationController {
 
     @Autowired
