@@ -38,6 +38,7 @@ module.exports = {
 			whiteSidebar: '#F6F5F5',
 			error: '#FF3B30',
 			inactive: '#3C3C3C',
+			placeholder: '#666666',
 		},
 		extend: {
 			fontFamily: {
@@ -49,7 +50,7 @@ module.exports = {
 					'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
 			},
 			boxShadow: {
-				button: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+				button: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
 				buttoncart: '0px 2px 5px 2px rgba(0, 0, 0, 0.09)',
 				footer: '0px 0px 16px 1px rgba(0, 0, 0, 0.25)',
 				card: '0px 4px 10px 0px  rgba(0, 0, 0, 0.25)',
@@ -57,5 +58,8 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [require('tailwind-scrollbar-hide')],
+	plugins: [
+		require('tailwind-scrollbar-hide'),
+		require('@headlessui/tailwindcss'),
+	],
 }

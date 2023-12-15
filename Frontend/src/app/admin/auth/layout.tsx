@@ -1,6 +1,6 @@
-import FooterImage from '@/components/admin/FooterImage'
-import HeaderImage from '@/components/admin/HeaderImage'
-import MainContent from '@/components/admin/MainContent'
+import FooterImage from '@/components/Admin/Authentication/FooterImage'
+import HeaderImage from '@/components/Admin/Authentication/HeaderImage'
+import MainContent from '@/components/Admin/Authentication/MainContent'
 import React from 'react'
 
 function LoginLayout({ children }: { children: React.ReactNode }) {

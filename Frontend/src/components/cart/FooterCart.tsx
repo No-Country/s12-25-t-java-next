@@ -1,96 +1,95 @@
-'use client'
+// 'use client'
 
-import React, { useEffect, useState, lazy, Suspense } from 'react'
-import { useCartStore } from '@/store/cart'
-import { useNotifyStore } from '@/store/zustand'
+// import React, { useEffect, useState, lazy, Suspense } from 'react'
+// import { useCartStore } from '@/store/cart'
+// import { useNotifyStore } from '@/store/zustand'
 
-import { Order, OrderDetail } from '../../types/order'
+// import { IOrder, IOrderDetail } from '../../types/order'
+// import { createOrders } from '@/lib/Orders'
+// interface FooterCartProps {
+//   onCreateOrder?: (orderData: IOrder) => Promise<void>;
+// }
+// const FooterCart: React.FC<FooterCartProps> = () => {
+//   const { cart, subtotal } = useCartStore()
+//   const { add, setShowMessageBoolean } = useNotifyStore()
 
-const FooterCart = () => {
-  const { cart, subtotal } = useCartStore()
-  const { add, setShowMessageBoolean } = useNotifyStore()
+//   const handleNotification = () => {
+//     setTimeout(() => {
+//       setShowMessageBoolean(false)
+//     }, 2500)
+//   }
 
-  const handleNotification = () => {
-    setTimeout(() => {
-      setShowMessageBoolean(false)
-    }, 2500)
-  }
-  const userDetail = {
-    id: 2,
-    name: 'Jesus',
-    email: 'mesero1@gmail.com',
-    password: '123456',
-    lastName: 'Mendez',
-    state: true,
-    startDate: '05/04/2023',
-  }
-  const tableEntity = {
-    id: 1,
-    number: 1,
-    capacity: 10,
-    state: true,
-    user: userDetail,
-  }
-  const orderDetail: OrderDetail[] = Array.isArray(cart)
-    ? cart.map((item, key) => {
-        return {
-          id: key + 1,
-          order: `order${key + 1}`,
-          product: { ...item, quantity: undefined }, // Excluir la propiedad 'quantity'
-          price: item.quantity * item.price,
-          quantity: item.quantity,
-        }
-      })
-    : []
+//   const tableEntity = {
+//     id: 1,
 
-  const handleOrder = () => {
-    console.log('orden detail', orderDetail)
-    const orderData: Order = {
-      id: 1,
-      tableEntity,
-      date: '05012022',
-      detail: orderDetail,
-    }
-    console.log('order', orderData)
+//   }
+//   const orderDetail: IOrderDetail[] = Array.isArray(cart)
+//   ? cart.map((item, key) => {
+//       const { quantity, id } = item;
+//       return {
+//         product: { id: Number(id) }, // Convert id to number if it's a string
+//         quantity,
+//       };
+//     })
+//   : [];
+//   console.log('orden detail', orderDetail)
+//     const orderData: IOrder = {
+//       id: 1,
+//       tableEntity,
+//       detail: orderDetail,
+//       paymentMethod: 'pendiente'
+//     }
 
-    const newMessage = {
-      text: (
-        <>
-          <p>
-            La orden ha sido confirmada.
-            <br />
-            Tu pedido está en camino.
-          </p>
-        </>
-      ),
+//   const handleOrder = async() => {
+    
+//     console.log('order', orderData)
 
-      svg: '/icon/Group 8.svg',
-    }
+//     const newMessage = {
+//       text: (
+//         <>
+//           <p>
+//             La orden ha sido confirmada.
+//             <br />
+//             Tu pedido está en camino.
+//           </p>
+//         </>
+//       ),
 
-    add(newMessage)
-    setShowMessageBoolean(true)
-    handleNotification()
-  }
+//       svg: '/icon/Group 8.svg',
+//     }
+ 
+//     // createOrders(orderData)
 
-  return (
-    <footer className=" fixed bottom-0 z-[1] px-4 py-3 w-screen">
-      <div className="flex justify-between items-center">
-        <button
-          type="button"
-          className="border-2 w-[10.3rem] h-[2.5rem] text-[0.75rem] border-primary-100 px-[1.3125rem] py-[0.625rem] font-medium rounded-[1.3rem]"
-        >
-          Ver Factura
-        </button>
-        <button
-          onClick={handleOrder}
-          type='button'
-          className='border-none w-[10.3rem] h-[2.5rem] text-[0.75rem] ml-1 bg-primary-100 hover:bg-primary-200 font-medium px-5 py-2 rounded-[1.3rem]'
-        >
-          Realizar pedido
-        </button>
-      </div>
-    </footer>
-  )
-}
+//   add(newMessage)
+//   setShowMessageBoolean(true)
+//   handleNotification()
 
-export default FooterCart
+
+//   }
+
+//   return (
+//     <form action={ async () => await createOrders(orderData)}>
+
+
+//     <footer className=" fixed bottom-0 z-[1] px-4 py-3 w-screen">
+//       <div className="flex justify-between items-center">
+//         <button
+//           type="button"
+//           className="border-2 w-[10.3rem] h-[2.5rem] text-[0.75rem] border-primary-100 px-[1.3125rem] py-[0.625rem] font-medium rounded-[1.3rem]"
+//         >
+//           Ver Factura
+//         </button>
+//         <button
+         
+//           type='submit'
+//           className='border-none w-[10.3rem] h-[2.5rem] text-[0.75rem] ml-1 bg-primary-100 hover:bg-primary-200 font-medium px-5 py-2 rounded-[1.3rem]'
+//         >
+//           Realizar pedido
+//         </button>
+//       </div>
+//     </footer>
+//     </form>
+//   )
+// }
+
+// export default FooterCart
