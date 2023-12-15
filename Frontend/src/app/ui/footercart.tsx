@@ -118,7 +118,7 @@ const FooterCart: React.FC<FooterCartProps> = () => {
     <footer className=" fixed bottom-0 z-[1] px-4 py-3 w-screen">
       <div className="flex justify-between items-center">
         <button
-          disabled={sesionOrder ? false : true}
+          disabled={sesionOrder && sesionOrder > 0 ? false : true}
           type="button"
           onClick={() => navigateCheckout(sesionOrder)}
           className="border-2 w-[10.3rem] h-[2.5rem] text-[0.75rem] border-primary-100 px-[1.3125rem] py-[0.625rem] font-medium rounded-[1.3rem]"
