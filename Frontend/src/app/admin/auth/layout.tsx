@@ -5,7 +5,7 @@ import React from 'react'
 
 function LoginLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<div className="md:relative h-screen flex flex-col bg-desktopwhitebackground">
+		<div className="md:relative min-h-screen md:h-screen flex flex-col bg-desktopwhitebackground">
 			<HeaderImage />
 			<div className="md:absolute w-screen h-full md:h-full ">
 				<div className="flex flex-col md:flex-row w-full h-full pt-6 items-center md:justify-around">
