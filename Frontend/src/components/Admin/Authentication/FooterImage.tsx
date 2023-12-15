@@ -8,7 +8,7 @@ function FooterImage() {
 				alt=""
 				width={849.92}
 				height={304}
-				className="h-auto w-full"
+				className="hidden md:block h-auto w-full"
 			/>
 		</div>
 	)

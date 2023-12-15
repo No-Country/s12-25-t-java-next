@@ -1,6 +1,6 @@
 import { ButtonProps } from '@/types/button'
 
-function Button1({ type, style, text }: ButtonProps) {
+function Button1({ type, style, text, disabled }: ButtonProps) {
 	const styleClass =
 		style === 'solid'
 			? {
@@ -19,7 +19,8 @@ function Button1({ type, style, text }: ButtonProps) {
 	return (
 		<button
 			type={type}
-			className={`text-base font-medium border border-primary-100 rounded-full w-full h-10 ${styleClass.noHover} ${styleClass.hoverText} ${styleClass.hoverBg} ${styleClass.hoverShadow}`}
+			disabled={disabled}
+			className={`disabled:opacity-30 text-base font-medium border border-primary-100 rounded-full w-full h-10 ${styleClass.noHover} ${styleClass.hoverText} ${styleClass.hoverBg} ${styleClass.hoverShadow}`}
 		>
 			{text}
 		</button>

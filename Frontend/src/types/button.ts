@@ -6,4 +6,5 @@ export interface ButtonProps {
 	type: type
 	style: style
 	text: string
+	disabled: boolean
 }

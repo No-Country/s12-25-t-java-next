@@ -1,5 +1,6 @@
 import { Product } from './Product'
 
+// Get
 export interface Category {
   id: number
   name: string
@@ -27,6 +28,7 @@ export interface OrderDetail {
   quantity: number
   price: number
 }
+
 export interface User {
   id: number
   name: string
@@ -41,12 +43,35 @@ export interface TableEntity {
   number: number
   capacity: number
   state: boolean
-  user: User
+  user: User | null
 }
+
 export interface Order {
   id: number
   tableEntity: TableEntity
   date: string
   updated?: string
   detail: OrderDetail[]
+  paymentMethod: string
+  total: string
+  state: string
+}
+
+
+// Post 
+
+export interface IOrderDetail {
+  product: {
+    id: number;
+  };
+  quantity: number;
+}
+export interface ITableEntity {
+  id: number
+}
+export interface IOrder {
+  id?: number
+  tableEntity: ITableEntity
+  detail: IOrderDetail[]
+  paymentMethod : string
 }
