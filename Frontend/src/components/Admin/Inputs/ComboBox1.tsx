@@ -1,50 +1,37 @@
 'use client'
-import { useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import { Combobox } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
-// const items: string[] = [
-// 	'Argentina',
-// 	'Bolivia',
-// 	'Chile',
-// 	'Colombia',
-// 	'Costa Rica',
-// 	'Cuba',
-// 	'República Dominicana',
-// 	'Ecuador',
-// 	'El Salvador',
-// 	'Guatemala',
-// 	'Honduras',
-// 	'México',
-// 	'Nicaragua',
-// 	'Panamá',
-// 	'Paraguay',
-// 	'Perú',
-// 	'España',
-// 	'Uruguay',
-// 	'Venezuela',
-// ]
-
-function ComboBox1({ items }: { items: string[] }) {
+function ComboBox1({
+	items,
+	value,
+	setValue,
+}: {
+	items: string[]
+	value: string
+	setValue: Dispatch<SetStateAction<string>>
+}) {
 	const [selectedItem, setSelectedItem] = useState('')
-	const [query, setQuery] = useState('')
+	// const [query, setQuery] = useState('')
 
 	const filteredItems =
-		query === ''
+		value === ''
 			? items
-			: items.filter((item) => item.toLowerCase().includes(query.toLowerCase()))
+			: items.filter((item) => item.toLowerCase().includes(value.toLowerCase()))
 
 	return (
 		<div className="relative w-full mt-7">
 			<Combobox
-				value={selectedItem}
-				onChange={setSelectedItem}
+				value={value}
+				onChange={setValue}
 			>
 				<div className="w-full overflow-hidden">
 					<Combobox.Input
-						onChange={(event) => setQuery(event.target.value)}
+						onChange={(event) => setValue(event.target.value)}
 						className="w-full h-10 border border-[#666] rounded-lg py-3 pl-5 items-center text-sm font-normal text-font focus:outline-none focus:border-primary-100 placeholder:text-placeholder"
 						placeholder="País"
+						value={value}
 					/>
 					<Combobox.Button className="absolute top-3 right-2">
 						<ChevronDownIcon
