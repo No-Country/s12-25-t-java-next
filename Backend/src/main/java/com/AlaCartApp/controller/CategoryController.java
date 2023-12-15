@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CategoryController {
 
-    private CategoryServiceImp categoryServiceImp;
+    private final CategoryServiceImp categoryServiceImp;
 
     @GetMapping
     public ResponseEntity<?> findAllAvailable(){
@@ -24,6 +24,7 @@ public class CategoryController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable Long id){
+        if(id < 0 || id == null) return new ResponseEntity<>("ID not supported", HttpStatus.BAD_REQUEST);
         CategoryDto category = categoryServiceImp.findAvailableAndId(id);
         if (category != null) return new ResponseEntity<>(category, HttpStatus.OK);
         else return new ResponseEntity<>("Category not found", HttpStatus.NOT_FOUND);
@@ -42,6 +43,9 @@ public class CategoryController {
     }
     @GetMapping("/{name}")
     public ResponseEntity<?> findByName(@PathVariable String name){
+        if(name.equalsIgnoreCase("") || name.equals(null)){
+            return  new ResponseEntity<>("NAME not supported",HttpStatus.BAD_REQUEST);
+        }
         CategoryDto category = categoryServiceImp.findByName(name);
         if (category != null) return new ResponseEntity<>(category, HttpStatus.OK);
         else return new ResponseEntity<>("Category not found", HttpStatus.NOT_FOUND);
@@ -49,6 +53,9 @@ public class CategoryController {
 
     @PostMapping
     public ResponseEntity<?> createCategory(@RequestBody @Valid CategoryDto categoryDto){
+        if (categoryDto.getName().equals(null)) {
+            return new ResponseEntity<>("FIELD EMPTY", HttpStatus.BAD_REQUEST);
+        }
         CategoryDto category = categoryServiceImp.createCategory(categoryDto);
 
         if (category != null) return new ResponseEntity<>(category, HttpStatus.CREATED);
@@ -56,14 +63,20 @@ public class CategoryController {
     }
 
     @PostMapping("/change-name")
-    public ResponseEntity<?> changeName(@RequestBody @NotBlank String name, @RequestBody @NotBlank Long id){
+    public ResponseEntity<?> changeName(@RequestBody String name, @RequestBody  Long id){
+        if (name.equals("") || name.equals(null) || id.equals(null) || id < 0){
+            return new ResponseEntity<>("FIELDS NOT SUPPORTED", HttpStatus.BAD_REQUEST);
+        }
         CategoryDto category = categoryServiceImp.changeName(name,id);
         if (category != null) return new ResponseEntity<>(category, HttpStatus.OK);
         return new ResponseEntity<>("category not found", HttpStatus.NOT_FOUND);
     }
 
     @PostMapping("/change-available")
-    public ResponseEntity<?> changeAvailable(@RequestBody @NotBlank Boolean available, @RequestBody @NotBlank Long id){
+    public ResponseEntity<?> changeAvailable(@RequestBody Boolean available, @RequestBody Long id){
+        if (available.equals(null)|| id.equals(null)||id<0){
+            return new ResponseEntity<>("FIELDS NOT SUPPORTED",HttpStatus.BAD_REQUEST);
+        }
         CategoryDto category;
         if (available) {
             category = categoryServiceImp.makeAvailable(id);

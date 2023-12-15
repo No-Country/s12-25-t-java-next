@@ -16,4 +16,7 @@ public class SubCategory {
     private String name;
     @Column(name = "available")
     private Boolean available;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    private Category category;
 }
