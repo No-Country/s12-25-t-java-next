@@ -14,9 +14,9 @@ function FormContainer({
 	linkHref: string
 }) {
 	return (
-		<div className="z-10 w-11/12 md:w-1/3 min-h-full md:min-h-[35rem] flex items-center md:rounded-xl md:shadow-form md:bg-white bg-none">
+		<div className="md:z-10 w-11/12 md:w-1/3 min-h-fit md:min-h-[35rem] flex items-center md:rounded-xl md:shadow-form md:bg-white bg-none">
 			<div className="flex w-full h-full justify-center items-center">
-				<div className="flex flex-col min-h-full md:w-2/3 my-12">
+				<div className="flex flex-col min-h-full w-full md:w-2/3 md:my-12">
 					<main className="grow w-full">
 						<h2 className="hidden md:block text-3xl font-semibold text-font">
 							{title}
