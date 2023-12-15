@@ -1,34 +1,26 @@
-import 'use server';
-import { IOrder, Order } from "@/types/order";
-import { revalidatePath } from "next/cache";
+import { useSessionOrderStore } from "@/store/order";
+import { OrderDetail } from "@/types/order";
 
-export const baseUrl = process.env.BASE_URL;
-export async function getOrders(): Promise<Order[]> {
-  const url = `${baseUrl}/orders`;
-  const res = await fetch(url, { cache: "no-cache" });
-  return await res.json();
+interface OrderPut {
+  detail: OrderDetail[];
 }
 
-export async function createOrders(ordersData: IOrder): Promise<Order | undefined > {
-  const url = `${baseUrl}/orders`;
-try {
-  console.log( "url server", url)
-
-  const res = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      
-    },
-    body: JSON.stringify(ordersData),
-    cache: "no-cache",
-  });
-  revalidatePath("/cart");
-  return await res.json();
-} catch (error) {
-  console.log( "url server error", url)
-
-  console.log("error", error)
-}
-}
-
+export const updateOrder = async (orderData: OrderPut, sesionOrder: number) => {
+  try {
+    const orderReq = await fetch(
+      `${process.env.NEXT_PUBLIC_API}/orders/${sesionOrder}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData),
+      }
+    );
+    const orders = await orderReq.json();
+    console.log("actualizada la orden", orders);
+    // return orders
+  } catch (error) {
+    console.log("error updated", error);
+  }
+};
