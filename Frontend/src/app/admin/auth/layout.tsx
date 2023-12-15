@@ -5,10 +5,10 @@ import React from 'react'
 
 function LoginLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<div className="relative h-screen bg-desktopwhitebackground">
+		<div className="md:relative h-screen flex flex-col bg-desktopwhitebackground">
 			<HeaderImage />
-			<div className="absolute w-screen h-screen">
-				<div className="flex w-full h-full items-center justify-around">
+			<div className="md:absolute w-screen h-full md:h-full ">
+				<div className="flex flex-col md:flex-row w-full h-full pt-6 items-center md:justify-around">
 					<MainContent />
 					{children}
 				</div>
