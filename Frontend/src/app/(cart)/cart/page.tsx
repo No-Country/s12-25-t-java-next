@@ -1,8 +1,4 @@
 import dynamic from 'next/dynamic'
-// import FooterCart from '@/components/cart/FooterCart'
-import { createOrders } from '@/lib/Orders'
-import { IOrder, Order } from '../../../types/order';
-import { revalidatePath } from 'next/cache';
 import FooterCart from '@/app/ui/footercart';
 
 const CartList = dynamic(() => import('@/components/cart/CartList'), {
