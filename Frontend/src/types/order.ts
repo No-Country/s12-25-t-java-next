@@ -23,10 +23,10 @@ export interface IProduct extends Product {
 
 export interface OrderDetail {
   id: number
-  order: string
+  order?: string
   product: IProduct
   quantity: number
-  price: number
+  subtotal: number
 }
 
 export interface User {
@@ -49,11 +49,11 @@ export interface TableEntity {
 export interface Order {
   id: number
   tableEntity: TableEntity
-  date: string
+  date: Date
   updated?: string
   detail: OrderDetail[]
   paymentMethod: string
-  total: string
+  total: number
   state: string
 }
 
