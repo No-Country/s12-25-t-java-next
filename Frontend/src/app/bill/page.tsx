@@ -1,33 +1,29 @@
-'use client'
-import Button from '@/components/Button'
-import HeaderBack from '@/components/Header/HeaderBack'
-import { useCartStore } from '@/store/cart'
 
-export default function BillPages() {
-  // const {cart,subtotal} = useCartStore()
-  // const total = subtotal()
+import HeaderBack from '@/components/Header/HeaderBack'
+import BillContent from './billContent'
+
+async function getOrders(){
+  const res = await fetch("https://657c7288853beeefdb997673.mockapi.io/api/v1/orders/6")
+  return res.json()
+}
+ export default async function BillPages() {
+  const orders = await getOrders()
+  console.log(orders.detail)
+ 
+
 
   return (
     <section className='bg-white min-h-[90vh] relative'>
       <HeaderBack text='Factura ' />
-      <div className='px-5 mt-5 '>
-        {/* cart.map((product) => (  */}
-        {/* <div>
-            <h1 className={`text-black h-4 text-base font-normal font-sans my-2 ${product.id.length > 1 ? "" : "border-t-2 border-[#E8E8E8]"}`}>
-              {product.title} 
-            </h1>
-            <span className="text-lg font-semibold font-sans mt-[6px]">
-              ${product.price} 
-            </span>
-          </div>
-        ))} 
-        <div className="text-end">
+      { orders.detail.map((product) => ( 
+       <BillContent key={product.id} product={product} />
+       ))} 
+       <div className="text-end px-5 mt-2">
           <h2 className="h-6 text-zinc-900 text-base font-medium font-sans">
             Subtotal
           </h2>
-           <span className="text-[22px] font-medium font-sans">${total}</span> 
-        </div>  */}
-      </div>
+           <span className="text-[22px] font-medium font-sans">{orders.total}</span> 
+        </div> 
       <div className='px-4 mt-2 absolute bottom-0 w-full'>
         <button
           type='button'
