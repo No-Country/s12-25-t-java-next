@@ -1,25 +1,26 @@
-import { Order } from '@/types/order'
-import 'server-only'
+import { useSessionOrderStore } from "@/store/order";
+import { OrderDetail } from "@/types/order";
 
-const baseUrl = process.env.BASE_URL
-export async function getOrders(): Promise<Order[]> {
-	const url = `${baseUrl}/orders`
-	const res = await fetch(url, { cache: 'no-cache' })
-	return await res.json()
+interface OrderPut {
+  detail: OrderDetail[];
 }
 
-export async function createOrders(ordersData: Order): Promise<Order> {
-	const url = `${baseUrl}/orders`
-
-	const res = await fetch(url, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-			// Puedes agregar otros encabezados si es necesario
-		},
-		body: JSON.stringify(ordersData),
-		cache: 'no-cache',
-	})
-
-	return await res.json()
-}
+export const updateOrder = async (orderData: OrderPut, sesionOrder: number) => {
+  try {
+    const orderReq = await fetch(
+      `${process.env.NEXT_PUBLIC_API}/orders/${sesionOrder}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData),
+      }
+    );
+    const orders = await orderReq.json();
+    console.log("actualizada la orden", orders);
+    // return orders
+  } catch (error) {
+    console.log("error updated", error);
+  }
+};

@@ -38,6 +38,7 @@ module.exports = {
 			whiteSidebar: '#F6F5F5',
 			error: '#FF3B30',
 			inactive: '#3C3C3C',
+			placeholder: '#666666',
 		},
 		extend: {
 			fontFamily: {
@@ -57,5 +58,8 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [require('tailwind-scrollbar-hide')],
+	plugins: [
+		require('tailwind-scrollbar-hide'),
+		require('@headlessui/tailwindcss'),
+	],
 }

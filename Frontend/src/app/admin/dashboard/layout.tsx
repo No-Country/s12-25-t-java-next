@@ -1,21 +1,15 @@
-'use client'
-import React, { useState, useEffect } from 'react'
+
 import Loader from '@/components/Common/Loader'
 import Header from '@/components/Header'
 import Sidebar from '@/components/Admin/Sidebar'
 
 function AdminLayout({ children }: { children: React.ReactNode }) {
 	
-	const [loading, setLoading] = useState<boolean>(true)
-	useEffect(() => {
-		setTimeout(() => setLoading(false), 1000)
-	}, [])
+
 
 	return (
 		<div className=" bg-whiteAdminBackground ">
-			{loading ? (
-				<Loader />
-			) : (
+		
 				<div className="flex h-screen overflow-hidden">
 					{/* <!-- ===== Sidebar Start ===== --> */}
 
@@ -37,7 +31,8 @@ function AdminLayout({ children }: { children: React.ReactNode }) {
 					</div>
 					{/* <!-- ===== Content Area End ===== --> */}
 				</div>
-			)}
+				<Loader />
+			
 		</div>
 	)
 }
