@@ -15,7 +15,7 @@ function RegisterPage() {
 			title="Crea tu cuenta"
 			text="¿Ya sos usuario?"
 			linkText="Inicia Sesión"
-			linkHref=""
+			linkHref="/admin/auth/login"
 		>
 			<form>
 				<Input1
