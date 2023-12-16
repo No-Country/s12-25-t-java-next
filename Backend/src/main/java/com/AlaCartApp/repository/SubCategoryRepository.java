@@ -26,6 +26,9 @@ public interface SubCategoryRepository extends JpaRepository<SubCategory, Long> 
     @Query("SELECT s FROM SubCategory s WHERE s.available = true AND s.name = :name")
     Optional<SubCategory> findByName(@Param("name") String name);
 
+    @Query("SELECT s FROM SubCategory s WHERE s.category = :id AND s.available = true")
+    List<SubCategory> findAllSubCategoriesOfCategory(@Param("id")Long id);
+
     @Modifying
     @Query("UPDATE SubCategory s SET s.available = true WHERE s.id = :id")
     Optional<SubCategory> makeAvailable(@Param("id") Long id);
@@ -37,5 +40,6 @@ public interface SubCategoryRepository extends JpaRepository<SubCategory, Long> 
     @Modifying
     @Query("UPDATE SubCategory s SET s.name = :name WHERE s.id = :id")
     Optional<SubCategory> changeName(@Param("name")String name, @Param("id")Long id);
+
 
 }

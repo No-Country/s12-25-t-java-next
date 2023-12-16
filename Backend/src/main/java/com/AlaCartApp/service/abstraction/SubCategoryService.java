@@ -1,6 +1,7 @@
 package com.AlaCartApp.service.abstraction;
 
 import com.AlaCartApp.models.entity.SubCategory;
+import com.AlaCartApp.models.request.CategoryDto;
 import com.AlaCartApp.models.request.SubCategoryDto;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public interface SubCategoryService {
 
     SubCategoryDto findAvailableAndId(Long id);
 
+    List<SubCategoryDto> findAllSubCategoriesOfCategory(Long id);
     SubCategoryDto findByName(String name);
 
     SubCategoryDto makeAvailable(Long id);

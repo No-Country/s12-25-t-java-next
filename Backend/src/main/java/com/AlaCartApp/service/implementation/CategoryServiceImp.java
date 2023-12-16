@@ -33,6 +33,8 @@ public class CategoryServiceImp implements CategoryService {
         return categoryMapper.toCategoriesDTO(categoryRepository.findAllAvailable());
     }
 
+
+
     @Override
     public CategoryDto findAvailableAndId(Long id) {
         return categoryMapper.toCategoryDTO(categoryRepository.findAvailableAndId(id).orElse(null));

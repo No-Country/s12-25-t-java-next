@@ -10,9 +10,14 @@ import org.mapstruct.Mappings;
 import java.util.List;
 @Mapper(componentModel = "spring")
 public interface CategoryMapper {
-    @Mapping(source = "id", target = "id")
-    @Mapping(source = "name", target = "name")
-    @Mapping(source = "available", target = "available")
+
+    @Mappings({
+            @Mapping(source = "id", target = "id"),
+            @Mapping(source = "name", target = "name"),
+            @Mapping(source = "available", target = "available"),
+            @Mapping(source = "subCategories", target = "subCategories")
+    })
+
 
     CategoryDto toCategoryDTO(Category category);
     List<CategoryDto> toCategoriesDTO(List<Category> category);

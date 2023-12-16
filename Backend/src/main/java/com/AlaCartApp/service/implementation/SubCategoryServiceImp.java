@@ -1,6 +1,7 @@
 package com.AlaCartApp.service.implementation;
 
 import com.AlaCartApp.models.mapper.SubCategoryMapper;
+import com.AlaCartApp.models.request.CategoryDto;
 import com.AlaCartApp.models.request.SubCategoryDto;
 import com.AlaCartApp.repository.SubCategoryRepository;
 import com.AlaCartApp.service.abstraction.SubCategoryService;
@@ -25,6 +26,10 @@ public class SubCategoryServiceImp implements SubCategoryService {
         return subCategoryMapper.toSubCategoriesDTO(subCategoryRepository.findAllUnAvailable());
     }
 
+    @Override
+    public List<SubCategoryDto> findAllSubCategoriesOfCategory(Long id) {
+        return subCategoryMapper.toSubCategoriesDTO(subCategoryRepository.findAllSubCategoriesOfCategory(id));
+    }
     @Override
     public List<SubCategoryDto> findAllAvailable() {
         return subCategoryMapper.toSubCategoriesDTO(subCategoryRepository.findAllAvailable());
