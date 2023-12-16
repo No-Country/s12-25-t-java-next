@@ -29,6 +29,13 @@ public class SubCategoryController {
         return new ResponseEntity<>("There are no categories unavailable", HttpStatus.NOT_FOUND);
     }
 
+    @GetMapping("/list-category")
+    public ResponseEntity<?> findAllSubCategoriesOfCategory(@RequestParam Long id){
+        if (id<0 || id.equals(null)) return new ResponseEntity<>("FIELD NOT SUPPORTED", HttpStatus.BAD_REQUEST);
+        List<SubCategoryDto> subCategoryDtos = subCategoryServiceImp.findAllSubCategoriesOfCategory(id);
+        if (subCategoryDtos.isEmpty()) return new ResponseEntity<>("SubCategories not found", HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(subCategoryDtos, HttpStatus.OK);
+    }
     @GetMapping("/all")
     private ResponseEntity<?> findAll(){
         return new ResponseEntity<>(subCategoryServiceImp.findAll(), HttpStatus.OK);

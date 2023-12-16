@@ -16,6 +16,7 @@ import java.util.List;
 @RestController
 public class ProductController {
 
+
     private final ProductService productService;
 
     @GetMapping
@@ -31,6 +32,14 @@ public class ProductController {
         productService.save(postImage, request);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .build();
+    }
+
+    @GetMapping("/find-category-list")
+    public ResponseEntity<?> findByCategory(@RequestBody Long categoryId){
+
+        List<ProductDto> products = productService.findByCategory(categoryId);
+        if(products.isEmpty()) return new ResponseEntity<>("Not found products", HttpStatus.NO_CONTENT);
+        else return new ResponseEntity<>(products,HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

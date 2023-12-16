@@ -18,6 +18,6 @@ public class Category {
     private String name;
     @Column(name = "available")
     private Boolean available;
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    @OneToMany
     private List<SubCategory> subCategories;
 }

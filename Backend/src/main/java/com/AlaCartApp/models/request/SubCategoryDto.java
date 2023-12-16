@@ -9,5 +9,6 @@ public class SubCategoryDto {
     private Long id;
     private String name;
     private Boolean available;
+    private CategoryDto category;
 
 }

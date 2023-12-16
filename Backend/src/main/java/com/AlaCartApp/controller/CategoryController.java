@@ -41,6 +41,7 @@ public class CategoryController {
     private ResponseEntity<?> findAll(){
         return new ResponseEntity<>(categoryServiceImp.findAll(), HttpStatus.OK);
     }
+
     @GetMapping("/{name}")
     public ResponseEntity<?> findByName(@PathVariable String name){
         if(name.equalsIgnoreCase("") || name.equals(null)){

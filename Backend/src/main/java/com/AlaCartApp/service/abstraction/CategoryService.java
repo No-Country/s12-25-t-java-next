@@ -10,6 +10,7 @@ public interface CategoryService {
     List<CategoryDto> findAllUnAvailable();
     List<CategoryDto> findAllAvailable();
 
+
     CategoryDto findAvailableAndId(Long id);
 
     CategoryDto findByName(String name);
