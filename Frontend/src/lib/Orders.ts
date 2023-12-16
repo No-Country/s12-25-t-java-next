@@ -24,3 +24,18 @@ export const updateOrder = async (orderData: OrderPut, sesionOrder: number) => {
     console.log("error updated", error);
   }
 };
+export const getOrder = async (id: number) => {
+  try {
+    const url = `${process.env.NEXT_PUBLIC_API}/orders/${id}`
+    const orderReq = await fetch(
+      url,{cache:"no-cache"}
+    );
+  
+    const orders = await orderReq.json();
+    console.log("actualizada la orden", orders);
+    return orders
+  } catch (error) {
+    console.log("error updated", error);
+  }
+};
+
