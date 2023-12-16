@@ -36,14 +36,15 @@ public class ProductController {
 
     @GetMapping("/find-category-list")
     public ResponseEntity<?> findByCategory(@RequestBody Long categoryId){
-
+        if (categoryId.equals(null) || categoryId < 0) return new ResponseEntity<>("FIELD NOT SUPPORTED", HttpStatus.BAD_REQUEST);
         List<ProductDto> products = productService.findByCategory(categoryId);
         if(products.isEmpty()) return new ResponseEntity<>("Not found products", HttpStatus.NO_CONTENT);
         else return new ResponseEntity<>(products,HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProductDto> findById(@PathVariable Long id){
+    public ResponseEntity<?> findById(@PathVariable Long id){
+        if (id<0|| id.equals(null)) return new ResponseEntity<>("FIELD NOT SUPPORTED", HttpStatus.BAD_REQUEST);
         return ResponseEntity.of(productService.findById(id));
     }
 
@@ -54,7 +55,8 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Boolean> delete(@PathVariable Long id){
+    public ResponseEntity<?> delete(@PathVariable Long id){
+        if (id<0|| id.equals(null)) return new ResponseEntity<>("FIELD NOT SUPPORTED", HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(productService.delete(id)?HttpStatus.OK:HttpStatus.NOT_FOUND);
     }
 }

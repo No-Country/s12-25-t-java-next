@@ -36,6 +36,7 @@ public class QualificationController {
     
     @GetMapping("/product-id/{productId}")
     public ResponseEntity<?> getRateById(@PathVariable Long productId) {
+        if (productId<0|| productId.equals(null)) return new ResponseEntity<>("FIELD NOT SUPPORTED", HttpStatus.BAD_REQUEST);
         try {
             List<Integer> ratings = this.qualificationServiceImpl.getRateById(productId);
             return new ResponseEntity<>(ratings, HttpStatus.OK);
@@ -46,6 +47,7 @@ public class QualificationController {
     
     @GetMapping("/product-name/{productName}")
     public ResponseEntity<?> getRateByName(@PathVariable String productName) {
+        if (productName.equals("") || productName.equals(null)) return new ResponseEntity<>("FIELD NOT SUPPORTED", HttpStatus.BAD_REQUEST);
         try{
             List<Integer> ratings = this.qualificationServiceImpl.getRateByName(productName);
             return new ResponseEntity<>(ratings, HttpStatus.OK);
