@@ -61,7 +61,7 @@ async function MenuPage({ params, searchParams }: MenuPageProps) {
 					</div>
 				))
 			) : (
-				<p className="text-center">
+				<p className="text-center absolute inset-y-1/2 px-5">
 					No se ha encontrado “{searchParams?.query}” en esta sección.
 				</p>
 			)}
