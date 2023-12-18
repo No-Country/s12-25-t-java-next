@@ -19,8 +19,8 @@ import java.io.IOException;
 
 @Component
 @RequiredArgsConstructor
-public class JwtAuthenticationFilter  {
-/*
+public class JwtAuthenticationFilter  extends OncePerRequestFilter{
+
     private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
 
@@ -57,5 +57,5 @@ public class JwtAuthenticationFilter  {
             System.out.println("No tiene bearer");
             return null;
         }
-    }*/
+    }
 }

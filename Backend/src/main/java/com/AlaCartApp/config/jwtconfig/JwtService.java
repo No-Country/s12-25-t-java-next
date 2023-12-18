@@ -16,7 +16,7 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
-/*
+
     private static final String JWT_KEY = "J3jnt2di37i2Did492Cdi30Djn378Cjs902A9787Db32D8ju";
 
     public String getToken(UserDetails user){
@@ -64,5 +64,5 @@ public class JwtService {
 
     private Boolean isTokenExpired(String token){
         return getExpiration(token).before(new Date());
-    }*/
+    }
 }
