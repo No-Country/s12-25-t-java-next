@@ -24,6 +24,7 @@ const ClientButton = ({ orderData, handleNotification }: Props) => {
    `${process.env.NEXT_PUBLIC_API}/orders/${sesionOrder}`,
    fetcher
  );
+
   
  useEffect(() => {
   if (data) {
@@ -35,9 +36,14 @@ const ClientButton = ({ orderData, handleNotification }: Props) => {
 }, [data]);
 
 
-  
+  const detail =orderData.detail.concat(orderDataCreate?.detail || []);
+  const subtotal = detail.reduce(
+    (prev, current) => prev + current.subtotal,
+    0,
+  );
   const orderDataPost = {
-    detail: orderData.detail.concat(orderDataCreate?.detail || []),
+    detail,
+    subtotal
   };
   
 
