@@ -7,9 +7,10 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const BUTTON_VARIANTS = {
-  primary: 'bg-primary-100 text-white',
-  secondary: 'bg-secondary-100 text-white',
-  outline: 'bg-transparent text-primary-100 border border-primary-100',
+  primary: 'bg-primary-100 text-white disabled:opacity-70',
+  secondary: 'bg-secondary-100 text-white disabled:opacity-70',
+  outline:
+    'bg-transparent text-primary-100 border border-primary-100 disabled:opacity-70',
 }
 
 export default function Button({ text, variant, cn, ...props }: Props) {
