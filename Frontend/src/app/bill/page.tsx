@@ -7,7 +7,7 @@ import { getOrder} from '@/lib/Orders'
 
  export default async function BillPages({searchParams}:{searchParams: {order:number}}) {
   
-  const orders = await getOrder(searchParams.order)
+  const orders = await getOrder(Number(searchParams.order))
  
 
   return (
