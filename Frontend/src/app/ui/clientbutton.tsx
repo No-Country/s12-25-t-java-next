@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useSessionOrderStore } from "@/store/order";
 import { IOrder, Order } from "@/types/order";
 import { updateOrder } from "@/lib/Orders";
-import useSWR, { SWRConfiguration } from 'swr';
+import useSWR, { SWRConfiguration } from "swr";
 import { useNavigateCheckout } from "@/hooks/useNavigateCheckout";
 
 interface Props {
@@ -17,38 +17,32 @@ interface Props {
 const ClientButton = ({ orderData, handleNotification }: Props) => {
   const { sesionOrder, setSessionOrder } = useSessionOrderStore();
   const [orderDataCreate, setOrderDataCreate] = useState<Order | null>(null);
-  const {navigateCheckout} = useNavigateCheckout(sesionOrder)
- const fetcher = (url: string) => fetch(url).then(res => res.json());
+  const { navigateCheckout } = useNavigateCheckout(sesionOrder);
+  const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
- const { data, error, isLoading } = useSWR(
-   `${process.env.NEXT_PUBLIC_API}/orders/${sesionOrder}`,
-   fetcher
- );
-
-  
- useEffect(() => {
-  if (data) {
-    // Aquí puedes actualizar el estado con los datos obtenidos
-    setOrderDataCreate(data);
-    console.log("toma", data)
-  }
-  console.log("no toma", data)
-}, [data]);
-
-
-  const detail =orderData.detail.concat(orderDataCreate?.detail || []);
-  const subtotal = detail.reduce(
-    (prev, current) => prev + current.subtotal,
-    0,
+  const { data, error, isLoading } = useSWR(
+    `${process.env.NEXT_PUBLIC_API}/orders/${sesionOrder}`,
+    fetcher
   );
+
+  useEffect(() => {
+    if (data) {
+      // Aquí puedes actualizar el estado con los datos obtenidos
+      setOrderDataCreate(data);
+      console.log("toma", data);
+    }
+    console.log("no toma", data);
+  }, [data]);
+
+  const detail = orderData.detail.concat(orderDataCreate?.detail || []);
+  const total = detail.reduce((prev, current) => prev + current.subtotal, 0);
+  const totalConDosDecimales = parseFloat(total.toFixed(2));
   const orderDataPost = {
     detail,
-    subtotal
+    total: totalConDosDecimales,
   };
-  
 
   const handleClick = async () => {
-    
     try {
       // No hay orden abierta
       if (!sesionOrder) {
@@ -59,14 +53,14 @@ const ClientButton = ({ orderData, handleNotification }: Props) => {
           },
           body: JSON.stringify(orderData),
         });
-        console.log("orderDta nueva", orderData)
+        console.log("orderDta nueva", orderData);
         const res = await orderReq.json();
         handleNotification();
         setSessionOrder(res.id);
         console.log("respuesta", res);
-        navigateCheckout(sesionOrder)
+        navigateCheckout(sesionOrder);
         return res;
-      } 
+      }
       const orderReq = await fetch(
         `${process.env.NEXT_PUBLIC_API}/orders/${sesionOrder}`,
         {
@@ -78,13 +72,15 @@ const ClientButton = ({ orderData, handleNotification }: Props) => {
         }
       );
       // const res = await orderReq.json();
-      console.log("orderData existe y se agrega al nuevo carrito", orderDataPost);
-      
-        const res = await orderReq.json();
-        handleNotification();
-        navigateCheckout(sesionOrder)
+      console.log(
+        "orderData existe y se agrega al nuevo carrito",
+        orderDataPost
+      );
 
-      
+      const res = await orderReq.json();
+      console.log("res", res);
+      handleNotification();
+      navigateCheckout(sesionOrder);
     } catch (error) {
       console.error("Error al procesar la solicitud:", error);
     }
