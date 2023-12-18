@@ -1,3 +1,4 @@
+import 'server-only';
 import { useSessionOrderStore } from "@/store/order";
 import { OrderDetail } from "@/types/order";
 
@@ -19,8 +20,26 @@ export const updateOrder = async (orderData: OrderPut, sesionOrder: number) => {
     );
     const orders = await orderReq.json();
     console.log("actualizada la orden", orders);
-    // return orders
+    return orders
   } catch (error) {
     console.log("error updated", error);
   }
 };
+export const getOrder = async (id: number) => {
+  try {
+    const url = `${process.env.NEXT_PUBLIC_API}/orders/${id}`
+    const orderReq = await fetch(
+      url,{cache:"no-cache"}, 
+    );
+if(!orderReq.ok){
+   // This will activate the closest `error.js` Error Boundary
+   throw new Error('Failed to fetch data')
+}
+    const orders = await orderReq.json();
+    console.log("actualizada la orden", orders);
+    return orders
+  } catch (error) {
+    console.log("error updated", error);
+  }
+};
+
