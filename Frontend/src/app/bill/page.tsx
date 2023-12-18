@@ -1,28 +1,34 @@
-
+"use client"
 import HeaderBack from '@/components/Header/HeaderBack'
 import BillContent from './billContent'
-import { getOrder} from '@/lib/Orders'
+import useSWR from 'swr';
+import { useSessionOrderStore } from '@/store/order';
 
-
-
- export default async function BillPages({searchParams}:{searchParams: {order:number}}) {
+ export default function BillPages() {
+  const { sesionOrder} = useSessionOrderStore();
   
-  const orders = await getOrder(searchParams.order)
+  const fetcher = (url: string) => fetch(url).then(res => res.json());
+
+ const { data } = useSWR(
+   `${process.env.NEXT_PUBLIC_API}/orders/${sesionOrder}`,
+   fetcher
+ );
+  
  
 
   return (
     <section className='bg-white min-h-[90vh] relative'>
       <HeaderBack text='Factura ' />
-      { orders?.detail.map((product:any,index:number) => ( 
+      { data?.detail?.map((product:any,index:number) => ( 
        <BillContent key={index} product={product} />
        ))} 
-       <div className="text-end px-5 mt-2">
+       <div className="text-end px-5 mt-2 pb-16">
           <h2 className="h-6 text-zinc-900 text-base font-medium font-sans">
             Subtotal
           </h2>
-           <span className="text-[22px] font-medium font-sans">{orders?.total}</span> 
+           <span className="text-[22px] font-medium font-sans ">{data?.total}</span> 
         </div> 
-      <div className='px-4 mt-2 absolute bottom-0 w-full'>
+      <div className='px-4 pb-5 mt-2 absolute bottom-0 w-full'>
         <button
           type='button'
           className='py-2 text-center bg-primary-100 text-white rounded-3xl w-full shadow-md shadow-grey'

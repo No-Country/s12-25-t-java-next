@@ -19,7 +19,7 @@ export const updateOrder = async (orderData: OrderPut, sesionOrder: number) => {
     );
     const orders = await orderReq.json();
     console.log("actualizada la orden", orders);
-    // return orders
+    return orders
   } catch (error) {
     console.log("error updated", error);
   }
