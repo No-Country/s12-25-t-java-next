@@ -47,9 +47,10 @@ async function MenuPage({ params, searchParams }: MenuPageProps) {
 	)
 	return (
 		<>
+			{hasProducts ?
+			<>
 			<FilterSelected />
-			{hasProducts ? (
-				productsBySubcategories.map((products, index) => (
+			 {productsBySubcategories.map((products, index) => (
 					<div
 						key={subcategories[index]}
 						className="pl-5"
@@ -59,8 +60,9 @@ async function MenuPage({ params, searchParams }: MenuPageProps) {
 							listCarousel={subcategories.length > 1}
 						/>
 					</div>
-				))
-			) : (
+				))}
+				</>
+			 : (
 				<p className="text-center absolute inset-y-1/2 px-5">
 					No se ha encontrado “{searchParams?.query}” en esta sección.
 				</p>
