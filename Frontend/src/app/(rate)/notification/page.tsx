@@ -1,6 +1,12 @@
+"use client"
+import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 
 export default function NotificationPage() {
+  const route = useRouter()
+  const handleHome = () => {
+route.push('/platos')
+  }
   return (
     <div className='px-4'>
       <div className='flex flex-col justify-center items-center'>
@@ -21,6 +27,7 @@ export default function NotificationPage() {
 
         <button
           type='button'
+          onClick={() => handleHome()}
           className='mt-16 p-2 text-center bg-primary-100 text-white rounded-3xl w-full shadow-md shadow-grey'
         >
           Abrir nueva mesa
