@@ -53,12 +53,12 @@ public class TableServiceImp implements TableService {
     }
 
     @Override
-    public boolean isTableIdDuplicate(Long id) {
+    public boolean isTableNumberDuplicate(Integer number) {
 
         // Implementa la lógica para verificar si el nombre está duplicado en la base de datos
         // Puedes usar el repositorio (repository) para realizar la consulta
         // Retorna true si el nombre está duplicado, false en caso contrario
-        Optional<TableEntity> existingTable = tableRepository.findById(id);
-        return existingTable.isPresent();
+        TableEntity existingTableNumber =tableRepository.findByNumber(number);
+        return existingTableNumber != null;
     }
 }

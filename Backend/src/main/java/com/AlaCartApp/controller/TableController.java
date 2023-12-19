@@ -1,7 +1,12 @@
 package com.AlaCartApp.controller;
 
+import com.AlaCartApp.models.entity.User;
+import com.AlaCartApp.models.mapper.UserMapper;
 import com.AlaCartApp.models.request.TableEntityDto;
+import com.AlaCartApp.repository.UserRepository;
 import com.AlaCartApp.service.abstraction.TableService;
+import com.AlaCartApp.service.abstraction.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +17,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/tables")
+@RequiredArgsConstructor
 public class TableController {
 
     @Autowired
@@ -19,10 +25,10 @@ public class TableController {
 
     @PostMapping
     public ResponseEntity<TableEntityDto> create (@RequestBody TableEntityDto tableDto){
-        if(tableService.isTableIdDuplicate(tableDto.getId())){
+        if(tableService.isTableNumberDuplicate(tableDto.getNumber())){
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
-            return tableService.create(tableDto).map(t -> new ResponseEntity<>(t, HttpStatus.CREATED))
+        return tableService.create(tableDto).map(t -> new ResponseEntity<>(t, HttpStatus.CREATED))
                     .orElse(new ResponseEntity<>(HttpStatus.CONFLICT));
     }
 

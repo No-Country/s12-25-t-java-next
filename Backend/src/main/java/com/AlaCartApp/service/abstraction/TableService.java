@@ -19,5 +19,5 @@ public interface TableService {
 
     void delete (Long id);
 
-    boolean isTableIdDuplicate(Long id);
+    boolean isTableNumberDuplicate(Integer number);
 }

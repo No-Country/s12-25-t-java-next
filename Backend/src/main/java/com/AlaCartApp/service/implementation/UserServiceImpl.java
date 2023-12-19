@@ -60,6 +60,4 @@ public class UserServiceImpl implements UserService {
         User existingUser = userRepository.findByEmail(email);
         return existingUser != null;
     }
-
-
 }
