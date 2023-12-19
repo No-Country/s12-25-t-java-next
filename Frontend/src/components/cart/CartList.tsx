@@ -14,7 +14,7 @@ interface Props {
   products?: CartItem[];
 }
 
- const CartList = ({ editable = false, products }: Props) => {
+ const CartList = () => {
   const { cart, add, remove, removeProduct } = useCartStore();
   const router = useRouter();
   useEffect(() => {
