@@ -1,10 +1,12 @@
-"use client"
-import React, {useState} from "react";
+"use client";
+import React, { useState } from "react";
 
 import { OrderDetail } from "@/types/order";
 import { format } from "../../utils/currency";
 import Checkout from "./Checkout";
-
+import { useSessionOrderStore } from "@/store/order";
+import { useRouter } from "next/navigation";
+import { useNotifyStore } from "@/store/zustand";
 export default function CheckoutContent({
   products,
   total,
@@ -12,20 +14,63 @@ export default function CheckoutContent({
   products: OrderDetail[];
   total: number;
 }) {
-  const [paymentMethod, setPaymentMethod] = useState("");
-
+  const [paymentMethod, setPaymentMethod] = useState("efectivo");
+  const { add, setShowMessageBoolean } = useNotifyStore();
+  const { sesionOrder } = useSessionOrderStore();
+  const router = useRouter();
   const handlePaymentChange = (method: string) => {
     setPaymentMethod(method);
   };
-  console.log("tipo de pago ",paymentMethod)
+  const handleNotification = () => {
+    setTimeout(() => {
+      setShowMessageBoolean(false);
+    }, 2500);
+  };
+  const orderData = {
+    paymentMethod,
+  };
+  const newMessage = {
+    text: <p>El mesero vendrá en seguida.</p>,
+    svg: "/icon/Group 8.svg",
+  };
+  const handleNotificationMessage = () => {
+    add(newMessage);
+    setShowMessageBoolean(true);
+    handleNotification();
+  };
+  const handlePaymentOrder = async (prop: string) => {
+    console.log("el boton submit", orderData);
+
+    try {
+      const orderReq = await fetch(
+        `${process.env.NEXT_PUBLIC_API}/orders/${sesionOrder}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(orderData),
+        }
+      );
+      const orders = await orderReq.json();
+      console.log("actualizada la orden", orders);
+      handleNotificationMessage();
+      router.push("/experience");
+      return orders;
+    } catch (error) {
+      console.log("error updated", error);
+    }
+  };
+  // console.log("tipo de pago ",paymentMethod)
   return (
     <>
-    <Checkout
-    paymentMethod={paymentMethod}
-    handlePaymentChange={handlePaymentChange}/>
-    
-      {products.map((product) => (
-        <div className="px-5 mt-5  ">
+      <Checkout
+        paymentMethod={paymentMethod}
+        handlePaymentChange={handlePaymentChange}
+      />
+
+      {products.map((product, key) => (
+        <div key={key} className="px-5 mt-5  ">
           <h2 className="font-semibold text-[1.125rem]">Resumen</h2>
           <div className=" mt-1 flex justify-between">
             <h1 className="text-black h-4 text-base font-normal font-sans my-2  ">
@@ -49,6 +94,7 @@ export default function CheckoutContent({
 
         <button
           type="button"
+          onClick={() => handlePaymentOrder(paymentMethod)}
           className="py-2 mt-6 text-center bg-primary-100 text-white rounded-3xl w-full shadow-md shadow-grey"
         >
           Pagar

@@ -1,18 +1,26 @@
 import Image from 'next/image'
+import { Product } from '@/types/Product';
+import { useCartStore } from '@/store/cart';
 
 type Props = {
   sm?: boolean
   counter: number
   handleAdd: () => void
+  // handleAdd: (product: Product, quantity?: number | undefined) => void
   handleRemove: () => void
+  product: Product
 }
 
 export default function Counter({
   sm = false,
   counter,
+  product,
   handleAdd,
   handleRemove,
 }: Props) {
+  const { cart, add, remove, removeProduct } = useCartStore();
+ 
+  // console.log("catidad",quantityPerProduct(product.id))
   return (
     <div
       className={`${

@@ -6,6 +6,7 @@ import { updateOrder } from "@/lib/Orders";
 import useSWR, { SWRConfiguration } from "swr";
 import { useNavigateCheckout } from "@/hooks/useNavigateCheckout";
 import { OrderDetail } from '../../types/order';
+import { useCartStore } from "@/store/cart";
 
 
 interface Props {
@@ -21,6 +22,7 @@ cart: CartItem[] | []
 const ClientButton = ({ orderData, handleNotification, orderDetail, cart }: Props) => {
   const { sesionOrder, setSessionOrder } = useSessionOrderStore();
   const [orderDataCreate, setOrderDataCreate] = useState<Order | null>(null);
+  const { removeAll } = useCartStore();
   const { navigateCheckout } = useNavigateCheckout(sesionOrder);
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -62,6 +64,7 @@ const ClientButton = ({ orderData, handleNotification, orderDetail, cart }: Prop
         handleNotification();
         setSessionOrder(res.id);
         console.log("respuesta", res);
+        removeAll()
         navigateCheckout(sesionOrder);
         return res;
       }
@@ -85,6 +88,7 @@ const ClientButton = ({ orderData, handleNotification, orderDetail, cart }: Prop
       console.log("res", res);
       handleNotification();
       navigateCheckout(sesionOrder);
+      removeAll()
     } catch (error) {
       console.error("Error al procesar la solicitud:", error);
     }

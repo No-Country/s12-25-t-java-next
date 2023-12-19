@@ -14,7 +14,7 @@ interface FooterCartProps {
   onCreateOrder?: (orderData: IOrder) => Promise<void>;
 }
 const FooterCart: React.FC<FooterCartProps> = () => {
-  const { cart, subtotal } = useCartStore();
+  const { cart, subtotal, removeAll } = useCartStore();
   const { add, setShowMessageBoolean } = useNotifyStore();
   const { sesionOrder } = useSessionOrderStore();
   const {navigateCheckout} = useNavigateCheckout(sesionOrder)
