@@ -68,10 +68,13 @@ export default function CheckoutContent({
         paymentMethod={paymentMethod}
         handlePaymentChange={handlePaymentChange}
       />
+        <div className="px-5 mt-5  ">
+
+
+<h2 className="font-semibold text-[1.125rem]">Resumen</h2>
 
       {products.map((product, key) => (
-        <div key={key} className="px-5 mt-5  ">
-          <h2 className="font-semibold text-[1.125rem]">Resumen</h2>
+        <div key={key} className="">
           <div className=" mt-1 flex justify-between">
             <h1 className="text-black h-4 text-base font-normal font-sans my-2  ">
               {product.product.name}
@@ -79,7 +82,7 @@ export default function CheckoutContent({
 
             <div className="flex flex-row justify-between">
               <span className="text-lg font-semibold font-sans mt-[6px] ">
-                ${product.product.price}
+              {format(product.product.price * product.quantity).slice(0,-1)}
               </span>
               <span className="text-lg font-semibold font-sans mt-[6px] ">
                 {product.quantity}
@@ -88,6 +91,7 @@ export default function CheckoutContent({
           </div>
         </div>
       ))}
+      </div>
       <div className="px-5 mt-5 flex items-end justify-end flex-col  ">
         <h2 className="text-[1rem] font-medium">Total</h2>
         <h2 className="text-[1.375rem] font-semibold">{format(total)}</h2>

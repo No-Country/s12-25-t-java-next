@@ -41,7 +41,7 @@ const ClientButton = ({ orderData, handleNotification, orderDetail, cart }: Prop
   }, [data]);
 
   const detail = orderData.detail.concat(orderDataCreate?.detail || []);
-  const total = detail.reduce((prev, current) => prev + current.subtotal, 0);
+  const total = detail.reduce((prev, current) => prev + current.product.price * current.quantity, 0);
   const totalConDosDecimales = parseFloat(total.toFixed(2));
   const orderDataPost = {
     detail,
