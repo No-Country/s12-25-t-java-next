@@ -6,6 +6,8 @@ import { CartItem } from "@/types/order";
 
 import { format } from "@/utils/currency";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 interface Props {
   editable?: boolean;
@@ -14,10 +16,13 @@ interface Props {
 
  const CartList = ({ editable = false, products }: Props) => {
   const { cart, add, remove, removeProduct } = useCartStore();
-
-  const onNewCartQuantityValue = (product: Product) => {
-    add(product);
-  };
+  const router = useRouter();
+  useEffect(() => {
+    if ( cart.length === 0) {
+      router.replace("cart/empty");
+    }
+  }, [ cart, router]);
+  
   return (
     <div>
       {cart.map((product) => (
