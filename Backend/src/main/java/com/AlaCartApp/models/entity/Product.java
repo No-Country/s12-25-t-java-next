@@ -29,11 +29,9 @@ public class Product {
     private String description;
     @Column(name = "estado" , nullable = false)
     private Boolean state;
-
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name="product_id")
     private List<Image> images;
-
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     List<Qualification> qualifications;
 }

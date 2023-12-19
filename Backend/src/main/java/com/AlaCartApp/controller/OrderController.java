@@ -6,6 +6,7 @@ import com.AlaCartApp.service.abstraction.OrderService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,13 +38,15 @@ public class OrderController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity<OrderDto> updateOrder(@PathVariable Long id, @RequestBody OrderDto orderDto) {
+    public ResponseEntity<?> updateOrder(@PathVariable Long id, @RequestBody OrderDto orderDto) {
+        if(id<0 || id.equals(null)||orderDto.equals(null)) return new ResponseEntity<>("FIELD NOT SUPPORTED", HttpStatus.BAD_REQUEST);
         return ResponseEntity.ok(orderService.update(id, orderDto));
     }
 
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity<?> deleteOrder(@PathVariable Long id) {
+        if (id<0 || id.equals(null)) return new ResponseEntity<>("FIELD NOT SUPPORTED", HttpStatus.BAD_REQUEST);
         orderService.delete(id);
         return ResponseEntity.noContent().build();
 
@@ -51,7 +54,8 @@ public class OrderController {
 
     @GetMapping("/{id}")
     @Transactional
-    public ResponseEntity<OrderDto> returnOrder(@PathVariable Long id){
+    public ResponseEntity<?> returnOrder(@PathVariable Long id){
+        if (id<0 || id.equals(null)) return new ResponseEntity<>("FIELD NOT SUPPORTED", HttpStatus.BAD_REQUEST);
         return ResponseEntity.ok(orderService.find(id));
     }
 }

@@ -3,6 +3,8 @@ package com.AlaCartApp.models.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Data
 @Table(name = "categories")
@@ -16,4 +18,6 @@ public class Category {
     private String name;
     @Column(name = "available")
     private Boolean available;
+    @OneToMany
+    private List<SubCategory> subCategories;
 }
