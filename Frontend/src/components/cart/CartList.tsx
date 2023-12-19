@@ -11,7 +11,7 @@ import { useEffect } from "react";
 
 export const CartList = () => {
   const { cart, add, remove, removeProduct } = useCartStore();
-const router =useRouter();
+const router = useRouter();
   useEffect(() => {
     if ( cart.length === 0) {
       router.replace("cart/empty");

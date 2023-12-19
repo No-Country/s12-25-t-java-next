@@ -16,6 +16,9 @@ export interface Qualifications {
   score: number
   product: string
 }
+export interface CartItem extends Product {
+  quantity: number
+}
 
 export interface IProduct extends Product {
   qualifications?: Qualifications

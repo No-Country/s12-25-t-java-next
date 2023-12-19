@@ -9,11 +9,11 @@ interface CartItem extends Product {
 type CartStore = {
   cart: CartItem[]
   quantity: () => number
-  quantityPerProduct: (idProduct: string) => number
+  quantityPerProduct: (idProduct: number) => number
   subtotal: () => number
   add: (product: Product, quantity?: number) => void
-  remove: (idProduct: string) => void
-  removeProduct: (idProduct: string) => void
+  remove: (idProduct: number) => void
+  removeProduct: (idProduct: number) => void
   removeAll: () => void
 }
 
@@ -30,7 +30,7 @@ export const useCartStore = create(
         if (cart.length) return cart.length
         return 0
       },
-      quantityPerProduct: (idProduct: string) => {
+      quantityPerProduct: (idProduct: number) => {
         const { cart } = get()
         if (cart.length)
           return cart
@@ -56,12 +56,12 @@ export const useCartStore = create(
         const updatedCart = updateCart(product, cart, quantity)
         set({ cart: updatedCart })
       },
-      remove: (idProduct: string) => {
+      remove: (idProduct: number) => {
         const { cart } = get()
         const updatedCart = removeCart(idProduct, cart)
         set({ cart: updatedCart })
       },
-      removeProduct: (idProduct: string) => {
+      removeProduct: (idProduct: number) => {
         const { cart } = get()
         const updatedCart = removeProduct(idProduct, cart)
         set({ cart: updatedCart })
@@ -95,7 +95,7 @@ function updateCart(
   return cart
 }
 
-function removeCart(idProduct: string, cart: CartItem[]): CartItem[] {
+function removeCart(idProduct: number, cart: CartItem[]): CartItem[] {
   return cart
     .map(item => {
       if (item.id === idProduct) return { ...item, quantity: item.quantity - 1 }
@@ -106,6 +106,6 @@ function removeCart(idProduct: string, cart: CartItem[]): CartItem[] {
     })
 }
 
-function removeProduct(idProduct: string, cart: CartItem[]): CartItem[] {
+function removeProduct(idProduct: number, cart: CartItem[]): CartItem[] {
   return cart.filter(item => item.id !== idProduct)
 }
