@@ -33,10 +33,10 @@ public class SecurityWeb {
                 .cors(c -> c.configurationSource(this.corsConfigurationSource()))
                 .authorizeHttpRequests
                         ((authRequest) -> authRequest
-                                .requestMatchers("/api/v1/**/adm")
-                                .hasRole("ADMIN")
-                                .requestMatchers("/**")
+                                .requestMatchers("/api/v1/**")
                                 .permitAll()
+                                .anyRequest()
+                                .authenticated()
                         ).sessionManagement(sessionManager -> sessionManager
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
