@@ -14,7 +14,7 @@ import { useRouter } from 'next/navigation';
    `${process.env.NEXT_PUBLIC_API}/orders/${sesionOrder}`,
    fetcher
  );
- console.log(data)
+ 
   const route = useRouter()
  
 
