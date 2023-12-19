@@ -42,13 +42,13 @@ const FooterCart: React.FC<FooterCartProps> = () => {
   // : [];
 
   // const orderData: IOrder = {
-  //   id: 1,
+    
   //   tableEntity,
   //   detail: orderDetail,
   //   paymentMethod: 'efectivo'
   // }
 
-  // -------------------------------POST BACKEND
+  // -------------------------------POST API MOCK
   const tableEntity = {
     id: 1,
     number: 1,
