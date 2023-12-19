@@ -3,6 +3,7 @@ import HeaderBack from '@/components/Header/HeaderBack'
 import BillContent from './billContent'
 import useSWR from 'swr';
 import { useSessionOrderStore } from '@/store/order';
+import { useRouter } from 'next/navigation';
 
  export default function BillPages() {
   const { sesionOrder} = useSessionOrderStore();
@@ -14,7 +15,7 @@ import { useSessionOrderStore } from '@/store/order';
    fetcher
  );
  console.log(data)
-  
+  const route = useRouter()
  
 
   return (
@@ -32,6 +33,7 @@ import { useSessionOrderStore } from '@/store/order';
       <div className='px-4 pb-5 mt-2 absolute bottom-0 w-full'>
         <button
           type='button'
+          onClick={() => route.push('/checkout')}
           className='py-2 text-center bg-primary-100 text-white rounded-3xl w-full shadow-md shadow-grey'
         >
           Continuar

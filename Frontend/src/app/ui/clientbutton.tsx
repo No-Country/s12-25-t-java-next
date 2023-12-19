@@ -1,10 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useSessionOrderStore } from "@/store/order";
-import { IOrder, Order } from "@/types/order";
+import { CartItem, IOrder, Order } from "@/types/order";
 import { updateOrder } from "@/lib/Orders";
 import useSWR, { SWRConfiguration } from "swr";
 import { useNavigateCheckout } from "@/hooks/useNavigateCheckout";
+import { OrderDetail } from '../../types/order';
+import { useCartStore } from "@/store/cart";
+
 
 interface Props {
   // POST BACKEND IS NOT ALL INFORMATION
@@ -12,11 +15,14 @@ interface Props {
   // POST APIMOCK NEED AL INFORMATION
   orderData: Order;
   handleNotification: () => void;
+orderDetail?:OrderDetail
+cart: CartItem[] | []
 }
 
-const ClientButton = ({ orderData, handleNotification }: Props) => {
+const ClientButton = ({ orderData, handleNotification, orderDetail, cart }: Props) => {
   const { sesionOrder, setSessionOrder } = useSessionOrderStore();
   const [orderDataCreate, setOrderDataCreate] = useState<Order | null>(null);
+  const { removeAll } = useCartStore();
   const { navigateCheckout } = useNavigateCheckout(sesionOrder);
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -58,6 +64,7 @@ const ClientButton = ({ orderData, handleNotification }: Props) => {
         handleNotification();
         setSessionOrder(res.id);
         console.log("respuesta", res);
+        removeAll()
         navigateCheckout(sesionOrder);
         return res;
       }
@@ -81,6 +88,7 @@ const ClientButton = ({ orderData, handleNotification }: Props) => {
       console.log("res", res);
       handleNotification();
       navigateCheckout(sesionOrder);
+      removeAll()
     } catch (error) {
       console.error("Error al procesar la solicitud:", error);
     }
@@ -88,12 +96,14 @@ const ClientButton = ({ orderData, handleNotification }: Props) => {
 
   return (
     <button
-      onClick={handleClick}
-      type="button"
-      className="border-none w-[10.3rem] h-[2.5rem] text-[0.75rem] ml-1 bg-primary-100 hover:bg-primary-200 font-medium px-5 py-2 rounded-[1.3rem]"
-    >
-      Realizar pedido
-    </button>
+    onClick={handleClick}
+    disabled={cart && Array.isArray(cart) && cart.length > 0 ? false : true}
+    type="button"
+    className="disabled:opacity-30 border-none w-[10.3rem] h-[2.5rem] text-[0.75rem] ml-1 bg-primary-100 hover:bg-primary-200 font-medium px-5 py-2 rounded-[1.3rem]"
+  >
+    Realizar pedido
+  </button>
+  
   );
 };
 

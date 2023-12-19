@@ -9,7 +9,7 @@ interface OrderPut {
 export const updateOrder = async (orderData: OrderPut, sesionOrder: number) => {
   try {
     const orderReq = await fetch(
-      `${process.env.NEXT_PUBLIC_API}/orders/${sesionOrder}`,
+      `${process.env.BASE_URL}/orders/${sesionOrder}`,
       {
         method: "PUT",
         headers: {

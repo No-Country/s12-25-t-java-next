@@ -1,7 +1,20 @@
+"use client"
 import Star from '@/components/shared/Icons/Start'
+import { useCartStore } from '@/store/cart';
+import { useSessionOrderStore } from '@/store/order';
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 export default function ExperiencePage() {
+  const route = useRouter();
+  const { clearSessionOrder } = useSessionOrderStore();
+const {removeAll} = useCartStore()
+  const handleCalifivationOrder = () => {
+    route.push('/notification')
+    clearSessionOrder()
+    removeAll()
+
+  }
   return (
     <div className='flex flex-col p-4'>
       <h1 className='text-lg font-semibold pb-2'>
@@ -26,6 +39,7 @@ export default function ExperiencePage() {
       <div className='fixed bottom-0 inset-x-0 py-8 px-4 bg-white'>
         <button
           type='button'
+          onClick={ () => handleCalifivationOrder() }
           className='p-2 text-center bg-secondary-100 text-white rounded-3xl w-full shadow-md shadow-grey'
         >
           Enviar calificación

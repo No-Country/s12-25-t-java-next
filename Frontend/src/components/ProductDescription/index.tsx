@@ -20,9 +20,12 @@ export default function ProductDescription({ product }: Props) {
   const router = useRouter()
 
   const handleAddToCart = (product: Product) => {
+    console.log("contador", counter)
+    console.log("produc", product)
     add(product, counter)
-    router.push('/')
+    router.push('/cart')
   }
+
 
   const { name, images, description, price } = product
 
@@ -63,8 +66,9 @@ export default function ProductDescription({ product }: Props) {
           <div className='w-full flex gap-2 mt-4 justify-between items-center'>
             <Counter
               counter={counter}
-              handleAdd={() => setCounter(counter + 1)}
-              handleRemove={() => setCounter(counter - 1)}
+              product={product}
+              handleAdd={ () => setCounter(n => n + 1)}
+              handleRemove={() => setCounter(n => n - 1)}
             />
             <Button
               text={`Agregar ${format(product.price * counter)}`}
