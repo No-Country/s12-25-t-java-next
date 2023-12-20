@@ -4,7 +4,7 @@ import React, { useEffect, useState, lazy, Suspense } from "react";
 import { useCartStore } from "@/store/cart";
 import { useNotifyStore } from "@/store/zustand";
 import { useRouter } from "next/navigation";
-import { IOrder, IOrderDetail, Order, OrderDetail } from "../../types/order";
+import { IOrder, IOrderDetail, Order, OrderDetail } from '../../types/order';
 
 import ClientButton from "./clientbutton";
 import { useSessionOrderStore } from "@/store/order";
@@ -14,7 +14,7 @@ interface FooterCartProps {
   onCreateOrder?: (orderData: IOrder) => Promise<void>;
 }
 const FooterCart: React.FC<FooterCartProps> = () => {
-  const { cart, subtotal } = useCartStore();
+  const { cart, subtotal, removeAll } = useCartStore();
   const { add, setShowMessageBoolean } = useNotifyStore();
   const { sesionOrder } = useSessionOrderStore();
   const {navigateCheckout} = useNavigateCheckout(sesionOrder)
@@ -42,13 +42,13 @@ const FooterCart: React.FC<FooterCartProps> = () => {
   // : [];
 
   // const orderData: IOrder = {
-  //   id: 1,
+    
   //   tableEntity,
   //   detail: orderDetail,
   //   paymentMethod: 'efectivo'
   // }
 
-  // -------------------------------POST BACKEND
+  // -------------------------------POST API MOCK
   const tableEntity = {
     id: 1,
     number: 1,
@@ -113,7 +113,7 @@ const FooterCart: React.FC<FooterCartProps> = () => {
     setShowMessageBoolean(true);
     handleNotification();
   };
-  
+  console.log(cart)
   return (
     <footer className=" fixed bottom-0 z-[1] px-4 py-3 w-screen">
       <div className="flex justify-between items-center">
@@ -126,6 +126,7 @@ const FooterCart: React.FC<FooterCartProps> = () => {
           Ver Factura
         </button>
         <ClientButton
+        cart={cart}
           orderData={orderData}
           handleNotification={handleNotificationMessage}
         />

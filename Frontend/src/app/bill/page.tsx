@@ -3,6 +3,7 @@ import HeaderBack from '@/components/Header/HeaderBack'
 import BillContent from './billContent'
 import useSWR from 'swr';
 import { useSessionOrderStore } from '@/store/order';
+import { useRouter } from 'next/navigation';
 
  export default function BillPages() {
   const { sesionOrder} = useSessionOrderStore();
@@ -13,8 +14,8 @@ import { useSessionOrderStore } from '@/store/order';
    `${process.env.NEXT_PUBLIC_API}/orders/${sesionOrder}`,
    fetcher
  );
- console.log(data)
-  
+ 
+  const route = useRouter()
  
 
   return (
@@ -27,11 +28,12 @@ import { useSessionOrderStore } from '@/store/order';
           <h2 className="h-6 text-zinc-900 text-base font-medium font-sans">
             Subtotal
           </h2>
-           <span className="text-[22px] font-medium font-sans ">${data?.total}</span> 
+           <span className="text-[22px] font-medium font-sans ">${data?.subtotal}</span> 
         </div> 
       <div className='px-4 pb-5 mt-2 absolute bottom-0 w-full'>
         <button
           type='button'
+          onClick={() => route.push('/checkout')}
           className='py-2 text-center bg-primary-100 text-white rounded-3xl w-full shadow-md shadow-grey'
         >
           Continuar

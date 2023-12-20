@@ -8,6 +8,7 @@ import { persist } from "zustand/middleware";
 type OrderStore = {
   sesionOrder: number | null;
   setSessionOrder: (value: number| null) => void;
+  clearSessionOrder: () => void;
 };
 
 export const useSessionOrderStore = create(
@@ -15,6 +16,7 @@ export const useSessionOrderStore = create(
     (set) => ({
     sesionOrder: null,
       setSessionOrder: (value) => set({ sesionOrder: value }),
+      clearSessionOrder: () => set({ sesionOrder: null }),
     }),
     {
       name: "ss-oo",
