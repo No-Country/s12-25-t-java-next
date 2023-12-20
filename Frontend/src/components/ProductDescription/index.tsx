@@ -23,7 +23,7 @@ export default function ProductDescription({ product }: Props) {
 		console.log('contador', counter)
 		console.log('produc', product)
 		add(product, counter)
-		router.push('/cart')
+		router.back()
 	}
 
 	const { name, images, description, price } = product

@@ -62,6 +62,7 @@ export default function CheckoutContent({
       console.log("error updated", error);
     }
   };
+  console.log("products", products.map(product => product.subtotal));
   // console.log("tipo de pago ",paymentMethod)
   return (
     <>
@@ -81,7 +82,7 @@ export default function CheckoutContent({
 
             <div className="flex flex-row justify-between">
               <span className="text-lg font-semibold font-sans mt-[6px] ">
-                {format(product.product.price * product.quantity).slice(0,-1)}
+                {format(product.subtotal)}
               </span>
               <span className="text-lg font-semibold font-sans mt-[6px] ">
                 {product.quantity}

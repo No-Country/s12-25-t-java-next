@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
 import { useSessionOrderStore } from '../store/order';
 
-export const useNavigateCheckout = (sesionOrder: number | null) => {
+export const useNavigateCheckout = (sesionOrder?: number | null) => {
   const route = useRouter();
 
   const navigateCheckout = (sesionOrder: number | null ) => {
@@ -13,6 +13,7 @@ export const useNavigateCheckout = (sesionOrder: number | null) => {
   };
     return {
       navigateCheckout,
+      sesionOrder
       
      };
   };
