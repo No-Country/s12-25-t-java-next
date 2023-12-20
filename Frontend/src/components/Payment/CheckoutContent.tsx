@@ -95,14 +95,17 @@ export default function CheckoutContent({
         <h2 className="text-[1rem] font-medium">Total</h2>
         <h2 className="text-[1.375rem] font-semibold">{format(total)}</h2>
 
-        <button
+       
+      </div>
+      <footer className="bg-white fixed px-4 right-0  z-[4] bottom-0 w-screen py-6">
+<button
           type="button"
           onClick={() => handlePaymentOrder(paymentMethod)}
-          className="py-2 mt-6 text-center bg-primary-100 text-white rounded-3xl w-full shadow-md shadow-grey"
+          className="py-2 mb-4 text-center bg-primary-100 text-white rounded-3xl w-full shadow-md shadow-grey"
           >
           Pagar
         </button>
-      </div>
+</footer>
     </>
   );
 }
