@@ -20,12 +20,12 @@ export default function ProductDescription({ product }: Props) {
   const router = useRouter()
 
   const handleAddToCart = (product: Product) => {
-    console.log("contador", counter)
-    console.log("produc", product)
+    console.log("Before setCounter:", counter);
     add(product, counter)
-    router.push('/cart')
+    setCounter(1)
+    console.log("After setCounter:", counter);
+    router.push('/platos')
   }
-
 
   const { name, images, description, price } = product
 
@@ -67,8 +67,9 @@ export default function ProductDescription({ product }: Props) {
             <Counter
               counter={counter}
               product={product}
-              handleAdd={ () => setCounter(n => n + 1)}
-              handleRemove={() => setCounter(n => n - 1)}
+              handleAdd={ () => setCounter(counter + 1)}
+              handleRemove={() => setCounter(counter - 1)}
+
             />
             <Button
               text={`Agregar ${format(product.price * counter)}`}

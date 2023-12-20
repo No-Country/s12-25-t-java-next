@@ -64,6 +64,9 @@ export default function CheckoutContent({
   // console.log("tipo de pago ",paymentMethod)
   return (
     <>
+    {products && (
+      <>
+      
       <Checkout
         paymentMethod={paymentMethod}
         handlePaymentChange={handlePaymentChange}
@@ -73,8 +76,8 @@ export default function CheckoutContent({
 
 <h2 className="font-semibold text-[1.125rem]">Resumen</h2>
 
-      {products.map((product, key) => (
-        <div key={key} className="">
+      {products?.map((product, key) => (
+        <div key={key+1 } className="">
           <div className=" mt-1 flex justify-between">
             <h1 className="text-black h-4 text-base font-normal font-sans my-2  ">
               {product.product.name}
@@ -82,7 +85,7 @@ export default function CheckoutContent({
 
             <div className="flex flex-row justify-between">
               <span className="text-lg font-semibold font-sans mt-[6px] ">
-              {format(product.product.price * product.quantity).slice(0,-1)}
+              ${parseFloat((product.product.price * product.quantity).toFixed(2))}
               </span>
               <span className="text-lg font-semibold font-sans mt-[6px] ">
                 {product.quantity}
@@ -104,6 +107,9 @@ export default function CheckoutContent({
           Pagar
         </button>
       </div>
+      </>
+    )}
+      
     </>
   );
 }

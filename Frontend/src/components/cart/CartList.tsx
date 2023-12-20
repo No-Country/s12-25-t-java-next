@@ -34,7 +34,7 @@ interface Props {
             <h2>{product.name}</h2>
             <button
         type='button'
-        className={`w-6 h-6 text-center flex items-center justify-center text-white font-bold rounded-full`}
+        className={"marker:w-6 h-6 text-center flex items-center justify-center text-white font-bold rounded-full"}
         onClick={() => removeProduct(product.id)}
       >
            <Image

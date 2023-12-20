@@ -10,7 +10,7 @@ export default function BillContent({ product}: {product:OrderDetail }) {
 
         <div className="flex flex-row justify-between">
           <span className="text-lg font-semibold font-sans mt-[6px] ">
-            ${product.product.price}
+            ${product.product.price * product.quantity}
           </span>
           <span className="text-lg font-semibold font-sans mt-[6px] ">
             {product.quantity}
