@@ -50,7 +50,7 @@ interface Props {
           </div>
 
           <div className="flex mt-2 items-end justify-between text-lg font-semibold">
-            <p className="">{format(product.price)}</p>
+            <p className="">{format(product.price * product.quantity)}</p>
             <div className="w-[5.2rem] flex justify-between items-center h-8 shadow-buttoncart rounded-[2rem]">
               <button
                 type="button"
