@@ -38,7 +38,8 @@ const ClientButton = ({ orderData, handleNotification, orderDetail, cart }: Prop
       console.log("toma", data);
     }
     console.log("no toma", data);
-  }, [data]);
+    console.log("cart lengt", cart.length);
+  }, [data, cart]);
 
   const detail = orderData.detail.concat(orderDataCreate?.detail || []);
   const total = detail.reduce((prev, current) => prev + current.subtotal, 0);
@@ -64,7 +65,7 @@ const ClientButton = ({ orderData, handleNotification, orderDetail, cart }: Prop
         handleNotification();
         setSessionOrder(res.id);
         console.log("respuesta", res);
-        removeAll()
+        // removeAll()
         navigateCheckout(sesionOrder);
         return res;
       }
@@ -87,8 +88,8 @@ const ClientButton = ({ orderData, handleNotification, orderDetail, cart }: Prop
       const res = await orderReq.json();
       console.log("res", res);
       handleNotification();
+      // removeAll()
       navigateCheckout(sesionOrder);
-      removeAll()
     } catch (error) {
       console.error("Error al procesar la solicitud:", error);
     }
@@ -97,7 +98,7 @@ const ClientButton = ({ orderData, handleNotification, orderDetail, cart }: Prop
   return (
     <button
     onClick={handleClick}
-    disabled={cart && Array.isArray(cart) && cart.length > 0 ? false : true}
+    disabled={cart && Array.isArray(cart) && cart.length >= 1 ? false : true}
     type="button"
     className="disabled:opacity-30 border-none w-[10.3rem] h-[2.5rem] text-[0.75rem] ml-1 bg-primary-100 hover:bg-primary-200 font-medium px-5 py-2 rounded-[1.3rem]"
   >

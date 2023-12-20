@@ -70,7 +70,7 @@ export default function CheckoutContent({
       />
 
       {products.map((product, key) => (
-        <div key={key} className="px-5 mt-5  ">
+        <div key={key + 1} className="px-5 mt-5  ">
           <h2 className="font-semibold text-[1.125rem]">Resumen</h2>
           <div className=" mt-1 flex justify-between">
             <h1 className="text-black h-4 text-base font-normal font-sans my-2  ">
@@ -79,7 +79,7 @@ export default function CheckoutContent({
 
             <div className="flex flex-row justify-between">
               <span className="text-lg font-semibold font-sans mt-[6px] ">
-                ${product.product.price}
+                {format(product.product.price * product.quantity).slice(0,-1)}
               </span>
               <span className="text-lg font-semibold font-sans mt-[6px] ">
                 {product.quantity}
