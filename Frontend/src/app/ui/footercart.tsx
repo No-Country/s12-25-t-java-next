@@ -22,7 +22,7 @@ const FooterCart: React.FC<FooterCartProps> = () => {
   const handleNotification = () => {
     setTimeout(() => {
       setShowMessageBoolean(false);
-    }, 2500);
+    }, 2000);
   };
   // -------------------------------POST BACKEND
   // const tableEntity = {

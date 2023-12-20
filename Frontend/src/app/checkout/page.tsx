@@ -8,6 +8,7 @@ import BillContent from "../bill/billContent";
 import CheckoutContent from "@/components/Payment/CheckoutContent";
 import NotFound from "../not-found";
 import Loader from "@/components/Common/Loader";
+import CheckoutSummary from "@/components/Payment/CheckoutSummary";
 
 const CheckoutPage = () => {
   const { sesionOrder } = useSessionOrderStore();
@@ -25,7 +26,9 @@ const CheckoutPage = () => {
         <>
           <HeaderBack text="Finalizar compra" />
 
-          <CheckoutContent products={data?.detail} total={data.total} />
+          {/* <CheckoutContent products={data?.detail} total={data.total} /> */}
+        
+        <CheckoutSummary products={data?.detail} total={data.total} />
         </>
       ) : (
         <Loader />

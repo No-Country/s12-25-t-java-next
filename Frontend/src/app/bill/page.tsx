@@ -14,6 +14,7 @@ import { useRouter } from 'next/navigation';
    `${process.env.NEXT_PUBLIC_API}/orders/${sesionOrder}`,
    fetcher
  );
+ console.log(data)
  
   const route = useRouter()
  
@@ -28,7 +29,7 @@ import { useRouter } from 'next/navigation';
           <h2 className="h-6 text-zinc-900 text-base font-medium font-sans">
             Subtotal
           </h2>
-           <span className="text-[22px] font-medium font-sans ">${data?.subtotal}</span> 
+           <span className="text-[22px] font-medium font-sans ">${data?.total}</span> 
         </div> 
       <div className='px-4 pb-5 mt-2 absolute bottom-0 w-full'>
         <button
