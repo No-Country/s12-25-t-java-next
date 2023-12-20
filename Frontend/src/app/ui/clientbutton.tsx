@@ -66,10 +66,11 @@ const ClientButton = ({ orderData, handleNotification, orderDetail, cart }: Prop
         setSessionOrder(res.id);
         console.log("respuesta", res);
         // removeAll()
-     
+          // Uncomment the line below if you want to clear the cart after the delay
+          // removeAll()
           navigateCheckout(res.id);
         
-        console.log("res", res);
+        return res;
       }
       const orderReq = await fetch(
         `${process.env.NEXT_PUBLIC_API}/orders/${sesionOrder}`,

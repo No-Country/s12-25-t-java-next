@@ -1,4 +1,5 @@
 import { OrderDetail } from "@/types/order";
+import { format } from "@/utils/currency";
 
 export default function BillContent({ product }: { product: OrderDetail }) {
   return (
@@ -14,11 +15,11 @@ export default function BillContent({ product }: { product: OrderDetail }) {
         {/* Right column for product details */}
         <div className="col-span-1 ">
           <div className="flex flex-row justify-between items-center">
-            <h1 className="text-black h-4 text-base font-normal font-sans my-2">
+            <h1 className="text-black w-[11.25rem] text-base font-normal font-sans my-2 truncate">
               {product.product.name}
             </h1>
-            <span className="font-sans font-medium text-lg text-[#1A1A1A] h-4">
-              ${product.subtotal}
+            <span className="font-sans font-medium text-lg text-[#1A1A1A] ">
+              {format(product.subtotal)}
             </span>
           </div>
 
