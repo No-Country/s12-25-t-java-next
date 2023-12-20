@@ -92,7 +92,13 @@ const ClientButton = ({ orderData, handleNotification, orderDetail, cart }: Prop
       console.log("res", res);
       handleNotification();
       // removeAll()
-      navigateCheckout(sesionOrder);
+      setTimeout(() => {
+        // Uncomment the line below if you want to clear the cart after the delay
+        // removeAll();
+      
+        navigateCheckout(sesionOrder);
+      }, 2800);
+      
     } catch (error) {
       console.error("Error al procesar la solicitud:", error);
     }
