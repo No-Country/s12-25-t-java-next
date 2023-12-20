@@ -1,24 +1,25 @@
 "use client";
 import React, { useState } from "react";
-
+import Checkout from "./Checkout";
 import { OrderDetail } from "@/types/order";
 import { format, trimTo3Words } from "../../utils/currency";
-import Checkout from "./Checkout";
 import { useSessionOrderStore } from "@/store/order";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation"; // Import corrected from "next/navigation"
+
 import { useNotifyStore } from "@/store/zustand";
 
-export default function CheckoutContent({
-  products,
-  total,
-}: {
+interface Props {
   products: OrderDetail[];
   total: number;
-}) {
+}
+
+const CheckoutSummary: React.FC<Props> = ({ products, total }: Props) => {
+  // You need to define paymentMethod and handlePaymentChange here or fetch them from props or state.
   const [paymentMethod, setPaymentMethod] = useState("efectivo");
   const { add, setShowMessageBoolean } = useNotifyStore();
   const { sesionOrder } = useSessionOrderStore();
   const router = useRouter();
+
   const handlePaymentChange = (method: string) => {
     setPaymentMethod(method);
   };
@@ -63,36 +64,34 @@ export default function CheckoutContent({
       console.log("error updated", error);
     }
   };
-  console.log("products", products.map(product => product.subtotal));
-  // console.log("tipo de pago ",paymentMethod)
+
   return (
     <>
+     
+
+      {/* Render the Checkout component with payment information */}
       <Checkout
         paymentMethod={paymentMethod}
         handlePaymentChange={handlePaymentChange}
       />
-<div  className="px-5 mt-5  ">
 
-<h2 className="font-semibold text-[1.125rem]">Resumen</h2>
-      {products.map((product, key) => (
-        <div key={key + 1} className="">
-          <div className=" mt-1 flex justify-between">
-            <h1 className="text-black h-4 text-base font-normal font-sans my-2  ">
-              {trimTo3Words(product.product.name)}
-            </h1>
-
+      <div className="px-5 mt-5  ">
+        <h2 className="font-semibold text-[1.125rem]">Resumen</h2>
+        {products.map((product, key) => (
+          <div key={key + 1} className=""> 
             <div className="flex flex-row justify-between">
+              
+              <span className="text-lg font-semibold font-sans mt-[6px] ">
+              {trimTo3Words(product.product.name)}
+              </span>
               <span className="text-lg font-semibold font-sans mt-[6px] ">
                 {format(product.subtotal)}
               </span>
-              <span className="text-lg font-semibold font-sans mt-[6px] ">
-                {product.quantity}
-              </span>
             </div>
           </div>
-        </div>
-      ))}
-          </div>
+        ))}
+        
+      </div>
       <div className="px-5 mt-5 flex items-end justify-end flex-col  ">
         <h2 className="text-[1rem] font-medium">Total</h2>
         <h2 className="text-[1.375rem] font-semibold">{format(total)}</h2>
@@ -110,4 +109,6 @@ export default function CheckoutContent({
 </footer>
     </>
   );
-}
+};
+
+export default CheckoutSummary;

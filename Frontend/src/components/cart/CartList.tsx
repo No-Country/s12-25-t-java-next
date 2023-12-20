@@ -34,7 +34,7 @@ interface Props {
             <h2>{product.name}</h2>
             <button
         type='button'
-        className={`w-6 h-6 text-center flex items-center justify-center text-white font-bold rounded-full`}
+        className={"w-6 h-6 text-center flex items-center justify-center text-white font-bold rounded-full"}
         onClick={() => removeProduct(product.id)}
       >
            <Image
@@ -50,7 +50,7 @@ interface Props {
           </div>
 
           <div className="flex mt-2 items-end justify-between text-lg font-semibold">
-            <p className="">{format(product.price)}</p>
+            <p className="">{format(product.price * product.quantity)}</p>
             <div className="w-[5.2rem] flex justify-between items-center h-8 shadow-buttoncart rounded-[2rem]">
               <button
                 type="button"

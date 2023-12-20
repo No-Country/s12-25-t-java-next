@@ -1,9 +1,12 @@
 import BillContent from "@/app/bill/billContent";
+import { useRef } from "react";
 interface Props {
   handlePaymentChange: (method: string) => void
   paymentMethod: string
 }
 const Checkout = ({handlePaymentChange, paymentMethod }:Props) => {
+
+  
 
   return (
     <>
@@ -11,6 +14,7 @@ const Checkout = ({handlePaymentChange, paymentMethod }:Props) => {
         <div className="mt-5 mx-3 grid gap-6">
           <h2 className="font-semibold text-[1.125rem]">Método de Pago</h2>
           <div className="relative">
+            <label className="cursor-pointer" onClick={() => handlePaymentChange("efectivo")}>
             <input
               className="peer hidden"
               id="radio_1"
@@ -19,7 +23,8 @@ const Checkout = ({handlePaymentChange, paymentMethod }:Props) => {
               checked={paymentMethod === "efectivo"}
               onChange={() => handlePaymentChange("efectivo")}
             />
-            <span className="peer-checked:border-secondary-100 absolute right-4 top-1/2 box-content block w-[1.2rem] h-[1.2rem] -translate-y-1/2 rounded-full border-8  border-gray-300 bg-whiteAdminBackground "></span>
+            <span  className="peer-checked:border-secondary-100 absolute right-4 top-1/2 box-content block w-[1.2rem] h-[1.2rem] -translate-y-1/2 rounded-full border-8  border-gray-300 bg-whiteAdminBackground "></span>
+            </label>
             <label
               className="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-whiteAdminBackground flex cursor-pointer select-none rounded-lg border  border-primary-100 p-4"
               htmlFor="radio_1"
@@ -33,6 +38,7 @@ const Checkout = ({handlePaymentChange, paymentMethod }:Props) => {
             </label>
           </div>
           <div className="relative">
+            <label className="cursor-pointer" onClick={() => handlePaymentChange("tarjeta")}>
             <input
               className="peer hidden"
               id="radio_2"
@@ -41,7 +47,8 @@ const Checkout = ({handlePaymentChange, paymentMethod }:Props) => {
               checked={paymentMethod === "tarjeta"}
               onChange={() => handlePaymentChange("tarjeta")}
             />
-            <span className="peer-checked:border-secondary-100 absolute right-4 top-1/2 box-content block h-[1.2rem] w-[1.2rem] -translate-y-1/2 rounded-full border-8 border-gray-300 bg-whitebackground"></span>
+            <span  className="peer-checked:border-secondary-100 absolute right-4 top-1/2 box-content block h-[1.2rem] w-[1.2rem] -translate-y-1/2 rounded-full border-8 border-gray-300 bg-whitebackground"></span>
+            </label>
             <label
               className="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-whiteAdminBackground flex cursor-pointer select-none rounded-lg border border-primary-100 p-4"
               htmlFor="radio_2"
