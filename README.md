@@ -15,19 +15,17 @@
 
 ## Autores ✒️
 
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/raúl-gómez-44a342252/) **Raúl Gómez** -  *Spring Framework - Backtend* - *Argentina* 
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/raúl-gómez-44a342252/) **Raúl Gómez** -  *Spring Framework - Backend* - *Argentina* 
 
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/luis-reyes-b291b5265/) **Luis Reyes Miranda** -  *Spring Framework - Backtend* -  *Chile* 
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/luis-reyes-b291b5265/) **Luis Reyes Miranda** -  *Spring Framework - Backend* -  *Chile* 
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ysislongart) **Ysis Longart** -  *Next.js Framework - Frontend* -  *Chile*
-
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/arbelaism) **Maximiliano Arbelais** - *Next.js Framework - Frontend* - *Argentina*
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marcopdonoso/) **Marco Antonio Perez Donoso** - *Next.js Framework - Frontend* - *Bolivia*  
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/johnpablo) **John Pablo** - *Next.js Framework - Frontend* - *Perú*
 
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/christian-cachero/) **Christian Ivan Cachero** - *Spring Framework - Backtend* - *Argentina*
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/christian-cachero/) **Christian Ivan Cachero** - *Spring Framework - Backend* - *Argentina*
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ever-jose-rojas-perez-39aa0722a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app) **Ever Rojas** - *Next.js Framework - Frontend* - *Colombia*
 
@@ -37,11 +35,13 @@
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ricardothalhuen?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app) **Ricardo Thalhuen Moraga Cortez** - *Manual - QA* - *Argentina*
 
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/matias-sosa-a03560242/) **Matias Aaron Sosa** - *Spring Framework - Backtend* - *Argentina*
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/matias-sosa-a03560242/) **Matias Aaron Sosa** - *Spring Framework - Backend* - *Argentina*
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alejandra-bain) **Alejandra Bain** - *Manual - QA* - *Argentina*
 
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in//jaime-diaz-molina/) **Jaime Diaz** -  *Spring Framework - Backtend* - *Colombia* 
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in//jaime-diaz-molina/) **Jaime Diaz** -  *Spring Framework - Backend* - *Colombia* 
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alexander-cortez/) **Alexander Cortez** -  *Spring Framework - Backend* - *Argentina* 
 
 ## Despliegue 📦
 
