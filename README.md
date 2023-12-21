@@ -43,6 +43,8 @@
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alexander-cortez/) **Alexander Cortez** -  *Spring Framework - Backend* - *Argentina* 
 
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/santiago-bedran-0a6062110/) **Santiago Daniel Bedrán** -  *Spring Framework - Backend* - *Argentina* 
+
 ## Despliegue 📦
 
 ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=#00C7B7) https://alacarta.vercel.app/ (FRONTEND)
