@@ -41,6 +41,8 @@
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alejandra-bain) **Alejandra Bain** - *Manual - QA* - *Argentina*
 
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in//jaime-diaz-molina/) **Jaime Diaz** -  *Spring Framework - Backtend* - *Colombia* 
+
 ## Despliegue 📦
 
 ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=#00C7B7) https://alacarta.vercel.app/ (FRONTEND)
